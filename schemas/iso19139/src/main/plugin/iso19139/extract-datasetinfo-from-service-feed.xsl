@@ -24,17 +24,18 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:atom="http://www.w3.org/2005/Atom"
                 xmlns:inspire_dls="http://inspire.ec.europa.eu/schemas/inspire_dls/1.0"
-                version="2.0"
+                xmlns:inspire_dls_https="https://inspire.ec.europa.eu/schemas/inspire_dls/1.0"
+                version="2.0" exclude-result-prefixes="#all"
 >
   <xsl:template match="atom:feed">
     <datasets>
-      <xsl:for-each select="atom:entry[inspire_dls:spatial_dataset_identifier_code and atom:link[@type='application/atom+xml']]">
+      <xsl:for-each select="atom:entry[(inspire_dls:spatial_dataset_identifier_code or (inspire_dls_https:spatial_dataset_identifier_code)) and atom:link[@type='application/atom+xml']]">
         <dataset>
           <identifier>
-            <xsl:value-of select="inspire_dls:spatial_dataset_identifier_code"/>
+            <xsl:value-of select="inspire_dls:spatial_dataset_identifier_code|inspire_dls_https:spatial_dataset_identifier_code"/>
           </identifier>
           <namespace>
-            <xsl:value-of select="inspire_dls:spatial_dataset_identifier_namespace"/>
+            <xsl:value-of select="inspire_dls:spatial_dataset_identifier_namespace|inspire_dls_https:spatial_dataset_identifier_namespace"/>
           </namespace>
           <feedUrl>
             <xsl:value-of select="atom:link[@type='application/atom+xml' and @rel='alternate']/@href"/>
