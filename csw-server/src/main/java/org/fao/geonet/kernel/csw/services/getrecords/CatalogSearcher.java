@@ -590,6 +590,17 @@ public class CatalogSearcher implements MetadataRecordSelector {
         if (Log.isDebugEnabled(Geonet.CSW_SEARCH))
             Log.debug(Geonet.CSW_SEARCH, "Records matched : " + numHits);
 
+        // NEW CODE: use numHits (total number of results)
+        searchResults = LuceneSearcher.doSearchAndMakeSummary(numHits, startPosition - 1,
+            maxRecords, _lang.presentationLanguage,
+            luceneConfig.getSummaryTypes().get(resultType.toString()), luceneConfig,
+            reader, _query, wrapSpatialFilter(),
+            _sort, taxonomyReader, buildSummary
+        );
+        hits = searchResults.one();
+        summary = searchResults.two();
+        // END NEW CODE: use numHits (total number of results)
+
         // --- retrieve results
 
         List<ResultItem> results = new ArrayList<ResultItem>();
