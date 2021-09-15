@@ -52,6 +52,8 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 /**
@@ -99,7 +101,7 @@ public class AtomServiceDescription implements Service {
         InspireAtomService service = context.getBean(InspireAtomService.class);
 
         String id = dm.getMetadataId(fileIdentifier);
-        if (id == null) { 
+        if (id == null) {
         	Log.debug(Geonet.ATOM, "Metadata with fileIdentifier " + fileIdentifier + " was not found");
         	throw new MetadataNotFoundEx("Metadata not found.");
         }
@@ -199,6 +201,17 @@ public class AtomServiceDescription implements Service {
 
         DataManager dm = context.getBean(DataManager.class);
 
+        String[] identifiers = datasetsInformation.stream().map(m -> m.getIdentifier()).toArray(size -> new String[datasetsInformation.size()]);
+        List<InspireAtomFeed> identifierMatches = repository.findByAtomDatasetidIn(identifiers);
+
+        String[] namespaces = datasetsInformation.stream().map(m -> m.getNamespace()).toArray(size -> new String[datasetsInformation.size()]);
+        List<InspireAtomFeed> namespaceMatches = repository.findByAtomDatasetnsIn(namespaces);
+
+        List<InspireAtomFeed> allMatches = Stream.concat(identifierMatches.stream(), namespaceMatches.stream())
+            .collect(Collectors.toList());
+
+        repository.SetTempCache(allMatches);
+
         for (DatasetFeedInfo datasetFeedInfo : datasetsInformation) {
             // Get the metadata uuid for the dataset
         	Log.debug(Geonet.ATOM, "Try to find Dataset UUID for datasetFeed ID: " + datasetFeedInfo.identifier + " and Namespace:" + datasetFeedInfo.namespace);
@@ -273,7 +286,7 @@ public class AtomServiceDescription implements Service {
 
             datasetsEl.addContent(datasetEl);
         }
-
+        repository.SetTempCache(null);
         return datasetsEl;
     }
 

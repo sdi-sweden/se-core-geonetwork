@@ -25,6 +25,8 @@ package org.fao.geonet.repository;
 
 import org.fao.geonet.domain.InspireAtomFeed;
 
+import java.util.List;
+
 /**
  * Repository class for InspireAtomFeed.
  *
@@ -40,9 +42,11 @@ public interface InspireAtomFeedRepositoryCustom {
      * Retrieve metadata dataset uuid from the dataset id.
      */
     public String retrieveDatasetUuidFromIdentifier(final String datasetIdCode);
-    
+
     /**
      * Retrieve InspireAtomFeed from the dataset id and dataset ns.
      */
-    public InspireAtomFeed retrieveInspireAtomFeedFromIdentifierNs(final String datasetIdCode, final String datasetIdNs);    
+    public InspireAtomFeed retrieveInspireAtomFeedFromIdentifierNs(final String datasetIdCode, final String datasetIdNs);
+
+    public void SetTempCache(List<InspireAtomFeed> inspireAtomFeeds);
 }

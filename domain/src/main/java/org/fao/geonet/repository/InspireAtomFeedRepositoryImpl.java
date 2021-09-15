@@ -27,18 +27,19 @@ import org.fao.geonet.domain.InspireAtomFeed;
 import org.fao.geonet.domain.InspireAtomFeed_;
 import org.fao.geonet.domain.Metadata;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.criteria.*;
+import java.util.List;
+import java.util.Optional;
 
 
 public class InspireAtomFeedRepositoryImpl implements InspireAtomFeedRepositoryCustom {
     @PersistenceContext
     private EntityManager _entityManager;
+
+    private List<InspireAtomFeed> _inspireAtomFeeds = null;
 
 
     @Override
@@ -63,6 +64,13 @@ public class InspireAtomFeedRepositoryImpl implements InspireAtomFeedRepositoryC
 
         cbQuery.where(cb.and(datasetIdCodePredicate, datasetIdNsPredicate));
 
+        if(_inspireAtomFeeds != null){
+            InspireAtomFeed feed = cacheFindFirstByDatasetIdCodeAndDatasetNs(atomDatasetId, datasetIdNs);
+            if(feed == null)
+                return metadataUuid;
+            Metadata md = _entityManager.find(Metadata.class, feed.getMetadataId());
+            return md.getUuid();
+        }
         List<InspireAtomFeed> feedList = null;
 
         try {
@@ -114,10 +122,12 @@ public class InspireAtomFeedRepositoryImpl implements InspireAtomFeedRepositoryC
 
         return metadataUuid;
     }
-    
+
     @Override
     public InspireAtomFeed retrieveInspireAtomFeedFromIdentifierNs(final String datasetIdCode, final String datasetIdNs) {
-
+        if(_inspireAtomFeeds != null){
+            return cacheFindFirstByDatasetIdCodeAndDatasetNs(datasetIdCode, datasetIdNs);
+        }
         /*
         "SELECT * FROM inspireatomfeed f " +
                     "WHERE f.atomDatasetId = ? and f.atomdatasetns = ?"
@@ -140,7 +150,19 @@ public class InspireAtomFeedRepositoryImpl implements InspireAtomFeedRepositoryC
             feed = _entityManager.createQuery(cbQuery).getSingleResult();
         } catch (NoResultException nre) {
             //Ignore this
-        }    	
+        }
     	return feed;
+    }
+
+    private InspireAtomFeed cacheFindFirstByDatasetIdCodeAndDatasetNs(final String datasetIdCode, final String datasetIdNs){
+        Optional<InspireAtomFeed> cacheResult = _inspireAtomFeeds.stream().filter(m-> datasetIdNs.equalsIgnoreCase(m.getAtomDatasetns()) && datasetIdCode.equalsIgnoreCase(m.getAtomDatasetid())).findFirst();
+        if(cacheResult.isPresent())
+            return cacheResult.get();
+        return null;
+    }
+
+    @Override
+    public void SetTempCache(List<InspireAtomFeed> inspireAtomFeeds) {
+        _inspireAtomFeeds = inspireAtomFeeds;
     }
 }

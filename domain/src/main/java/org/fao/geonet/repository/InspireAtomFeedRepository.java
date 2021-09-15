@@ -51,4 +51,8 @@ public interface InspireAtomFeedRepository extends GeonetRepository<InspireAtomF
      * @return the list of metadata related to the inspire atom feed
      */
     List<InspireAtomFeed> findAllByMetadataId(final int metadataId);
+
+
+    List<InspireAtomFeed> findByAtomDatasetnsIn(final String[] atomDatasetnsList);
+    List<InspireAtomFeed> findByAtomDatasetidIn(final String[] atomDatasetidList);
 }
