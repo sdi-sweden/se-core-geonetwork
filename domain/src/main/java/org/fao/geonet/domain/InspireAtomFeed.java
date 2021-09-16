@@ -23,6 +23,8 @@
 package org.fao.geonet.domain;
 
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.Type;
 import org.jdom.Element;
 import org.jdom.Namespace;
@@ -239,6 +241,7 @@ public class InspireAtomFeed extends GeonetEntity implements Serializable {
     }
 
     @ElementCollection(fetch = FetchType.EAGER, targetClass = InspireAtomFeedEntry.class)
+    @Fetch(FetchMode.SUBSELECT)
     public List<InspireAtomFeedEntry> getEntryList() {
         return _entryList;
     }

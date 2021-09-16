@@ -25,35 +25,32 @@ package org.fao.geonet.services.inspireatom;
 import jeeves.interfaces.Service;
 import jeeves.server.ServiceConfig;
 import jeeves.server.context.ServiceContext;
-
-import org.fao.geonet.Util;
-import org.fao.geonet.domain.ReservedOperation;
-import org.fao.geonet.exceptions.ResourceNotFoundEx;
-import org.fao.geonet.inspireatom.InspireAtomService;
-import org.fao.geonet.inspireatom.model.DatasetFeedInfo;
-import org.fao.geonet.kernel.setting.SettingManager;
-import org.fao.geonet.kernel.setting.Settings;
-import org.fao.geonet.repository.InspireAtomFeedRepository;
-import org.fao.geonet.utils.Log;
 import org.apache.commons.lang.StringUtils;
 import org.fao.geonet.GeonetContext;
+import org.fao.geonet.Util;
 import org.fao.geonet.constants.Geonet;
-import org.fao.geonet.exceptions.MetadataNotFoundEx;
-import org.fao.geonet.inspireatom.util.InspireAtomUtil;
-import org.fao.geonet.inspireatom.harvester.InspireAtomHarvester;
 import org.fao.geonet.domain.InspireAtomFeed;
 import org.fao.geonet.domain.InspireAtomFeedEntry;
+import org.fao.geonet.domain.ReservedOperation;
+import org.fao.geonet.exceptions.MetadataNotFoundEx;
+import org.fao.geonet.exceptions.ResourceNotFoundEx;
+import org.fao.geonet.inspireatom.InspireAtomService;
+import org.fao.geonet.inspireatom.harvester.InspireAtomHarvester;
+import org.fao.geonet.inspireatom.model.DatasetFeedInfo;
+import org.fao.geonet.inspireatom.util.InspireAtomUtil;
 import org.fao.geonet.kernel.DataManager;
 import org.fao.geonet.kernel.search.LuceneSearcher;
+import org.fao.geonet.kernel.setting.SettingManager;
+import org.fao.geonet.kernel.setting.Settings;
 import org.fao.geonet.lib.Lib;
+import org.fao.geonet.repository.InspireAtomFeedRepository;
+import org.fao.geonet.utils.Log;
 import org.jdom.Element;
 
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
 /**
@@ -202,13 +199,9 @@ public class AtomServiceDescription implements Service {
         DataManager dm = context.getBean(DataManager.class);
 
         String[] identifiers = datasetsInformation.stream().map(m -> m.getIdentifier()).toArray(size -> new String[datasetsInformation.size()]);
-        List<InspireAtomFeed> identifierMatches = repository.findByAtomDatasetidIn(identifiers);
-
         String[] namespaces = datasetsInformation.stream().map(m -> m.getNamespace()).toArray(size -> new String[datasetsInformation.size()]);
-        List<InspireAtomFeed> namespaceMatches = repository.findByAtomDatasetnsIn(namespaces);
 
-        List<InspireAtomFeed> allMatches = Stream.concat(identifierMatches.stream(), namespaceMatches.stream())
-            .collect(Collectors.toList());
+        List<InspireAtomFeed> allMatches = repository.findByAtomDatasetnsInAndAtomDatasetidIn(namespaces, identifiers);
 
         repository.SetTempCache(allMatches);
 
