@@ -328,6 +328,9 @@
       </dt>
       <dd>
         <div class="col-md-6">
+        		<xsl:variable name="email">
+					<xsl:value-of select="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString"/>
+				</xsl:variable>
           <address>
             <strong>
               <xsl:choose>
