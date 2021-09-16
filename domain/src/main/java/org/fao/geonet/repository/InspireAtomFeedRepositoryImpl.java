@@ -145,7 +145,11 @@ public class InspireAtomFeedRepositoryImpl implements InspireAtomFeedRepositoryC
         cbQuery.where(cb.and(datasetIdCodePredicate, datasetIdNsPredicate));
 
         InspireAtomFeed feed = null;
-
+        if(_inspireAtomFeeds != null){
+            feed = cacheFindFirstByDatasetIdCodeAndDatasetNs(datasetIdCode, datasetIdNs);
+            return feed;
+        }
+        
         try {
             feed = _entityManager.createQuery(cbQuery).getSingleResult();
         } catch (NoResultException nre) {
