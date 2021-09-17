@@ -72,4 +72,8 @@ public class InspireAtomService {
     public InspireAtomFeed findByMetadataId(int metadataId) {
         return _repository.findByMetadataId(metadataId);
     }
+    
+    public InspireAtomFeed retrieveInspireAtomFeedFromIdentifierNs(String datasetIdCode, String datasetIdNs ) {
+    	return _repository.retrieveInspireAtomFeedFromIdentifierNs(datasetIdCode, datasetIdNs);
+    }
 }

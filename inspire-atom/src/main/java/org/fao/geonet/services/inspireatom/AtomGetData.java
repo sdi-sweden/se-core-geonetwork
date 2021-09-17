@@ -111,7 +111,9 @@ public class AtomGetData implements Service {
         Lib.resource.checkPrivilege(context, id, ReservedOperation.view);
 
         // Retrieve the dataset resources for specified CRS
-        InspireAtomFeed inspireAtomFeed = service.findByMetadataId(Integer.parseInt(id));
+        // InspireAtomFeed inspireAtomFeed = service.findByMetadataId(Integer.parseInt(id));
+        // find one record!
+        InspireAtomFeed inspireAtomFeed = service.retrieveInspireAtomFeedFromIdentifierNs(datasetIdCode, datasetIdNs);
 
         // Check the metadata has an atom document.
         String atomUrl = inspireAtomFeed.getAtomUrl();
