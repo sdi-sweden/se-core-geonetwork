@@ -46,6 +46,11 @@ public class InspireAtomService {
     public Element retrieveFeed(ServiceContext context, int metadataId) throws Exception {
         // Check the metadata has an atom document.
         InspireAtomFeed feed = _repository.findByMetadataId(metadataId);
+        return retrieveFeed(context, feed);
+    }
+
+    public Element retrieveFeed(ServiceContext context, InspireAtomFeed feed) throws Exception {
+        // Check the metadata has an atom document.
         String atomUrl = feed.getAtomUrl();
 
         if (StringUtils.isEmpty(atomUrl)) throw new Exception("Metadata has no atom feed");
@@ -60,11 +65,6 @@ public class InspireAtomService {
         return Xml.loadString(feedValue, false);
     }
 
-    public Element retrieveFeed(ServiceContext context, InspireAtomFeed feed) throws Exception {
-        // Check the metadata has an atom document.
-        return retrieveFeed(context, feed.getMetadataId());
-    }
-
     public String retrieveDatasetUuidFromIdentifierNs(String datasetIdCode, String datasetIdNs) {
         return _repository.retrieveDatasetUuidFromIdentifierNs(datasetIdCode, datasetIdNs);
     }
@@ -72,7 +72,7 @@ public class InspireAtomService {
     public InspireAtomFeed findByMetadataId(int metadataId) {
         return _repository.findByMetadataId(metadataId);
     }
-    
+
     public InspireAtomFeed retrieveInspireAtomFeedFromIdentifierNs(String datasetIdCode, String datasetIdNs ) {
     	return _repository.retrieveInspireAtomFeedFromIdentifierNs(datasetIdCode, datasetIdNs);
     }

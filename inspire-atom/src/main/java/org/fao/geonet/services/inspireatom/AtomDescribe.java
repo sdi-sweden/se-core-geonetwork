@@ -122,7 +122,7 @@ public class AtomDescribe implements Service {
         // Check if allowed to the metadata
         Lib.resource.checkPrivilege(context, id, ReservedOperation.view);
 
-        return service.retrieveFeed(context, Integer.parseInt(id));
+        return service.retrieveFeed(context, service.retrieveInspireAtomFeedFromIdentifierNs(datasetIdCode, datasetIdNs));
     }
 
     /**
