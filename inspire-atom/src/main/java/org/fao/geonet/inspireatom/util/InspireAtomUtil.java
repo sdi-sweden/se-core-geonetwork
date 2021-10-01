@@ -103,7 +103,8 @@ public class InspireAtomUtil {
     	String newURL = proxifyURL(url, sm);
     	System.out.println("create request Atom document");
         XmlRequest remoteRequest = context.getBean(GeonetHttpRequestFactory.class).createXmlRequest(new URL(newURL));
-
+        remoteRequest.setUseSOAP(false);
+        
         Lib.net.setupProxy(sm, remoteRequest);
         System.out.println("about to execute request for Atom document");
         Element atomFeed = remoteRequest.execute();

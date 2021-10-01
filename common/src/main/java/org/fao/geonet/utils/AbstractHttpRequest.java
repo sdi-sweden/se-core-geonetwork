@@ -313,7 +313,7 @@ public class AbstractHttpRequest {
         if (method == Method.GET) {
             HttpGet get = new HttpGet();
 
-            get.addHeader("Accept", !useSOAP ? "application/xml,text/xml" : "application/soap+xml");
+            get.addHeader("Accept", !useSOAP ? "application/xml,text/xml,*/*" : "application/soap+xml");
             httpMethod = get;
         } else {
             HttpPost post = new HttpPost();
