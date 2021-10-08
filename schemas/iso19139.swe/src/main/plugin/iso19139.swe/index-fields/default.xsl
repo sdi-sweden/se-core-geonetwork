@@ -527,6 +527,7 @@
               <xsl:when test="starts-with(lower-case(.), 'sveriges meteorologiska och hydrologiska institut') ">SMHI</xsl:when>
               <xsl:when test="starts-with(lower-case(.), 'strålsäkerhetsmyndigheten') ">Strålsäkerhetsmyndigheten</xsl:when>
               <xsl:when test="starts-with(lower-case(.), 'sveriges lantbruksuniversitet') ">Sveriges lantbruksuniversitet</xsl:when>
+              <xsl:when test="starts-with(lower-case(.), 'havs- och vattenmyndigheten') ">Havs- och vattenmyndigheten</xsl:when>
               <xsl:otherwise><xsl:value-of select="." /></xsl:otherwise>
             </xsl:choose>
           </xsl:variable>
