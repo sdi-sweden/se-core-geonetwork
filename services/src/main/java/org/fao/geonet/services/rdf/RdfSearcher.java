@@ -67,12 +67,14 @@ public class RdfSearcher {
         if (StringUtils.isNotEmpty(initiativKeyword)) {
             searchRequest.addContent(new Element("initiativKeyword").setText(initiativKeyword));
         }
-
+        String notSMHI = Util.getParam(params, "notsmhi", "");
+        if (StringUtils.isNotEmpty(notSMHI)) {
+            searchRequest.addContent(new Element("notsmhi").setText(notSMHI));
+        }
         organisation = Util.getParam(params, "orgName", "");
 
         if (Log.isDebugEnabled(Geonet.SEARCH_ENGINE))
             Log.debug(Geonet.SEARCH_ENGINE, "PUBLIC METADATA SEARCH CRITERIA:\n" + Xml.getString(searchRequest));
-
     }
 
     public List search(ServiceContext context) throws Exception {
