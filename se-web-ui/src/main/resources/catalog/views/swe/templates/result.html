@@ -109,7 +109,7 @@
             </div>
             <div class="link-cont" data-ng-show="getDownloadLinks(mdView.current.record).length == 1">
               <a data-ng-show="mdView.current.record.linksTree[0][0].protocol.toLowerCase() == 'http:nedladdning:atom'" href="{{getDownloadLinks(mdView.current.record)[0].url}}" download="{{getDownloadLinks(mdView.current.record)[0].desc}}" class="-label-link" target="_blank"><span class="download-icn-cont"><span class="icon-down-fat"></span></span>{{ 'atomDataset' | translate }}</a>
-              <a data-ng-show="mdView.current.record.linksTree[0][0].protocol.toLowerCase() != 'http:nedladdning:atom'" href="{{getDownloadLinks(mdView.current.record)[0].url}}" download="{{getDownloadLinks(mdView.current.record)[0].desc}}" class="-label-link" target="_blank"><span class="download-icn-cont"><span class="icon-down-fat"></span></span>{{ 'downloadDataset' | translate }}</a>
+              <a data-ng-show="mdView.current.record.linksTree[0][0].protocol.toLowerCase() != 'http:nedladdning:atom'" href="../api/records/{{md['geonet:info'].uuid}}/atom?feed={{::downloads[0].url}}" download="{{getDownloadLinks(mdView.current.record)[0].desc}}" class="-label-link" target="_blank"><span class="download-icn-cont"><span class="icon-down-fat"></span></span>{{ 'downloadDataset' | translate }}</a>
             </div>
           </div>
         </div>
