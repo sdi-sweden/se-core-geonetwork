@@ -168,6 +168,7 @@
   <scales>Rumslig upplösning</scales>
 
   <addInspireTheme>Lägg till Inspire Tema</addInspireTheme>
+  <addIACSData>Lägg till IACS Data Tema</addIACSData>
   <accessConstraintsBtn>Åtkomstrestriktioner</accessConstraintsBtn>
   <legalConstraintsBtn>Legal constraints</legalConstraintsBtn>
   <UseRestrictionsBtn>Nyttjanderestriktioner</UseRestrictionsBtn>
