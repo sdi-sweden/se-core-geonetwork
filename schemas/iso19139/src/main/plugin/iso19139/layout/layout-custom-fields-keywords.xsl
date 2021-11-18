@@ -105,8 +105,8 @@
         <xsl:when test="$thesaurusTitle = 'GEMET - INSPIRE themes, version 1.0'">InspireThemes</xsl:when>
         <xsl:when test="$thesaurusTitle = 'Ämnesområde'">Ämnesområde</xsl:when>
         <xsl:when test="$thesaurusTitle = 'Tjänsteklassificering'">Tjänsteklassificering</xsl:when>
-        <xsl:when test="$thesaurusTitle = 'Geografisk utsträckning'">Geografisk utsträckning</xsl:when>
-        <xsl:when test="$thesaurusTitle = 'Uppgifter från det integrerade administrations- och kontrollsystemet'">IACS Data</xsl:when>
+        <xsl:when test="$thesaurusTitle = 'Geografisk utsträckning'">GeografiskUtsträckning</xsl:when>
+        <xsl:when test="$thesaurusTitle = 'Uppgifter från det integrerade administrations- och kontrollsystemet'">IACSData</xsl:when>
         <xsl:otherwise><xsl:value-of select="name()" /></xsl:otherwise>
       </xsl:choose>
     </xsl:variable>

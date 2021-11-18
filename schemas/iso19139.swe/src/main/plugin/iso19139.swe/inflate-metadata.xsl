@@ -418,7 +418,7 @@
       </xsl:if>
 
       <!--If GEMET Spatial themes exists or Initiativ=Inspire exists in XML then add Priority themes if not in in the metadata -->
-<!--       <xsl:variable name="hasIACSData" select="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Uppgifter från det integrerade administrations- och kontrollsystemet']) > 0" />
+       <xsl:variable name="hasIACSData" select="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Uppgifter från det integrerade administrations- och kontrollsystemet']) > 0" />
 
       <xsl:if test="not(hasIACSData)">
         <xsl:variable name="hasInitiativeAsInspire" select="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Initiativ']/gmd:MD_Keywords/gmd:keyword/*[lower-case(text()) = 'inspire']) > 0" />
@@ -465,7 +465,7 @@
           </gmd:descriptiveKeywords>
         </xsl:if>
       </xsl:if>
- -->
+
       <xsl:apply-templates select="gmd:resourceSpecificUsage" />
       <xsl:apply-templates select="gmd:resourceConstraints" />
 
@@ -1304,7 +1304,7 @@
       </xsl:if>
 
       <!--If GEMET Spatial themes exists or Initiativ=Inspire exists in XML then add Priority themes if not in in the metadata -->
-<!--       <xsl:variable name="hasIACSData" select="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Uppgifter från det integrerade administrations- och kontrollsystemet']) > 0" />
+       <xsl:variable name="hasIACSData" select="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Uppgifter från det integrerade administrations- och kontrollsystemet']) > 0" />
 
       <xsl:if test="not(hasIACSData)">
         <xsl:variable name="hasInitiativeAsInspire" select="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Initiativ']/gmd:MD_Keywords/gmd:keyword/*[lower-case(text()) = 'inspire']) > 0" />
@@ -1351,7 +1351,7 @@
           </gmd:descriptiveKeywords>
         </xsl:if>
       </xsl:if>
- -->
+
       <xsl:apply-templates select="gmd:resourceSpecificUsage" />
       <xsl:apply-templates select="gmd:resourceConstraints" />
 
