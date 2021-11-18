@@ -1064,6 +1064,14 @@ bearbetningens genomförande</description>
       <description>Ämneskategori(er) som beskriver huvudsakligt innehåll
         i resursen</description>
     </element>
+    <element id="33.0" name="GeografiskUtsträckning">
+      <label>Geografisk utsträckning</label>
+      <description>Administrativ nivå som datamängden avser att täcka</description>
+    </element>
+    <element id="33.0" name="IACSData">
+      <label>Uppgifter från det integrerade administrations- och kontrollsystemet</label>
+      <description>IACS Data - Uppgifter från det integrerade administrations- och kontrollsystemet</description>
+    </element>        
     <!-- Custom thesaurus labels -->
 
     <element id="258.0" name="gmd:descriptor">
