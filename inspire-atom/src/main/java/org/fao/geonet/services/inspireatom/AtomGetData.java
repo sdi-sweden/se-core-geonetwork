@@ -30,6 +30,7 @@ import org.apache.commons.lang.StringUtils;
 import org.fao.geonet.GeonetContext;
 import org.fao.geonet.Util;
 import org.fao.geonet.constants.Geonet;
+import org.fao.geonet.csw.common.util.Xml;
 import org.fao.geonet.domain.Pair;
 import org.fao.geonet.domain.ReservedOperation;
 import org.fao.geonet.exceptions.MetadataNotFoundEx;
@@ -100,6 +101,8 @@ public class AtomGetData implements Service {
         String datasetIdNs = Util.getParam(params, DATASET_IDENTIFIER_NS_PARAM);
         String datasetCrs = Util.getParam(params, DATASET_CRS_PARAM);
 
+        Log.debug(Geonet.ATOM, "datasetIdCode = " + datasetIdCode + ";" + "datasetIdNs = " + datasetIdNs + "; " + "datasetCrs = " + datasetCrs);
+        
         // Get the metadata uuid for the dataset
         String datasetUuid = service.retrieveDatasetUuidFromIdentifierNs(datasetIdCode, datasetIdNs);
         if (StringUtils.isEmpty(datasetUuid)) throw new MetadataNotFoundEx(datasetUuid);
@@ -111,7 +114,9 @@ public class AtomGetData implements Service {
         Lib.resource.checkPrivilege(context, id, ReservedOperation.view);
 
         // Retrieve the dataset resources for specified CRS
-        InspireAtomFeed inspireAtomFeed = service.findByMetadataId(Integer.parseInt(id));
+        // InspireAtomFeed inspireAtomFeed = service.findByMetadataId(Integer.parseInt(id));
+        // find one record!
+        InspireAtomFeed inspireAtomFeed = service.retrieveInspireAtomFeedFromIdentifierNs(datasetIdCode, datasetIdNs);
 
         // Check the metadata has an atom document.
         String atomUrl = inspireAtomFeed.getAtomUrl();
@@ -138,7 +143,9 @@ public class AtomGetData implements Service {
             // Otherwise, return a feed with the downloads for the specified CRS
         } else {
             // Retrieve the dataset feed
-            Element feed = service.retrieveFeed(context, inspireAtomFeed);
+        	// from the inspireAtomFeed we already have
+//            Element feed = service.retrieveFeed(context, inspireAtomFeed);
+            Element feed = Xml.loadString(inspireAtomFeed.getAtom(), false); 
 
             // Filter the dataset feed by CRS code.
             InspireAtomUtil.filterDatasetFeedByCrs(feed, datasetCrs);
@@ -155,10 +162,13 @@ public class AtomGetData implements Service {
      * for crs = 1)
      */
     private Pair<Integer, InspireAtomFeedEntry> countDatasetsForCrs(InspireAtomFeed inspireAtomFeed, String datasetCrs) {
-        int downloadCount = 0;
+        Log.debug(Geonet.ATOM,  "Looking for CRS " + datasetCrs);
+    	int downloadCount = 0;
         InspireAtomFeedEntry selectedEntry = null;
         for (InspireAtomFeedEntry entry : inspireAtomFeed.getEntryList()) {
+        	Log.debug(Geonet.ATOM, "found InspireAtomFeedEntry with CRS = " + entry.getCrs());
             if (datasetCrs.equals(entry.getCrs())) {
+            	Log.debug(Geonet.ATOM, "MATCHED!");
                 selectedEntry = entry;
                 downloadCount++;
             }

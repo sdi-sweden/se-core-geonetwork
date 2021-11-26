@@ -25,27 +25,26 @@ package org.fao.geonet.services.inspireatom;
 import jeeves.interfaces.Service;
 import jeeves.server.ServiceConfig;
 import jeeves.server.context.ServiceContext;
-
-import org.fao.geonet.Util;
-import org.fao.geonet.domain.ReservedOperation;
-import org.fao.geonet.exceptions.ResourceNotFoundEx;
-import org.fao.geonet.inspireatom.InspireAtomService;
-import org.fao.geonet.inspireatom.model.DatasetFeedInfo;
-import org.fao.geonet.kernel.setting.SettingManager;
-import org.fao.geonet.kernel.setting.Settings;
-import org.fao.geonet.repository.InspireAtomFeedRepository;
-import org.fao.geonet.utils.Log;
 import org.apache.commons.lang.StringUtils;
 import org.fao.geonet.GeonetContext;
+import org.fao.geonet.Util;
 import org.fao.geonet.constants.Geonet;
-import org.fao.geonet.exceptions.MetadataNotFoundEx;
-import org.fao.geonet.inspireatom.util.InspireAtomUtil;
-import org.fao.geonet.inspireatom.harvester.InspireAtomHarvester;
 import org.fao.geonet.domain.InspireAtomFeed;
 import org.fao.geonet.domain.InspireAtomFeedEntry;
+import org.fao.geonet.domain.ReservedOperation;
+import org.fao.geonet.exceptions.MetadataNotFoundEx;
+import org.fao.geonet.exceptions.ResourceNotFoundEx;
+import org.fao.geonet.inspireatom.InspireAtomService;
+import org.fao.geonet.inspireatom.harvester.InspireAtomHarvester;
+import org.fao.geonet.inspireatom.model.DatasetFeedInfo;
+import org.fao.geonet.inspireatom.util.InspireAtomUtil;
 import org.fao.geonet.kernel.DataManager;
 import org.fao.geonet.kernel.search.LuceneSearcher;
+import org.fao.geonet.kernel.setting.SettingManager;
+import org.fao.geonet.kernel.setting.Settings;
 import org.fao.geonet.lib.Lib;
+import org.fao.geonet.repository.InspireAtomFeedRepository;
+import org.fao.geonet.utils.Log;
 import org.jdom.Element;
 
 import java.nio.file.Path;
@@ -92,14 +91,17 @@ public class AtomServiceDescription implements Service {
 
         String fileIdentifier = Util.getParam(params, SERVICE_IDENTIFIER_PARAM, "");
         if (StringUtils.isEmpty(fileIdentifier)) {
+        	Log.debug(Geonet.ATOM, "fileIdentifier was empty");
             return new Element("response");
         }
 
         InspireAtomService service = context.getBean(InspireAtomService.class);
 
         String id = dm.getMetadataId(fileIdentifier);
-        if (id == null) throw new MetadataNotFoundEx("Metadata not found.");
-
+        if (id == null) {
+        	Log.debug(Geonet.ATOM, "Metadata with fileIdentifier " + fileIdentifier + " was not found");
+        	throw new MetadataNotFoundEx("Metadata not found.");
+        }
         Element md = dm.getMetadata(id);
         String schema = dm.getMetadataSchema(id);
 
@@ -119,6 +121,7 @@ public class AtomServiceDescription implements Service {
             String serviceFeedUrl = InspireAtomUtil.extractAtomFeedUrl(schema, md, dm, atomProtocol);
 
             if (StringUtils.isEmpty(serviceFeedUrl)) {
+            	Log.debug(Geonet.ATOM, "No atom feed for service metadata found with uuid:" + fileIdentifier);
                 throw new ResourceNotFoundEx("No atom feed for service metadata found with uuid:" + fileIdentifier);
             } else {
                 InspireAtomHarvester inspireAtomHarvester = new InspireAtomHarvester(gc);
@@ -127,6 +130,7 @@ public class AtomServiceDescription implements Service {
                 inspireAtomFeed = service.findByMetadataId(Integer.parseInt(id));
 
                 if (inspireAtomFeed == null) {
+                	Log.debug(Geonet.ATOM, "No atom feed for service metadata found with uuid:" + fileIdentifier + " (id:" + id);
                     throw new ResourceNotFoundEx("No atom feed for service metadata found with uuid:" + fileIdentifier);
                 }
             }
@@ -194,10 +198,17 @@ public class AtomServiceDescription implements Service {
 
         DataManager dm = context.getBean(DataManager.class);
 
+        String[] identifiers = datasetsInformation.stream().map(m -> m.getIdentifier()).toArray(size -> new String[datasetsInformation.size()]);
+        String[] namespaces = datasetsInformation.stream().map(m -> m.getNamespace()).toArray(size -> new String[datasetsInformation.size()]);
+
+        List<InspireAtomFeed> allMatches = repository.findByAtomDatasetnsInAndAtomDatasetidIn(namespaces, identifiers);
+
+        repository.SetTempCache(allMatches);
+
         for (DatasetFeedInfo datasetFeedInfo : datasetsInformation) {
             // Get the metadata uuid for the dataset
-        	Log.debug(Geonet.ATOM, "Try to find Dataset UUID for datasetFeed ID: " + datasetFeedInfo.identifier);
-            String datasetUuid = repository.retrieveDatasetUuidFromIdentifier(datasetFeedInfo.identifier);
+        	Log.debug(Geonet.ATOM, "Try to find Dataset UUID for datasetFeed ID: " + datasetFeedInfo.identifier + " and Namespace:" + datasetFeedInfo.namespace);
+        	String datasetUuid = repository.retrieveDatasetUuidFromIdentifierNs(datasetFeedInfo.identifier, datasetFeedInfo.namespace);
 
             // If dataset metadata not found, ignore
             if (StringUtils.isEmpty(datasetUuid)) {
@@ -206,12 +217,11 @@ public class AtomServiceDescription implements Service {
                 continue;
             }
 
-            String id = dm.getMetadataId(datasetUuid);
-            InspireAtomFeed inspireAtomFeed = repository.findByMetadataId(Integer.parseInt(id));
+            InspireAtomFeed inspireAtomFeed = repository.retrieveInspireAtomFeedFromIdentifierNs(datasetFeedInfo.identifier, datasetFeedInfo.namespace);
 
             if (inspireAtomFeed == null) {
                 Log.warning(Geonet.ATOM, "AtomServiceDescription for service metadata (" + serviceIdentifier +
-                    "): atom feed for metadata dataset identifier " + datasetFeedInfo.identifier + " is not found, ignoring it.");
+                    "): atom feed for metadata dataset identifier " + datasetFeedInfo.identifier + "/" + datasetFeedInfo.namespace + " is not found, ignoring it.");
                 continue;
             }
 
@@ -269,7 +279,7 @@ public class AtomServiceDescription implements Service {
 
             datasetsEl.addContent(datasetEl);
         }
-
+        repository.SetTempCache(null);
         return datasetsEl;
     }
 

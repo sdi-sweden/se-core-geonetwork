@@ -45,7 +45,10 @@ import org.fao.geonet.lib.Lib;
 import org.jdom.Element;
 import org.jdom.Namespace;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 /**
@@ -80,14 +83,16 @@ public class InspireAtomUtil {
      */
     public static String retrieveRemoteAtomFeedDocument(final ServiceContext context,
                                                         final String url) throws Exception {
-        XmlRequest remoteRequest = context.getBean(GeonetHttpRequestFactory.class).createXmlRequest(new URL(url));
-
         final SettingManager sm = context.getBean(SettingManager.class);
-
-        Lib.net.setupProxy(sm, remoteRequest);
-
+        System.out.println("got SettingsManager");
+        String newURL = proxifyURL(url, sm);
+    	System.out.println("create request Atom document");
+    	XmlRequest remoteRequest = context.getBean(GeonetHttpRequestFactory.class).createXmlRequest(new URL(newURL));
+        
+    	Lib.net.setupProxy(sm, remoteRequest);
+        System.out.println("about to execute request for Atom document");
         Element atomFeed = remoteRequest.execute();
-
+        System.out.println("got response for Atom Document");
         return Xml.getString(atomFeed);
     }
 
@@ -98,9 +103,9 @@ public class InspireAtomUtil {
         final SettingManager sm = context.getBean(SettingManager.class);
 
         Lib.net.setupProxy(sm, remoteRequest);
-
+        System.out.println("about to execute request for Atom document");
         Element atomFeed = remoteRequest.execute();
-
+        System.out.println("got response for Atom Document");
         return Xml.getString(atomFeed);
     }
 
@@ -334,4 +339,21 @@ public class InspireAtomUtil {
 
         return uuid;
     }
+
+/*
+ * Lantmäteriets services require a validation token to access them
+ * od-proxy adds that token to the request
+ */
+    public static String proxifyURL(String oldURL, SettingManager sm) {
+    	String newURL = oldURL;
+    	if (StringUtils.contains(oldURL, "api.lantmateriet.se") || StringUtils.contains(oldURL, "api-ver.lantmateriet.se")) {
+    		String protocol = sm.getValue("system/server/protocol");
+    		String port = sm.getValue("system/server/port");
+    		String host = sm.getValue("system/server/host");
+    		newURL = protocol + "://" + host + ":" + port + "/geodataportalen/od-proxy?url=" + oldURL;
+//    		newURL = "https://ver.geodata.se/geodataportalen/od-proxy?url=" + oldURL;    		
+    	}
+    	System.out.println("Proxified URL newURL = " + newURL);
+    	return newURL;
+    }    
 }

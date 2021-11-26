@@ -23,6 +23,8 @@
 package org.fao.geonet.domain;
 
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.Type;
 import org.jdom.Element;
 import org.jdom.Namespace;
@@ -93,7 +95,7 @@ public class InspireAtomFeed extends GeonetEntity implements Serializable {
         List<Element> entryList = atomDoc.getChildren("entry", ns);
         for (Element entry : entryList) {
             for (Element linkEl : (List<Element>) entry.getChildren("link", ns)) {
-                if (linkEl.getAttributeValue("rel", "").equals("alternate")) {
+                if ( (linkEl.getAttributeValue("rel", "").equals("alternate")) || (linkEl.getAttributeValue("rel", "").equals("section"))) {
                     InspireAtomFeedEntry inspireAtomFeedEntry = new InspireAtomFeedEntry();
 
                     inspireAtomFeedEntry.setTitle(entry.getChildText("title", ns));
@@ -239,6 +241,7 @@ public class InspireAtomFeed extends GeonetEntity implements Serializable {
     }
 
     @ElementCollection(fetch = FetchType.EAGER, targetClass = InspireAtomFeedEntry.class)
+    @Fetch(FetchMode.SUBSELECT)
     public List<InspireAtomFeedEntry> getEntryList() {
         return _entryList;
     }

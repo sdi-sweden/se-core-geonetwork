@@ -23,6 +23,8 @@
 
 package org.fao.geonet.repository;
 
+import java.util.List;
+
 import org.fao.geonet.domain.InspireAtomFeed;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
@@ -41,4 +43,20 @@ public interface InspireAtomFeedRepository extends GeonetRepository<InspireAtomF
      * @return the metadata related to the inspire atom feed
      */
     InspireAtomFeed findByMetadataId(final int metadataId);
+
+    /**
+     * Find all inspire atom feed related to a metadata.
+     *
+     * @param metadataId metadata identifier
+     * @return the list of metadata related to the inspire atom feed
+     */
+    List<InspireAtomFeed> findAllByMetadataId(final int metadataId);
+
+    /**
+     * Find all inspire atom feeds based on dataset namespace and dataset identifier.
+     * @param atomDatasetnsList
+     * @param atomDatasetidList
+     * @return
+     */
+    List<InspireAtomFeed> findByAtomDatasetnsInAndAtomDatasetidIn(final String[] atomDatasetnsList, final String[] atomDatasetidList);
 }

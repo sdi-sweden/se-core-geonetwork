@@ -678,11 +678,14 @@ public class DataManager implements ApplicationEventPublisherAware {
 
             // If the metadata has an atom document, index related information
             InspireAtomFeedRepository inspireAtomFeedRepository = getApplicationContext().getBean(InspireAtomFeedRepository.class);
-            InspireAtomFeed feed = inspireAtomFeedRepository.findByMetadataId(id$);
+            List<InspireAtomFeed> feed = inspireAtomFeedRepository.findAllByMetadataId(id$);
 
-            if ((feed != null) && StringUtils.isNotEmpty(feed.getAtom())) {
-                moreFields.add(SearchManager.makeField("has_atom", "y", true, true));
-                moreFields.add(SearchManager.makeField("any", feed.getAtom(), false, true));
+            if ((feed != null) && (feed.size() > 0)) {
+            	String atomFeed = feed.get(0).getAtom();
+            	if (StringUtils.isNotEmpty(atomFeed)) {
+                   moreFields.add(SearchManager.makeField("has_atom", "y", true, true));
+                   moreFields.add(SearchManager.makeField("any", atomFeed, false, true));
+            	}
             }
 
             if (owner != null) {
