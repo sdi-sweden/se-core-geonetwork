@@ -67,6 +67,7 @@ public class RdfSearcher {
         if (StringUtils.isNotEmpty(initiativKeyword)) {
             searchRequest.addContent(new Element("initiativKeyword").setText(initiativKeyword));
         }
+        searchRequest.addContent(new Element("ODHarvest").setText("true"));
 
         organisation = Util.getParam(params, "orgName", "");
 
