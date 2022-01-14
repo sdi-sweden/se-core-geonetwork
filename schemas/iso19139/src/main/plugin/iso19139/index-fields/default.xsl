@@ -521,10 +521,13 @@
           <Field name="orgNameOwner" string="{string(normalize-space($orgNameOwner))}" store="true" index="true"/>
           		<xsl:choose>
 				  <xsl:when test="$orgNameOwner='SMHI'">
-					<Field name="notsmhi" string="false" store="true" index="true"/>
+					<Field name="ODHarvest" string="false" store="true" index="true"/>
+				  </xsl:when>
+				  <xsl:when test="$orgNameOwner='Naturvårdsverket'">
+					<Field name="ODHarvest" string="false" store="true" index="true"/>
 				  </xsl:when>
 				  <xsl:otherwise>
-					<Field name="notsmhi" string="true" store="true" index="true"/>
+					<Field name="ODHarvest" string="true" store="true" index="true"/>
 				  </xsl:otherwise>
                </xsl:choose>
         </xsl:if>

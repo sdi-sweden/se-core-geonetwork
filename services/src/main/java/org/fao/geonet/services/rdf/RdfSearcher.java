@@ -67,10 +67,9 @@ public class RdfSearcher {
         if (StringUtils.isNotEmpty(initiativKeyword)) {
             searchRequest.addContent(new Element("initiativKeyword").setText(initiativKeyword));
         }
-        String notSMHI = Util.getParam(params, "notsmhi", "");
-        if (StringUtils.isNotEmpty(notSMHI)) {
-            searchRequest.addContent(new Element("notsmhi").setText(notSMHI));
-        }
+
+        searchRequest.addContent(new Element("ODHarvest").setText("true"));
+
         organisation = Util.getParam(params, "orgName", "");
 
         if (Log.isDebugEnabled(Geonet.SEARCH_ENGINE))
