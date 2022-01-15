@@ -534,10 +534,10 @@
 
 					<Field name="orgNameOwner" string="{string(normalize-space($orgNameOwner))}" store="true" index="true"/>
 				  <xsl:choose>
-				  <xsl:when test="$orgNameOwner='SMHI'">
+				  <xsl:when test="starts-with(lower-case($orgNameOwner), 'smhi')">
 					<Field name="ODHarvest" string="false" store="true" index="true"/>
 				  </xsl:when>
-				  <xsl:when test="$orgNameOwner='Naturvårdsverket'">
+				  <xsl:when test="starts-with(lower-case($orgNameOwner), 'naturvårdsverket')">
 					<Field name="ODHarvest" string="false" store="true" index="true"/>
 				  </xsl:when>
 				  <xsl:otherwise>
