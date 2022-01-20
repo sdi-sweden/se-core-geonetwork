@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <!--
   ~ Copyright (C) 2001-2016 Food and Agriculture Organization of the
   ~ United Nations (FAO-UN), United Nations World Food Programme (WFP)
@@ -531,16 +531,19 @@
               <xsl:otherwise><xsl:value-of select="." /></xsl:otherwise>
             </xsl:choose>
           </xsl:variable>
-
+<!--  		<xsl:message>iso19139.swe orgNameOwner: <xsl:value-of select="$orgNameOwner" /> </xsl:message> -->
 					<Field name="orgNameOwner" string="{string(normalize-space($orgNameOwner))}" store="true" index="true"/>
 				  <xsl:choose>
 				  <xsl:when test="starts-with(lower-case($orgNameOwner), 'smhi')">
+<!-- 				   	<xsl:message>iso19139 ODHarvest=false for SMHI <xsl:value-of select="$orgNameOwner" /> </xsl:message> -->
 					<Field name="ODHarvest" string="false" store="true" index="true"/>
 				  </xsl:when>
 				  <xsl:when test="starts-with(lower-case($orgNameOwner), 'naturvårdsverket')">
+<!-- 				   	<xsl:message>iso19139 ODHarvest=false for NV <xsl:value-of select="$orgNameOwner" /> </xsl:message> -->
 					<Field name="ODHarvest" string="false" store="true" index="true"/>
 				  </xsl:when>
 				  <xsl:otherwise>
+<!-- 				   	<xsl:message>iso19139 ODHarvest=true<xsl:value-of select="$orgNameOwner" /> </xsl:message> -->
 					<Field name="ODHarvest" string="true" store="true" index="true"/>
 				  </xsl:otherwise>
 				  </xsl:choose>
