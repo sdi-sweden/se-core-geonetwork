@@ -685,6 +685,7 @@
                    alt="{$label}"
                    class="img-thumbnail"/>
             </li>
+            <li>{$label}</li>
           </xsl:for-each>
         </ul>
       </dd>
