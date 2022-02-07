@@ -1722,7 +1722,7 @@
 						   alt="{$label}"
 						   class="img-thumbnail"/>
 					</li>
-					<li>{$label}</li>
+					<li><xsl:value-of select="$label" /></li>
 				  </xsl:for-each>
 				</ul>
 			</td>
