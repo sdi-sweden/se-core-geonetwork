@@ -1518,7 +1518,7 @@
       };
 
     //TODO: move api url and username to config
-    var url = 'http://api.geonames.org/searchJSON';
+    var url = 'http://api.geonames.org/searchJSON?';
 	  //redirect http request via proxy
  	  if (!url.includes("https://")) {
 		url = '../../proxy?url=' + encodeURIComponent(url);
