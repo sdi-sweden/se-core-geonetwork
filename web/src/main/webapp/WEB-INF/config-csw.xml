@@ -64,6 +64,10 @@
           <xpath schema="iso19139" path="gmd:fileIdentifier/gco:CharacterString"/>
         </parameter>
 
+        <parameter name="MDIdentifier" field="identifer" type="SupportedISOQueryables">
+          <xpath schema="iso19139" path="gmd:fileIdentifier/gco:CharacterString"/>
+        </parameter>
+
         <parameter name="Modified" field="changeDate" type="SupportedISOQueryables">
           <xpath schema="iso19139" path="gmd:dateStamp/gco:DateTime"/>
         </parameter>
