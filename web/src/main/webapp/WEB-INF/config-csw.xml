@@ -64,7 +64,7 @@
           <xpath schema="iso19139" path="gmd:fileIdentifier/gco:CharacterString"/>
         </parameter>
 
-        <parameter name="MDIdentifier" field="identifer" type="SupportedISOQueryables">
+        <parameter name="MDIdentifier" field="any" type="SupportedISOQueryables">
           <xpath schema="iso19139" path="gmd:fileIdentifier/gco:CharacterString"/>
         </parameter>
 
