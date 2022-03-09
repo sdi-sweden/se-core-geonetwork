@@ -80,6 +80,25 @@ USA.
 	<sch:pattern fpi="[Geodata.se:106d] Nyckelord tjänsteklassificering är obligatoriskt för tjänster">
 		<sch:title>[Geodata.se:106d] Nyckelord tjänsteklassificering är obligatoriskt för tjänster</sch:title>
 		<sch:rule context="//gmd:hierarchyLevel[1]/*[@codeListValue ='service']">
+			<sch:let name="keywordValue_INS" value="//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='Inspire'"/>
+			<sch:let name="srvCategory-thesaurus" value="document('../../../../config/codelist/external/thesauri/theme/SpatialDataServiceCategorySwedish.rdf')"/>
+			<sch:let name="srvCategory-value" value="$srvCategory-thesaurus//skos:Concept"/>
+			<!-- Visa fel om inte Inspire Thesaurs visas. -->
+			<sch:let name="keywordValue_SDT"
+               value="//gmd:MD_Keywords[contains(gmd:thesaurusName/*/gmd:title/*/text(), 'KOMMISSIONENS FÖRORDNING (EG) nr 1205/2008')]/gmd:keyword/*/text()"/>
+			<sch:let name="srvCategory-found"
+               value="count($srvCategory-thesaurus//skos:Concept[skos:prefLabel = $keywordValue_SDT])"/>
+			<sch:assert test="not($keywordValue_INS) or $srvCategory-found > 0"
+      >[Geodata.se:106d] Ett nyckelord tjänsteklassificering är obligatoriskt för tjänster som ingår i Inspire.</sch:assert>
+<!--     	  <sch:report test="$srvCategory-found > 0">
+            <sch:value-of select="$srvCategory-found"/> report <sch:value-of select="$keywordValue_SDT"/>
+          </sch:report>  -->
+		</sch:rule>
+	</sch:pattern>
+<!--	
+	<sch:pattern fpi="[Geodata.se:106d] Nyckelord tjänsteklassificering är obligatoriskt för tjänster">
+		<sch:title>[Geodata.se:106d] Nyckelord tjänsteklassificering är obligatoriskt för tjänster</sch:title>
+		<sch:rule context="//gmd:hierarchyLevel[1]/*[@codeListValue ='service']">
 			<sch:let name="keywordValue" value="//gmd:descriptiveKeywords/*/gmd:keyword/*/text()"/>
 			<sch:let name="keywordValue_INS" value="//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='Inspire'"/>
 			<sch:let name="keywordValue_SDT"
@@ -161,15 +180,15 @@ USA.
 				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='comGeographicFormatConversionService' or
 				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='comMessagingService' or
 				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='comRemoteFileAndExecutableManagement'"/>
-			<!-- assertions and report -->
+-->			<!-- assertions and report -->
 			<!-- Ändrad text 2013-08-21-->
-			<sch:assert test="$keywordValue_SDT or not($keywordValue_INS)">[Geodata.se:106d] Nyckelord tjänsteklassificering är obligatoriskt för tjänster som ingår i Inspire.</sch:assert>
+<!-- 			<sch:assert test="$keywordValue_SDT or not($keywordValue_INS)">[Geodata.se:106d] Nyckelord tjänsteklassificering är obligatoriskt för tjänster som ingår i Inspire.</sch:assert> -->
 			<!--<sch:report test="$keywordValue">Nyckelordsvärde funnet: <sch:value-of
           select="$keywordValue"/>
       </sch:report>-->
-		</sch:rule>
+<!-- 		</sch:rule>
 	</sch:pattern>
-
+ -->
 
 	<sch:pattern	fpi="[Geodata.se:106g] OM resursen ingår i Inspire är nyckelord obligatoriskt med värdet Inspire ur nyckelordslexikonet Initiativ">
 		<sch:title>[Geodata.se:106g] OM resursen ingår i Inspire är nyckelord obligatoriskt med värdet Inspire ur nyckelordslexikonet Initiativ</sch:title>
