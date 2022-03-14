@@ -100,16 +100,19 @@
               <div class="-label"><span class="download-icn-cont"><span class="icon-down-fat"></span></span>{{ 'downloadDataset' | translate }} <span class="icon-down-dir"></span></div>
               <ul class="-list">
                 <li data-ng-repeat="l in getDownloadLinks(mdView.current.record)">
-                  <a href="{{l.url}}" title="{{l.desc || l.name}}" class="-text-link" target="_blank">
+                  <!-- <a href="{{l.url}}" title="{{l.desc || l.name}}" class="-text-link" target="_blank"> -->
+                  <a data-ng-show="l.protocol.toLowerCase() != 'http:nedladdning:atom'" href="{{l.url}}" title="{{l.desc || l.name}}" target="_blank" title="{{l.desc || l.name}}" class="-label-link">
+                  <a data-ng-show="l.protocol.toLowerCase() == 'http:nedladdning:atom'" href="../api/records/{{md['geonet:info'].uuid}}/atom?feed={{l.url}}" target="_blank" title="{{l.desc || l.name}}" class="-label-link"> 
                     <span data-ng-show="l.name !== ''">{{l.name}}</span>
-                    <span data-ng-show="l.name == ''">{{ 'downloadlink' | translate }} {{$index + 1}}</span>
+                    <span data-ng-show="l.protocol.toLowerCase() != 'http:nedladdning:atom' && l.name == ''">{{ 'downloadlink' | translate }} {{$index + 1}}</span>
+                    <span data-ng-show="l.protocol.toLowerCase() == 'http:nedladdning:atom' && l.name == ''">{{ 'atomDataset' | translate }} {{$index + 1}}</span>
                   </a>
                 </li>
               </ul>
             </div>
             <div class="link-cont" data-ng-show="getDownloadLinks(mdView.current.record).length == 1">
-              <a data-ng-show="mdView.current.record.linksTree[0][0].protocol.toLowerCase() == 'http:nedladdning:atom'" href="{{getDownloadLinks(mdView.current.record)[0].url}}" download="{{getDownloadLinks(mdView.current.record)[0].desc}}" class="-label-link" target="_blank"><span class="download-icn-cont"><span class="icon-down-fat"></span></span>{{ 'atomDataset' | translate }}</a>
-              <a data-ng-show="mdView.current.record.linksTree[0][0].protocol.toLowerCase() != 'http:nedladdning:atom'" href="../api/records/{{md['geonet:info'].uuid}}/atom?feed={{::downloads[0].url}}" download="{{getDownloadLinks(mdView.current.record)[0].desc}}" class="-label-link" target="_blank"><span class="download-icn-cont"><span class="icon-down-fat"></span></span>{{ 'downloadDataset' | translate }}</a>
+              <a data-ng-show="mdView.current.record.linksTree[0][0].protocol.toLowerCase() != 'http:nedladdning:atom'" href="{{getDownloadLinks(mdView.current.record)[0].url}}" download="{{getDownloadLinks(mdView.current.record)[0].desc}}" class="-label-link" target="_blank"><span class="download-icn-cont"><span class="icon-down-fat"></span></span>{{ 'atomDataset' | translate }}</a>
+              <a data-ng-show="mdView.current.record.linksTree[0][0].protocol.toLowerCase() == 'http:nedladdning:atom'" href="../api/records/{{md['geonet:info'].uuid}}/atom?feed={{::downloads[0].url}}" download="{{getDownloadLinks(mdView.current.record)[0].desc}}" class="-label-link" target="_blank"><span class="download-icn-cont"><span class="icon-down-fat"></span></span>{{ 'downloadDataset' | translate }}</a>
             </div>
           </div>
         </div>
