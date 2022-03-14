@@ -58,19 +58,20 @@
           </li>
           <!-- Download links Compact view-->
           <li data-ng-show="::downloads.length == 1">
-<!--             <a data-ng-if="::downloads[0].protocol.toLowerCase() != 'http:nedladdning:atom'" href="{{::downloads[0].url}}" download="{{::downloads[0].desc}}"><span class="download-icn-cont"><span class="icon-down-fat"></span></span></a>
-            <a data-ng-if="::downloads[0].protocol.toLowerCase() == 'http:nedladdning:atom'" target="_blank" href="../api/records/{{md['geonet:info'].uuid}}/atom?feed={{::downloads[0].url}}"><span class="download-icn-cont"><span class="icon-down-fat"></span></span></a>
- -->
              <a data-ng-if="::downloads[0].protocol.toLowerCase() != 'http:nedladdning:atom'" href="{{::downloads[0].url}}" download="{{::downloads[0].desc}}"><span class="download-icn-cont"><span class="icon-down-fat"></span></span></a>
-            <a data-ng-if="::downloads[0].protocol.toLowerCase() == 'http:nedladdning:atom'" target="_blank" href="../api/records/{{md['geonet:info'].uuid}}/atom?feed={{::downloads[0].url}}"><span class="download-icn-cont"><span class="icon-down-fat"></span></span></a>
+             <a data-ng-if="::downloads[0].protocol.toLowerCase() == 'http:nedladdning:atom'" target="_blank" href="../api/records/{{md['geonet:info'].uuid}}/atom?feed={{::downloads[0].url}}"><span class="download-icn-cont"><span class="icon-down-fat"></span></span></a>
           </li>
 
           <li data-swe-toggle-style="" class="dropdown-compact more-info-dropdown" data-ng-show="::downloads.length > 1"><span class="download-icn-cont"><span class="icon-down-fat"></span></span>
                 <ul class="-list">
                   <li data-ng-repeat="l in ::downloads">
-                    <a href="{{l.url}}" title="{{l.desc || l.name}}" download="{{l.desc}}" class="-text-link">
+                    <!-- <a href="{{l.url}}" title="{{l.desc || l.name}}" download="{{l.desc}}" class="-text-link"> -->
+                    <a data-ng-show="'l.protocol.toLowerCase() != 'http:nedladdning:atom'" href="{{l.url}}" title="{{l.desc || l.name}}" download="{{l.desc}}" class="-text-link">
+                    <a data-ng-show="'l.protocol.toLowerCase() == 'http:nedladdning:atom'" href="../api/records/{{md['geonet:info'].uuid}}/atom?feed={{l.url}}" title="{{l.desc || l.name}}" download="../api/records/{{md['geonet:info'].uuid}}/atom?feed={{l.url}}" class="-text-link">
+                    
                       <span data-ng-show="l.name !== ''">{{l.name}}</span>
-                      <span data-ng-show="l.name == ''">{{ 'downloadlink' | translate }} {{$index + 1}}</span>
+                      <span data-ng-show="l.protocol.toLowerCase() != 'http:nedladdning:atom' && l.name == ''">{{ 'downloadlink' | translate }} {{$index + 1}}</span>
+                      <span data-ng-show="l.protocol.toLowerCase() == 'http:nedladdning:atom' && l.name == ''">{{ 'atomDataset' | translate }} {{$index + 1}}</span>
                     </a>
                   </li>
                 </ul>
@@ -200,7 +201,9 @@
           <div class="-label"><span class="download-icn-cont"><span class="icon-down-fat"></span></span>{{ 'downloadDataset' | translate }} <span class="icon-down-dir"></span></div>
           <ul class="-list">
             <li data-ng-repeat="l in ::downloads">
-              <a href="{{l.url}}" title="{{l.desc || l.name}}" download="{{l.desc}}" class="-text-link">
+              <!-- <a href="{{l.url}}" title="{{l.desc || l.name}}" download="{{l.desc}}" class="-text-link"> -->
+              <a data-ng-show="'l.protocol.toLowerCase() != 'http:nedladdning:atom'" target="_blank" href="{{l.url}}" title="{{l.desc || l.name}}" download="{{l.desc}}" class="-text-link">
+              <a data-ng-show="'l.protocol.toLowerCase() == 'http:nedladdning:atom'" target="_blank" href="../api/records/{{md['geonet:info'].uuid}}/atom?feed={{l.url}}" title="{{l.desc || l.name}}" download="../api/records/{{md['geonet:info'].uuid}}/atom?feed={{l.url}}" class="-text-link">
                 <span data-ng-show="l.name !== ''">{{l.name}}</span>
                 <span data-ng-show="l.protocol.toLowerCase() != 'http:nedladdning:atom' && l.name == ''">{{ 'downloadlink' | translate }} {{$index + 1}}</span>
                 <span data-ng-show="l.protocol.toLowerCase() == 'http:nedladdning:atom' && l.name == ''">{{ 'atomDataset' | translate }} {{$index + 1}}</span>
