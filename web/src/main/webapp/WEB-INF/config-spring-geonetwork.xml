@@ -60,7 +60,7 @@
         lazy-init="true"/>
 
   <bean id="httpRequestFactor" class="org.fao.geonet.utils.GeonetHttpRequestFactory">
-    <property name="numberOfConcurrentRequests" value="30"/>
+    <property name="numberOfConcurrentRequests" value="60"/>
   </bean>
 
   <bean id="defaultLanguage" class="java.lang.String">
