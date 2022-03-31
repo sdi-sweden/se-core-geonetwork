@@ -1328,7 +1328,7 @@ georeferera rasterdata.</description>
     <element id="31.0" name="gmd:graphicOverview">
         <label>Exempelbild</label>
         <description>Grafisk illustration av resursen, kan/bör inkludera en
-teckenförklaring.Syftet är att ge en översikt över resursen.</description>
+teckenförklaring.Syftet är att ge en översikt över resursen.  Länken till exempelbilden skall vara en http-länk som är offentlig.</description>
     </element>
     <element id="325.0" name="gmd:graphicsFile">
         <label>Grafikfil</label>
