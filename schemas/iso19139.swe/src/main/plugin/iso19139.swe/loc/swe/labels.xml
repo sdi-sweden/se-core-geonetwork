@@ -1,4 +1,4 @@
-<labels xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gml="http://www.opengis.net/gml" xmlns:gmx="http://www.isotc211.org/2005/gmx" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../labels.xsd">
+﻿<labels xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gml="http://www.opengis.net/gml" xmlns:gmx="http://www.isotc211.org/2005/gmx" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../labels.xsd">
 
 	<element name="gmd:MD_ScopeCode">
 		<label>Scope code</label>
@@ -1367,7 +1367,7 @@ georeferera rasterdata.</description>
     <element id="31.0" name="gmd:graphicOverview">
         <label>Exempelbild</label>
         <description>Grafisk illustration av resursen, kan/bör inkludera en
-teckenförklaring. Syftet är att ge en översikt över resursen. Länken till exempelbilden skall vara en http-länk som offentlig</description>
+teckenförklaring. Syftet är att ge en översikt över resursen. Länken till exempelbilden skall vara en http-länk som är offentlig.</description>
     </element>
     <element id="325.0" name="gmd:graphicsFile">
         <label>Grafikfil</label>
