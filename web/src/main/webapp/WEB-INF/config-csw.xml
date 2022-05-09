@@ -65,7 +65,7 @@
         </parameter>
 
         <parameter name="MDIdentifier" field="any" type="SupportedISOQueryables">
-          <xpath schema="iso19139" path="gmd:fileIdentifier/gco:CharacterString"/>
+          <xpath schema="iso19139" path="gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:MD_Identifier/gmd:code/gco:CharacterString"/>
         </parameter>
 
         <parameter name="Modified" field="changeDate" type="SupportedISOQueryables">
