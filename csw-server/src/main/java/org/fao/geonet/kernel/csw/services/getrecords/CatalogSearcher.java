@@ -586,11 +586,17 @@ public class CatalogSearcher implements MetadataRecordSelector {
         TopDocs hits = searchResults.one();
         Element summary = searchResults.two();
 
-        numHits = Integer.parseInt(summary.getAttributeValue("count"));
         if (Log.isDebugEnabled(Geonet.CSW_SEARCH))
             Log.debug(Geonet.CSW_SEARCH, "Records matched : " + numHits);
 
         // NEW CODE: use numHits (total number of results)
+        // The call to LuceneSearcher throws an exception if NumHits = 0
+        // meaning the CSW response is an exception instead of a No records Found response.
+        if (summary.getAttributeValue("count").equals("0")) {
+          numHits = 1;	
+        } else {
+          numHits = Integer.parseInt(summary.getAttributeValue("count"));
+        }
         searchResults = LuceneSearcher.doSearchAndMakeSummary(numHits, startPosition - 1,
             maxRecords, _lang.presentationLanguage,
             luceneConfig.getSummaryTypes().get(resultType.toString()), luceneConfig,
