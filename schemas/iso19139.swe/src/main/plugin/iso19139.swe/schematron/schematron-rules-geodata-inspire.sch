@@ -88,107 +88,17 @@ USA.
                value="//gmd:MD_Keywords[contains(gmd:thesaurusName/*/gmd:title/*/text(), 'KOMMISSIONENS FÖRORDNING (EG) nr 1205/2008')]/gmd:keyword/*/text()"/>
 			<sch:let name="srvCategory-found"
                value="count($srvCategory-thesaurus//skos:Concept[skos:prefLabel = $keywordValue_SDT])"/>
-			<sch:assert test="not($keywordValue_INS) or $srvCategory-found > 0"
+            <sch:let name="keywordValue_Link"
+               value="//gmd:MD_Keywords[contains(gmd:thesaurusName/*/gmd:title/*/text(), 'KOMMISSIONENS FÖRORDNING (EG) nr 1205/2008')]/gmd:keyword/gmx:Anchor/@xlink:href"/>
+            <sch:let name="srvCategorylink-found"
+               value="count($srvCategory-thesaurus//skos:Concept/@rdf:about = $keywordValue_Link)"/> 
+			<sch:assert test="not($keywordValue_INS) or ($srvCategory-found > 0 or srvCategorylink-found > 0)"
       >[Geodata.se:106d] Ett nyckelord tjänsteklassificering är obligatoriskt för tjänster som ingår i Inspire.</sch:assert>
 <!--     	  <sch:report test="$srvCategory-found > 0">
             <sch:value-of select="$srvCategory-found"/> report <sch:value-of select="$keywordValue_SDT"/>
           </sch:report>  -->
 		</sch:rule>
 	</sch:pattern>
-<!--	
-	<sch:pattern fpi="[Geodata.se:106d] Nyckelord tjänsteklassificering är obligatoriskt för tjänster">
-		<sch:title>[Geodata.se:106d] Nyckelord tjänsteklassificering är obligatoriskt för tjänster</sch:title>
-		<sch:rule context="//gmd:hierarchyLevel[1]/*[@codeListValue ='service']">
-			<sch:let name="keywordValue" value="//gmd:descriptiveKeywords/*/gmd:keyword/*/text()"/>
-			<sch:let name="keywordValue_INS" value="//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='Inspire'"/>
-			<sch:let name="keywordValue_SDT"
-               value="//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='humanInteractionService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='humanCatalogueViewer' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='humanGeographicViewer' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='humanGeographicSpreadsheetViewer' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='humanServiceEditor' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='humanChainDefinitionEditor' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='humanWorkflowEnactmentManager' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='humanGeographicFeatureEditor' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='humanGeographicSymbolEditor' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='humanFeatureGeneralizationEditor' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='humanGeographicDataStructureViewer' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='infoManagementService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='infoFeatureAccessService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='infoMapAccessService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='infoCoverageAccessService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='infoSensorDescriptionService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='infoProductAccessService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='infoFeatureTypeService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='infoCatalogueService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='infoRegistryService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='infoGazetteerService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='infoOrderHandlingService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='infoStandingOrderService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='taskManagementService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='chainDefinitionService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='workflowEnactmentService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='subscriptionService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='spatialProcessingService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='spatialCoordinateConversionService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='spatialCoordinateTransformationService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='spatialCoverageVectorConversionService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='spatialImageCoordinateConversionService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='spatialRectificationService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='spatialOrthorectificationService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='spatialSensorGeometryModelAdjustmentService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='spatialImageGeometryModelConversionService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='spatialSubsettingService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='spatialSamplingService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='spatialTilingChangeService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='spatialDimensionMeasurementService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='spatialFeatureManipulationService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='spatialFeatureMatchingService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='spatialFeatureGeneralizationService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='spatialRouteDeterminationService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='spatialPositioningService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='spatialProximityAnalysisService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='thematicProcessingService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='thematicGoparameterCalculationService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='thematicClassificationService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='thematicFeatureGeneralizationService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='thematicSubsettingService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='thematicSpatialCountingService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='thematicChangeDetectionService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='thematicGeographicInformationExtractionService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='thematicImageProcessingService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='thematicReducedResolutionGenerationService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='thematicImageManipulationService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='thematicImageUnderstandingService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='thematicImageSynthesisService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='thematicMultibandImageManipulationService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='thematicObjectDetectionService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='thematicGeoparsingService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='thematicGeocodingService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='temporalProcessingService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='temporalReferenceSystemTransformationService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='temporalSubsettingService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='temporalSamplingService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='temporalProximityAnalysisService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='metadataProcessingService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='metadataStatisticalCalculationService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='metadataGeographicAnnotationService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='comService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='comEncodingService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='comTransferService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='comGeographicCompressionService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='comGeographicFormatConversionService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='comMessagingService' or
-				//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='comRemoteFileAndExecutableManagement'"/>
--->			<!-- assertions and report -->
-			<!-- Ändrad text 2013-08-21-->
-<!-- 			<sch:assert test="$keywordValue_SDT or not($keywordValue_INS)">[Geodata.se:106d] Nyckelord tjänsteklassificering är obligatoriskt för tjänster som ingår i Inspire.</sch:assert> -->
-			<!--<sch:report test="$keywordValue">Nyckelordsvärde funnet: <sch:value-of
-          select="$keywordValue"/>
-      </sch:report>-->
-<!-- 		</sch:rule>
-	</sch:pattern>
- -->
 
 	<sch:pattern	fpi="[Geodata.se:106g] OM resursen ingår i Inspire är nyckelord obligatoriskt med värdet Inspire ur nyckelordslexikonet Initiativ">
 		<sch:title>[Geodata.se:106g] OM resursen ingår i Inspire är nyckelord obligatoriskt med värdet Inspire ur nyckelordslexikonet Initiativ</sch:title>
