@@ -46,8 +46,10 @@ USA.
 	<sch:ns prefix="gmd" uri="http://www.isotc211.org/2005/gmd"/>
 	<sch:ns prefix="srv" uri="http://www.isotc211.org/2005/srv"/>
 	<sch:ns prefix="gco" uri="http://www.isotc211.org/2005/gco"/>
+	<sch:ns prefix="gmx" uri="http://www.isotc211.org/2005/gmx"/>
 	<sch:ns prefix="geonet" uri="http://www.fao.org/geonetwork"/>
 	<sch:ns prefix="skos" uri="http://www.w3.org/2004/02/skos/core#"/>
+	<sch:ns prefix="rdf" uri="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
 	<sch:ns prefix="xlink" uri="http://www.w3.org/1999/xlink"/>
 	<!-- INSPIRE metadata rules / START -->
 	<!-- ############################################ -->
@@ -70,10 +72,11 @@ USA.
                value="count($inspire-thesaurus//skos:Concept[skos:prefLabel = $keyword])"/>
 			<sch:assert test="not($keywordValue_INSPIRE) or $inspire-theme-found > 0"
       >[Geodata.se:106c] Om resursen ingår i Inspire är nyckelord obligatoriskt med ett värde ur nyckelordslexikonet GEMET</sch:assert>
-			<!--<sch:report test="$inspire-theme-found > 0">
-        <sch:value-of select="$inspire-theme-found"/> report <sch:value-of select="$keyword"
-        />
-      </sch:report>-->
+<!--
+ 	  <sch:report test="$inspire-theme-found > 0">
+          <sch:value-of select="$inspire-theme-found"/> report <sch:value-of select="$keyword" /> 
+      </sch:report> 
+      -->
 		</sch:rule>
 	</sch:pattern>
 
@@ -83,20 +86,18 @@ USA.
 			<sch:let name="keywordValue_INS" value="//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='Inspire'"/>
 			<sch:let name="srvCategory-thesaurus" value="document('../../../../config/codelist/external/thesauri/theme/SpatialDataServiceCategorySwedish.rdf')"/>
 			<sch:let name="srvCategory-value" value="$srvCategory-thesaurus//skos:Concept"/>
+			<sch:assert test="count($srvCategory-value) > 0"> Tjänsteklassificering thesauraus saknas. Installationen är ej korrekt filen </sch:assert>
 			<!-- Visa fel om inte Inspire Thesaurs visas. -->
-			<sch:let name="keywordValue_SDT"
+
+ 			<sch:let name="keywordValue"
                value="//gmd:MD_Keywords[contains(gmd:thesaurusName/*/gmd:title/*/text(), 'KOMMISSIONENS FÖRORDNING (EG) nr 1205/2008')]/gmd:keyword/*/text()"/>
-			<sch:let name="srvCategory-found"
-               value="count($srvCategory-thesaurus//skos:Concept[skos:prefLabel = $keywordValue_SDT])"/>
-            <sch:let name="keywordValue_Link"
-               value="//gmd:MD_Keywords[contains(gmd:thesaurusName/*/gmd:title/*/text(), 'KOMMISSIONENS FÖRORDNING (EG) nr 1205/2008')]/gmd:keyword/gmx:Anchor/@xlink:href"/>
-            <sch:let name="srvCategorylink-found"
-               value="count($srvCategory-thesaurus//skos:Concept/@rdf:about = $keywordValue_Link)"/> 
-			<sch:assert test="not($keywordValue_INS) or ($srvCategory-found > 0 or srvCategorylink-found > 0)"
+            <sch:let name="keywordLink_SDT"
+                     value="//gmd:descriptiveKeywords/*/gmd:keyword/*/@xlink:href = $srvCategory-thesaurus//skos:Concept/@rdf:about" />
+            <sch:let name="KeywordValue-found"
+                     value="count($srvCategory-thesaurus//skos:Concept[skos:prefLabel = $keywordValue])"/>
+                     
+            <sch:assert test="($keywordLink_SDT or $KeywordValue-found > 0) or not($keywordValue_INS)"
       >[Geodata.se:106d] Ett nyckelord tjänsteklassificering är obligatoriskt för tjänster som ingår i Inspire.</sch:assert>
-<!--     	  <sch:report test="$srvCategory-found > 0">
-            <sch:value-of select="$srvCategory-found"/> report <sch:value-of select="$keywordValue_SDT"/>
-          </sch:report>  -->
 		</sch:rule>
 	</sch:pattern>
 
