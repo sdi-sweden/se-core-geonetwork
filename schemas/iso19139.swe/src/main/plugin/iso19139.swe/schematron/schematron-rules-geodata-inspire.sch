@@ -77,6 +77,7 @@ USA.
           <sch:value-of select="$inspire-theme-found"/> report <sch:value-of select="$keyword" /> 
       </sch:report> 
       -->
+
 		</sch:rule>
 	</sch:pattern>
 
@@ -89,16 +90,19 @@ USA.
 			<sch:assert test="count($srvCategory-value) > 0"> Tjänsteklassificering thesauraus saknas. Installationen är ej korrekt filen </sch:assert>
 			<!-- Visa fel om inte Inspire Thesaurs visas. -->
 
- 			<sch:let name="keywordValue"
-               value="//gmd:MD_Keywords[contains(gmd:thesaurusName/*/gmd:title/*/text(), 'KOMMISSIONENS FÖRORDNING (EG) nr 1205/2008')]/gmd:keyword/*/text()"/>
             <sch:let name="keywordLink_SDT"
                      value="//gmd:descriptiveKeywords/*/gmd:keyword/*/@xlink:href = $srvCategory-thesaurus//skos:Concept/@rdf:about" />
+ 			<sch:let name="keywordValue"
+               value="//gmd:MD_Keywords[contains(gmd:thesaurusName/*/gmd:title/*/text(), 'KOMMISSIONENS FÖRORDNING (EG) nr 1205/2008')]/gmd:keyword/*/text()"/>
             <sch:let name="KeywordValue-found"
                      value="count($srvCategory-thesaurus//skos:Concept[skos:prefLabel = $keywordValue])"/>
                      
             <sch:assert test="($keywordLink_SDT or $KeywordValue-found > 0) or not($keywordValue_INS)"
       >[Geodata.se:106d] Ett nyckelord tjänsteklassificering är obligatoriskt för tjänster som ingår i Inspire.</sch:assert>
-		</sch:rule>
+			<!-- Ändrad text 2013-08-21-->
+			<!--<sch:report test="$keywordValue">Nyckelordsvärde funnet: <sch:value-of select="$keywordValue"/>
+            </sch:report>-->
+ 		</sch:rule>
 	</sch:pattern>
 
 	<sch:pattern	fpi="[Geodata.se:106g] OM resursen ingår i Inspire är nyckelord obligatoriskt med värdet Inspire ur nyckelordslexikonet Initiativ">
