@@ -96,8 +96,12 @@ USA.
                value="//gmd:MD_Keywords[contains(gmd:thesaurusName/*/gmd:title/*/text(), 'KOMMISSIONENS FÖRORDNING (EG) nr 1205/2008')]/gmd:keyword/*/text()"/>
             <sch:let name="KeywordValue-found"
                      value="count($srvCategory-thesaurus//skos:Concept[skos:prefLabel = $keywordValue])"/>
-                     
-            <sch:assert test="($keywordLink_SDT or $KeywordValue-found > 0) or not($keywordValue_INS)"
+ 			<sch:let name="keywordValue-oldstyle"
+               value="//gmd:MD_Keywords[contains(gmd:thesaurusName/*/gmd:title/*/text(), 'Tjänsteklassificering')]/gmd:keyword/*/text()"/>
+            <sch:let name="KeywordValue-oldstyle-found"
+                     value="count($srvCategory-thesaurus//skos:Concept[skos:prefLabel = $keywordValue-oldstyle])"/>
+            
+            <sch:assert test="($keywordLink_SDT or $KeywordValue-found > 0 or $KeywordValue-oldstyle-found > 0) or not($keywordValue_INS)"
       >[Geodata.se:106d] Ett nyckelord tjänsteklassificering är obligatoriskt för tjänster som ingår i Inspire.</sch:assert>
 			<!-- Ändrad text 2013-08-21-->
 			<!--<sch:report test="$keywordValue">Nyckelordsvärde funnet: <sch:value-of select="$keywordValue"/>
