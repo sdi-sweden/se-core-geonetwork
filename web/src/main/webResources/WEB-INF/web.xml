@@ -149,7 +149,7 @@
       </init-param>
       <init-param>
         <param-name>maxRequests</param-name>
-        <param-value>30</param-value>
+        <param-value>100</param-value>
       </init-param>
     </filter>
 
