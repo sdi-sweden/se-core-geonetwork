@@ -436,30 +436,32 @@
                                         codeListValue="theme"/>
               </gmd:type>
               <gmd:thesaurusName>
-                <gmd:CI_Citation>
-                  <gmd:title>
-                    <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/IACSData">Uppgifter från det integrerade administrations- och kontrollsystemet</gmx:Anchor>
-                  </gmd:title>
-                  <gmd:date>
-                    <gmd:CI_Date>
-                      <gmd:date>
-                        <gco:Date>2013-12-17</gco:Date>
-                      </gmd:date>
-                      <gmd:dateType>
-                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
-                                             codeListValue="publication"/>
-                      </gmd:dateType>
-                    </gmd:CI_Date>
-                  </gmd:date>
-                  <gmd:identifier>
-                    <gmd:MD_Identifier>
-                      <gmd:code>
-                        <gmx:Anchor xmlns:gmx="http://www.isotc211.org/2005/gmx"
-                                    xlink:href="http://localhost:8080/geonetwork/srv/swe/thesaurus.download?ref=external.theme.IACSDataSwedish">geonetwork.thesaurus.external.theme.IACSDataSwedish</gmx:Anchor>
-                      </gmd:code>
-                    </gmd:MD_Identifier>
-                  </gmd:identifier>
-                </gmd:CI_Citation>
+	             <gmd:CI_Citation>
+	               <gmd:title>
+	                 <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/IACSData">Uppgifter från det integrerade administrations- och kontrollsystemet</gmx:Anchor>
+	               </gmd:title>
+	               <gmd:date>
+	                 <gmd:CI_Date>
+	                   <gmd:date>
+	                     <gco:Date>2021-06-08</gco:Date>
+	                   </gmd:date>
+	                   <gmd:dateType>
+	                     <gmd:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+	                            </gmd:dateType>
+	                          </gmd:CI_Date>
+	                        </gmd:date>
+	                        <gmd:identifier>
+	                          <gmd:MD_Identifier>
+	                            <gmd:code>
+	<!--                              <gmx:Anchor xmlns:gmx="http://www.isotc211.org/2005/gmx"
+	                                  xlink:href="http://localhost:8080/geonetwork/srv/swe/thesaurus.download?ref=external.theme.IACSDataSwedish">geonetwork.thesaurus.external.theme.IACSDataSwedish</gmx:Anchor>
+	-->
+	                             <gmx:Anchor xmlns:gmx="http://www.isotc211.org/2005/gmx"
+	                                 xlink:href="http://inspire.ec.europa.eu/metadata-codelist/IACSData">geonetwork.thesaurus.external.theme.IACSDataSwedish</gmx:Anchor>
+	                   </gmd:code>
+	                 </gmd:MD_Identifier>
+	               </gmd:identifier>
+	             </gmd:CI_Citation>
               </gmd:thesaurusName>
             </gmd:MD_Keywords>
           </gmd:descriptiveKeywords>
@@ -1322,30 +1324,32 @@
                                         codeListValue="theme"/>
               </gmd:type>
               <gmd:thesaurusName>
-                <gmd:CI_Citation>
-                  <gmd:title>
-                    <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/IACSData">Uppgifter från det integrerade administrations- och kontrollsystemet</gmx:Anchor>
-                  </gmd:title>
-                  <gmd:date>
-                    <gmd:CI_Date>
-                      <gmd:date>
-                        <gco:Date>2013-12-17</gco:Date>
-                      </gmd:date>
-                      <gmd:dateType>
-                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
-                                             codeListValue="publication"/>
-                      </gmd:dateType>
-                    </gmd:CI_Date>
-                  </gmd:date>
-                  <gmd:identifier>
-                    <gmd:MD_Identifier>
-                      <gmd:code>
-                        <gmx:Anchor xmlns:gmx="http://www.isotc211.org/2005/gmx"
-                                    xlink:href="http://localhost:8080/geonetwork/srv/swe/thesaurus.download?ref=external.theme.IACSDataSwedish">geonetwork.thesaurus.external.theme.IACSDataSwedish</gmx:Anchor>
-                      </gmd:code>
-                    </gmd:MD_Identifier>
-                  </gmd:identifier>
-                </gmd:CI_Citation>
+                 <gmd:CI_Citation>
+                   <gmd:title>
+                     <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/IACSData">Uppgifter från det integrerade administrations- och kontrollsystemet</gmx:Anchor>
+                   </gmd:title>
+                   <gmd:date>
+                     <gmd:CI_Date>
+                       <gmd:date>
+                         <gco:Date>2021-06-08</gco:Date>
+                       </gmd:date>
+                       <gmd:dateType>
+                         <gmd:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                            </gmd:dateType>
+                          </gmd:CI_Date>
+                        </gmd:date>
+                        <gmd:identifier>
+                          <gmd:MD_Identifier>
+                            <gmd:code>
+<!--                              <gmx:Anchor xmlns:gmx="http://www.isotc211.org/2005/gmx"
+                                      xlink:href="http://localhost:8080/geonetwork/srv/swe/thesaurus.download?ref=external.theme.IACSDataSwedish">geonetwork.thesaurus.external.theme.IACSDataSwedish</gmx:Anchor>
+-->
+                             <gmx:Anchor xmlns:gmx="http://www.isotc211.org/2005/gmx"
+                                     xlink:href="http://inspire.ec.europa.eu/metadata-codelist/IACSData">geonetwork.thesaurus.external.theme.IACSDataSwedish</gmx:Anchor>
+                       </gmd:code>
+                     </gmd:MD_Identifier>
+                   </gmd:identifier>
+                 </gmd:CI_Citation>
               </gmd:thesaurusName>
             </gmd:MD_Keywords>
           </gmd:descriptiveKeywords>

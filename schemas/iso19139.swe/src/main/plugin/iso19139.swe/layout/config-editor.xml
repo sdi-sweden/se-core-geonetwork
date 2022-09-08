@@ -630,18 +630,15 @@
 
           <!-- IACS  -->
           <field
-            xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/
-            gmd:descriptiveKeywords
+            xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:descriptiveKeywords
             [gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[1] =  'Uppgifter från det integrerade administrations- och kontrollsystemet']"/>
           <action type="add"
                   btnLabel="addIACSData"
                   name="IACSData"
                   or="descriptiveKeywords"
                   in="/gmd:MD_Metadata/gmd:identificationInfo/*"
-                  if="count(gmd:MD_Metadata/gmd:identificationInfo/*/
-                        gmd:descriptiveKeywords[
-                          gmd:MD_Keywords/gmd:thesaurusName/
-                                      gmd:CI_Citation/gmd:title/*[1] = 'Uppgifter från det integrerade administrations- och kontrollsystemet']) = 0">
+                  if="count(gmd:MD_Metadata/gmd:identificationInfo/*/gmd:descriptiveKeywords[
+                          gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[1] = 'Uppgifter från det integrerade administrations- och kontrollsystemet']) = 0">
             <template>
               <snippet>
                 <gmd:descriptiveKeywords>
@@ -661,7 +658,7 @@
                         <gmd:date>
                           <gmd:CI_Date>
                             <gmd:date>
-                              <gco:Date>2013-12-17</gco:Date>
+                              <gco:Date>2021-06-08</gco:Date>
                             </gmd:date>
                             <gmd:dateType>
                               <gmd:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
@@ -671,8 +668,11 @@
                         <gmd:identifier>
                           <gmd:MD_Identifier>
                             <gmd:code>
+<!--                              <gmx:Anchor xmlns:gmx="http://www.isotc211.org/2005/gmx"
+                                           xlink:href="http://localhost:8080/geonetwork/srv/swe/thesaurus.download?ref=external.theme.IACSDataSwedish">geonetwork.thesaurus.external.theme.IACSDataSwedish</gmx:Anchor>
+ -->
                               <gmx:Anchor xmlns:gmx="http://www.isotc211.org/2005/gmx"
-                                          xlink:href="http://localhost:8080/geonetwork/srv/swe/thesaurus.download?ref=external.theme.IACSDataSwedish">geonetwork.thesaurus.external.theme.IACSDataSwedish</gmx:Anchor>
+                                          xlink:href="http://inspire.ec.europa.eu/metadata-codelist/IACSData">geonetwork.thesaurus.external.theme.IACSDataSwedish</gmx:Anchor>
                             </gmd:code>
                           </gmd:MD_Identifier>
                         </gmd:identifier>
@@ -683,7 +683,6 @@
               </snippet>
             </template>
           </action>
-
 
           <field name="SpatialDataServiceCategory"
             xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/
@@ -5010,14 +5009,15 @@
       the keyword may not be part of it.
       Warning: Duplicates may be inserted.
       -->
-      <field name="keyword"
+<!-- 
+     <field name="keyword"
              xpath="gmd:identificationInfo/gmd:MD_DataIdentification/
                       gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword"
              indexField="keyword"
              insertMode="gn_create">
         <template><![CDATA[<gco:CharacterString xmlns:gco='http://www.isotc211.org/2005/gco'>{{value}}</gco:CharacterString>]]></template>
       </field>
-
+-->
       <!-- Insert a new topic category
       Warning: Duplicates may be inserted.
       -->
