@@ -330,8 +330,7 @@
       <xsl:apply-templates select="gmd:descriptiveKeywords" />
 
 
-      <xsl:if test="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/gco:CharacterString = 'Initiativ' or
-                                                  gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/gmx:Anchor = 'Initiativ']) = 0">
+      <xsl:if test="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Initiativ' ]) = 0">
         <gmd:descriptiveKeywords>
           <gmd:MD_Keywords>
             <gmd:keyword>
@@ -372,7 +371,7 @@
       <xsl:variable name="hasPriorityDataset" select="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'INSPIRE priority data set']) > 0" />
 
       <xsl:if test="not($hasPriorityDataset)">
-        <xsl:variable name="hasInitiativeAsInspire" select="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Initiativ']/gmd:MD_Keywords/gmd:keyword/*[lower-case(text()) = 'inspire']) > 0" />
+        <xsl:variable name="hasInitiativeAsInspire" select="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Initiativ']/gmd:MD_Keywords/gmd:keyword/*/text() = 'Inspire') > 0" />
 
         <xsl:variable name="hasGEMETThesaurus" select="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text()= 'GEMET - INSPIRE themes, version 1.0']) > 0" />
 
@@ -417,52 +416,51 @@
         </xsl:if>
       </xsl:if>
 
-      <!--If GEMET Spatial themes exists or Initiativ=Inspire exists in XML then add Priority themes if not in in the metadata -->
+      <!--If GEMET Spatial themes exists or Initiativ=Inspire exists in XML then add IACS keyword if not in in the metadata -->
        <xsl:variable name="hasIACSData" select="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Uppgifter från det integrerade administrations- och kontrollsystemet']) > 0" />
 
-      <xsl:if test="not(hasIACSData)">
-        <xsl:variable name="hasInitiativeAsInspire" select="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Initiativ']/gmd:MD_Keywords/gmd:keyword/*[lower-case(text()) = 'inspire']) > 0" />
+      <xsl:if test="not($hasIACSData)">
+        <xsl:variable name="hasInitiativeAsInspire" select="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Initiativ']/gmd:MD_Keywords/gmd:keyword/*/text() = 'Inspire') > 0" />
 
         <xsl:variable name="hasGEMETThesaurus" select="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text()= 'GEMET - INSPIRE themes, version 1.0']) > 0" />
 
         <xsl:if test="$hasInitiativeAsInspire or $hasGEMETThesaurus">
-          <gmd:descriptiveKeywords>
-            <gmd:MD_Keywords>
-              <gmd:keyword>
-                <gmx:Anchor xlink:href=""></gmx:Anchor>
-              </gmd:keyword>
-              <gmd:type>
-                <gmd:MD_KeywordTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_KeywordTypeCode"
-                                        codeListValue="theme"/>
-              </gmd:type>
-              <gmd:thesaurusName>
-                <gmd:CI_Citation>
-                  <gmd:title>
-                    <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/IACSData">Uppgifter från det integrerade administrations- och kontrollsystemet</gmx:Anchor>
-                  </gmd:title>
-                  <gmd:date>
-                    <gmd:CI_Date>
-                      <gmd:date>
-                        <gco:Date>2013-12-17</gco:Date>
-                      </gmd:date>
-                      <gmd:dateType>
-                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
-                                             codeListValue="publication"/>
-                      </gmd:dateType>
-                    </gmd:CI_Date>
-                  </gmd:date>
-                  <gmd:identifier>
-                    <gmd:MD_Identifier>
-                      <gmd:code>
-                        <gmx:Anchor xmlns:gmx="http://www.isotc211.org/2005/gmx"
-                                    xlink:href="http://localhost:8080/geonetwork/srv/swe/thesaurus.download?ref=external.theme.IACSDataSwedish">geonetwork.thesaurus.external.theme.IACSDataSwedish</gmx:Anchor>
-                      </gmd:code>
-                    </gmd:MD_Identifier>
-                  </gmd:identifier>
-                </gmd:CI_Citation>
-              </gmd:thesaurusName>
-            </gmd:MD_Keywords>
-          </gmd:descriptiveKeywords>
+            <gmd:descriptiveKeywords>
+              <gmd:MD_Keywords>
+                <gmd:keyword>
+                  <gmx:Anchor xlink:href=""></gmx:Anchor>
+                </gmd:keyword>
+                <gmd:type>
+                  <gmd:MD_KeywordTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_KeywordTypeCode"
+                                          codeListValue="theme"/>
+                </gmd:type>
+                <gmd:thesaurusName>
+                  <gmd:CI_Citation>
+                    <gmd:title>
+                      <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/IACSData">Uppgifter från det integrerade administrations- och kontrollsystemet</gmx:Anchor>
+                    </gmd:title>
+                    <gmd:date>
+                      <gmd:CI_Date>
+                        <gmd:date>
+                          <gco:Date>2021-06-08</gco:Date>
+                        </gmd:date>
+                        <gmd:dateType>
+                          <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
+                                               codeListValue="publication"/>
+                        </gmd:dateType>
+                      </gmd:CI_Date>
+                    </gmd:date>
+                    <gmd:identifier>
+                      <gmd:MD_Identifier>
+                        <gmd:code>
+                          <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/IACSData">geonetwork.thesaurus.external.theme.IACSDataSwedish</gmx:Anchor>
+                        </gmd:code>
+                      </gmd:MD_Identifier>
+                    </gmd:identifier>
+                  </gmd:CI_Citation>
+                </gmd:thesaurusName>
+              </gmd:MD_Keywords>
+            </gmd:descriptiveKeywords>
         </xsl:if>
       </xsl:if>
 
@@ -1214,8 +1212,7 @@
         </xsl:copy>
       </xsl:for-each>
 
-      <xsl:if test="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/gco:CharacterString = 'Initiativ' or
-                                                  gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/gmx:Anchor = 'Initiativ']) = 0">
+      <xsl:if test="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Initiativ']) = 0">
         <gmd:descriptiveKeywords>
           <gmd:MD_Keywords>
             <gmd:keyword>
@@ -1258,7 +1255,7 @@
       <xsl:message>hasPriorityDataset: <xsl:value-of select="$hasPriorityDataset" /></xsl:message>
 
       <xsl:if test="not($hasPriorityDataset)">
-        <xsl:variable name="hasInitiativeAsInspire" select="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Initiativ']/gmd:MD_Keywords/gmd:keyword/*[lower-case(text()) = 'inspire']) > 0" />
+        <xsl:variable name="hasInitiativeAsInspire" select="count(//gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Initiativ']/gmd:MD_Keywords/gmd:keyword/*/text() = 'Inspire') > 0" />
 
          <xsl:variable name="hasGEMETThesaurus" select="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text()= 'GEMET - INSPIRE themes, version 1.0']) > 0" />
 
@@ -1306,49 +1303,48 @@
       <!--If GEMET Spatial themes exists or Initiativ=Inspire exists in XML then add Priority themes if not in in the metadata -->
        <xsl:variable name="hasIACSData" select="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Uppgifter från det integrerade administrations- och kontrollsystemet']) > 0" />
 
-      <xsl:if test="not(hasIACSData)">
-        <xsl:variable name="hasInitiativeAsInspire" select="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Initiativ']/gmd:MD_Keywords/gmd:keyword/*[lower-case(text()) = 'inspire']) > 0" />
+      <xsl:if test="not($hasIACSData)">
+        <xsl:variable name="hasInitiativeAsInspire" select="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Initiativ']/gmd:MD_Keywords/gmd:keyword/*/text() = 'Inspire') > 0" />
 
         <xsl:variable name="hasGEMETThesaurus" select="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text()= 'GEMET - INSPIRE themes, version 1.0']) > 0" />
 
         <xsl:if test="$hasInitiativeAsInspire or $hasGEMETThesaurus">
-          <gmd:descriptiveKeywords>
-            <gmd:MD_Keywords>
-              <gmd:keyword>
-                <gmx:Anchor xlink:href=""></gmx:Anchor>
-              </gmd:keyword>
-              <gmd:type>
-                <gmd:MD_KeywordTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_KeywordTypeCode"
-                                        codeListValue="theme"/>
-              </gmd:type>
-              <gmd:thesaurusName>
-                <gmd:CI_Citation>
-                  <gmd:title>
-                    <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/IACSData">Uppgifter från det integrerade administrations- och kontrollsystemet</gmx:Anchor>
-                  </gmd:title>
-                  <gmd:date>
-                    <gmd:CI_Date>
-                      <gmd:date>
-                        <gco:Date>2013-12-17</gco:Date>
-                      </gmd:date>
-                      <gmd:dateType>
-                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
-                                             codeListValue="publication"/>
-                      </gmd:dateType>
-                    </gmd:CI_Date>
-                  </gmd:date>
-                  <gmd:identifier>
-                    <gmd:MD_Identifier>
-                      <gmd:code>
-                        <gmx:Anchor xmlns:gmx="http://www.isotc211.org/2005/gmx"
-                                    xlink:href="http://localhost:8080/geonetwork/srv/swe/thesaurus.download?ref=external.theme.IACSDataSwedish">geonetwork.thesaurus.external.theme.IACSDataSwedish</gmx:Anchor>
-                      </gmd:code>
-                    </gmd:MD_Identifier>
-                  </gmd:identifier>
-                </gmd:CI_Citation>
-              </gmd:thesaurusName>
-            </gmd:MD_Keywords>
-          </gmd:descriptiveKeywords>
+            <gmd:descriptiveKeywords>
+              <gmd:MD_Keywords>
+                <gmd:keyword>
+                  <gmx:Anchor xlink:href=""></gmx:Anchor>
+                </gmd:keyword>
+                <gmd:type>
+                  <gmd:MD_KeywordTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_KeywordTypeCode"
+                                          codeListValue="theme"/>
+                </gmd:type>
+                <gmd:thesaurusName>
+                  <gmd:CI_Citation>
+                    <gmd:title>
+                      <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/IACSData">Uppgifter från det integrerade administrations- och kontrollsystemet</gmx:Anchor>
+                    </gmd:title>
+                    <gmd:date>
+                      <gmd:CI_Date>
+                        <gmd:date>
+                          <gco:Date>2021-06-08</gco:Date>
+                        </gmd:date>
+                        <gmd:dateType>
+                          <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
+                                               codeListValue="publication"/>
+                        </gmd:dateType>
+                      </gmd:CI_Date>
+                    </gmd:date>
+                    <gmd:identifier>
+                      <gmd:MD_Identifier>
+                        <gmd:code>
+                          <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/IACSData">geonetwork.thesaurus.external.theme.IACSDataSwedish</gmx:Anchor>
+                        </gmd:code>
+                      </gmd:MD_Identifier>
+                    </gmd:identifier>
+                  </gmd:CI_Citation>
+                </gmd:thesaurusName>
+              </gmd:MD_Keywords>
+            </gmd:descriptiveKeywords>
         </xsl:if>
       </xsl:if>
 

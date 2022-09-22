@@ -271,6 +271,9 @@
               <xsl:when test="$thesauri/thesaurus[key = $currentThesaurus]/title = 'Initiativ'">
                 <gmx:Anchor xlink:href="https://resources.geodata.se/codelist/metadata/initiativ.xml">Initiativ</gmx:Anchor>
               </xsl:when>
+              <xsl:when test="$thesauri/thesaurus[key = $currentThesaurus]/title = 'Uppgifter från det integrerade administrations- och kontrollsystemet'">
+                <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/IACSData">Uppgifter från det integrerade administrations- och kontrollsystemet</gmx:Anchor>
+              </xsl:when>
               <xsl:otherwise>
                 <gco:CharacterString>
                   <xsl:value-of select="$thesauri/thesaurus[key = $currentThesaurus]/title"/>
