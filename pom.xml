@@ -833,21 +833,21 @@
       </dependency>
 
       <!-- db -->
-      <!--<dependency>-->
-      <!--<groupId>postgresql</groupId>-->
-      <!--<artifactId>postgresql</artifactId>-->
-      <!--<version>9.1-901.jdbc3</version>-->
-      <!--</dependency>-->
       <dependency>
         <groupId>org.postgis</groupId>
         <artifactId>postgis-jdbc</artifactId>
         <version>1.3.3</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.postgis</groupId>
+            <artifactId>postgis-stubs</artifactId>
+          </exclusion>
+        </exclusions>        
       </dependency>
-      <!-- Postgres JDBC4 for Java 1.6 -->
       <dependency>
-        <groupId>postgresql</groupId>
+        <groupId>org.postgresql</groupId>
         <artifactId>postgresql</artifactId>
-        <version>9.1-901.jdbc4</version>
+        <version>${pg.version}</version>
       </dependency>
       <dependency>
         <groupId>mysql</groupId>
@@ -1072,16 +1072,16 @@
   <!-- ================================================================== -->
   <repositories>
     <repository>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
       <id>osgeo</id>
       <name>OSGeo Release Repository</name>
       <url>https://repo.osgeo.org/repository/release/</url>
-       <releases>
-         <enabled>true</enabled>
-       </releases>
-    </repository> 
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>     
     <repository>
       <snapshots>
         <enabled>false</enabled>
@@ -1107,7 +1107,7 @@
     <repository>
       <id>mvnrepository.com</id>
       <name>Repository that has juniversalchardet</name>
-      <url>http://mvnrepository.com/artifact</url>
+      <url>https://mvnrepository.com/artifact</url>
     </repository>
     <repository>
       <id>maven.geo-solutions.it</id>
@@ -1118,7 +1118,7 @@
     <repository>
       <id>maven2</id>
       <name>Repository maven2</name>
-      <url>http://repo.maven.apache.org/maven2</url>
+      <url>https://repo.maven.apache.org/maven2</url>
     </repository>
 
     <!-- seasar repo, has jsonic - used by langdetect -->
@@ -1215,7 +1215,9 @@
 
   <properties>
     <jetty.version>9.3.9.v20160517</jetty.version>
+<!--     <geotools.version>15.0</geotools.version> -->
     <geotools.version>15.0</geotools.version>
+    <pg.version>42.3.7</pg.version>
 
     <lucene.version>4.9.0</lucene.version>
 
