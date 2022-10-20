@@ -464,6 +464,41 @@
         </xsl:if>
       </xsl:if>
 
+      <xsl:if test="$hasIACSData">
+      
+		<!--     <xsl:variable name="isIACS" select="gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Uppgifter från det integrerade administrations- och kontrollsystemet']"/> -->
+		<!--     <xsl:variable name="isGSAA" select="gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword/gmx:Anchor/@xlink:href = 'http://inspire.ec.europa.eu/metadata-codelist/IACSData/gsaa'"/> -->
+		    <xsl:variable name="hasCommonAgricultureKeyword" select="gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword/gco:CharacterString = 'Common Agricultural Policy'"/>
+		    <xsl:choose>
+			    <xsl:when test="not($hasCommonAgricultureKeyword)">
+			       <gmd:descriptiveKeywords>
+			          <gmd:MD_Keywords>
+			            <gmd:keyword>
+			              <gco:CharacterString>Common Agricultural Policy</gco:CharacterString>
+			            </gmd:keyword>
+			          </gmd:MD_Keywords>
+			          <gmd:thesaurusName>
+			            <gmd:CI_Citation>
+			              <gmd:title>
+			                <gmx:Anchor xlink:href="https://www.eionet.europa.eu/gemet/en/concept/13102">GEMET - Concepts, version 4.1.3</gmx:Anchor>
+			              </gmd:title>
+			              <gmd:date>
+			                <gmd:CI_Date>
+			                  <gmd:date>
+			                    <gco:Date>2019-01-28</gco:Date>
+			                  </gmd:date>
+			                  <gmd:dateType>
+			                    <gmd:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">Publication</gmd:CI_DateTypeCode>
+			                  </gmd:dateType>
+			                </gmd:CI_Date>
+			              </gmd:date>
+			            </gmd:CI_Citation>
+			          </gmd:thesaurusName>		          
+			        </gmd:descriptiveKeywords> 
+			   </xsl:when>
+		   </xsl:choose>
+      </xsl:if>
+
       <xsl:apply-templates select="gmd:resourceSpecificUsage" />
       <xsl:apply-templates select="gmd:resourceConstraints" />
 
@@ -1300,7 +1335,7 @@
         </xsl:if>
       </xsl:if>
 
-      <!--If GEMET Spatial themes exists or Initiativ=Inspire exists in XML then add Priority themes if not in in the metadata -->
+      <!--If GEMET Spatial themes exists or Initiativ=Inspire exists in XML then add IACS themes if not in in the metadata -->
        <xsl:variable name="hasIACSData" select="count(gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Uppgifter från det integrerade administrations- och kontrollsystemet']) > 0" />
 
       <xsl:if test="not($hasIACSData)">
