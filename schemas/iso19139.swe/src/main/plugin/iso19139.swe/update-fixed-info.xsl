@@ -579,12 +579,17 @@
   <!-- Remove gmd:descriptiveKeywords for INSPIRE Priority Dataset if no keyword values -->
   <xsl:template match="gmd:descriptiveKeywords[(count(gmd:MD_Keywords/gmd:keyword[string(normalize-space(*/text()))]) = 0) and gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'INSPIRE priority data set']" priority="20" />
 
+  <!-- Remove Common Common Agricultural Policy keyword if IACS keyword is empty -->
+<!--   <xsl:template match="gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword[*/text() = 'Common Agricultural Policy']" priority="20" > -->
+<!--      <xsl:variable name="isEmptyIACS" select="string-length(normalize-space(//gmd:descriptiveKeywords/gmd:MD_Keywords[gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Uppgifter från det integrerade administrations- och kontrollsystemet']/gmd:keyword/*/text())) = 0"/> -->
+<!--      <xsl:if test="not(isEmptyIACS)"> -->
+<!--        <xsl:apply-templates select="." /> -->
+<!--        else do not copy the keyword element -->
+<!--      </xsl:if> -->
+<!--   </xsl:template> -->
+
   <!-- Remove gmd:descriptiveKeywords for IACS Data if no keyword values -->
   <xsl:template match="gmd:descriptiveKeywords[(count(gmd:MD_Keywords/gmd:keyword[string(normalize-space(*/text()))]) = 0) and gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Uppgifter från det integrerade administrations- och kontrollsystemet']" priority="20" />
-
-  <!-- Remove Common Common Agricultural Policy keyowrd if IACS keyword is empty -->
-<!--   <xsl:template match="gmd:descriptiveKeywords[(count(gmd:MD_Keywords/gmd:keyword[string(normalize-space(*/text()))]) = 0) and gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Uppgifter från det integrerade administrations- och kontrollsystemet'] -->
-<!--                        and gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword/*/text() = 'Common Agricultural Policy'" priority="20" /> -->
  
   <!-- auto complete qa resurstyp based on md resurstyp -->
   <xsl:template match="gmd:DQ_Scope">
