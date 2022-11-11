@@ -1720,6 +1720,7 @@ inklusive namn på eventuell profil.   (Sätts automatiskt och kan ej ändras)</
       <option value="TIFF - LZW">TIFF - LZW</option>
       <option value="TIFF - packbits">TIFF - packbits</option>
       <option value="TIFF8">TIFF8</option>
+      <option value="XML">XML</option>
       <option value="Svensk standard SS637006, XML-format">Svensk standard SS637006, XML-format</option>
       <option value="Svensk standard SS637007, XML-format">Svensk standard SS637007, XML-format</option>
 		</helper>
