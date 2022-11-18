@@ -1999,6 +1999,7 @@
 			<option show="y" value="HTTP:OGC:WFS">HTTP:OGC:WFS</option>
 			<option show="y" value="HTTP:Nedladdning">HTTP:Nedladdning</option>
 			<option show="y" value="HTTP:Nedladdning:Atom">HTTP:Nedladdning:Atom</option>
+			<option show="y" value="HTTP:Nedladdning:Features">HTTP:Nedladdning:Features</option>
 			<option show="y" value="HTTP:Information">HTTP:Information</option>
 			<option show="y" value="HTTP:Information:Produktspecifikation">HTTP:Information:Produktspecifikation</option>
 		</helper>

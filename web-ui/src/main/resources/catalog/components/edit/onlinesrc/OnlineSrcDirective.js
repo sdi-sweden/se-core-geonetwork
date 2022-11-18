@@ -1364,7 +1364,7 @@
                           gnCurrentEdit.metadata.getLinksByType('#HTTP:OGC:WMS'));
                       } else if (serviceType == 'download') {
                         links = links.concat(
-                          gnCurrentEdit.metadata.getLinksByType('#HTTP:Nedladdning:Atom', '#HTTP:OGC:WFS'));
+                          gnCurrentEdit.metadata.getLinksByType('#HTTP:Nedladdning:Atom', '#HTTP:OGC:WFS', '#HTTP:Nedladdning:Features'));
                       }
 
                       if (angular.isArray(links) && links.length == 1) {
