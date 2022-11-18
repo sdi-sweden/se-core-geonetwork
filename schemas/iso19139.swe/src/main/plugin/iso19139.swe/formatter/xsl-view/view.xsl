@@ -727,6 +727,9 @@
                 <xsl:when test="normalize-space($protocol) = 'HTTP:Nedladdning:ATOM'">
                   <xsl:value-of select="gn-fn-render:get-schema-strings($schemaStrings, 'http_nedladdning_atom')"/>
                 </xsl:when>
+                <xsl:when test="normalize-space($protocol) = 'HTTP:Nedladdning:Features'">
+                  <xsl:value-of select="gn-fn-render:get-schema-strings($schemaStrings, 'http_nedladdning_features')"/>
+                </xsl:when>
                 <xsl:otherwise>
                   <xsl:value-of select="$protocol"/>
                 </xsl:otherwise>

@@ -2048,6 +2048,7 @@ varit delaktiga i bearbetningen</description>
 			<option show="y" value="HTTP:OGC:WFS">HTTP:OGC:WFS för WFS-tjänster</option>
 			<option show="y" value="HTTP:Nedladdning">HTTP:Nedladdning för nedladdning, t ex ftp</option>
 			<option show="y" value="HTTP:Nedladdning:Atom">HTTP:Nedladdning:Atom för ATOM-tjänster</option>
+			<option show="y" value="HTTP:Nedladdning:Features">HTTP:Nedladdning:Features för OGC API Features tjänster</option>
 			<option show="y" value="HTTP:Information">HTTP:Information för webbsidor</option>
 			<option show="y" value="HTTP:Information:Produktspecifikation">HTTP:Information:Produktspecifikation för länk till produktspecifikation</option>
 		</helper>
