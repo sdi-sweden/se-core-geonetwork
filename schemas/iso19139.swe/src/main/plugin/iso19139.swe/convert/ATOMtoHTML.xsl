@@ -96,7 +96,15 @@
       <xsl:value-of select="@title"/>
     </a>
   </xsl:template>
-  
+
+  <xsl:template match="atom:link[@rel='section' and @href]">
+    <a target="_blank">
+      <xsl:attribute name="href">
+        <xsl:value-of select="@href"/>
+      </xsl:attribute>
+      <xsl:value-of select="@title"/>
+    </a>
+  </xsl:template>  
   <xsl:template match="atom:updated">
     <xsl:variable name="date" select="substring-before(., 'T')"/>
     <xsl:variable name="yyyy" select="substring-before($date, '-')"/>
