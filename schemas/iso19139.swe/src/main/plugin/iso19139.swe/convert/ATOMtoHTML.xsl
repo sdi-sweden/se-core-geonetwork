@@ -32,6 +32,7 @@
   <xsl:template match="atom:feed">
     <section class="feed">
       <h1><xsl:value-of select="atom:title"/></h1>
+      <xsl:apply-templates select="atom:updated"/>
       <xsl:apply-templates select="atom:entry"/>
     </section>    
   </xsl:template>
@@ -43,8 +44,16 @@
       <input class="tree" type="checkbox" id="{$id}" checked = "true"/>
       <h1><label for="{$id}"><xsl:value-of select="atom:title"/></label></h1>
       <hr/>
+      <a target="_blank">
+          <xsl:attribute name="href">
+            <xsl:value-of select="atom:link[@rel='alternate']/@href"/>
+          </xsl:attribute>
+        <xsl:value-of select="atom:link[@rel='alternate']/@href"/>
+      </a>
+      <p/>
       <div><xsl:apply-templates select="atom:updated"/></div>
       <div><xsl:apply-templates select="atom:content"/></div>
+      <div><xsl:apply-templates select="atom:summary"/></div>
       <xsl:apply-templates select="atom:link"/>
     </section>
   </xsl:template>
@@ -70,9 +79,24 @@
   </xsl:template>
 
   <xsl:template match="atom:link[@type='application/atom+xml' and @href]">
+    <a target="_blank">
+      <xsl:attribute name="href">
+        <xsl:value-of select="atom:link[@rel='self']/@href"/>
+      </xsl:attribute>
+      <xsl:value-of select="@title"/>
+    </a>
     <xsl:apply-templates select="document(@href)/atom:feed"/>
   </xsl:template>
 
+  <xsl:template match="atom:link[@rel='alternate' and @href]">
+    <a target="_blank">
+      <xsl:attribute name="href">
+        <xsl:value-of select="@href"/>
+      </xsl:attribute>
+      <xsl:value-of select="@title"/>
+    </a>
+  </xsl:template>
+  
   <xsl:template match="atom:updated">
     <xsl:variable name="date" select="substring-before(., 'T')"/>
     <xsl:variable name="yyyy" select="substring-before($date, '-')"/>
