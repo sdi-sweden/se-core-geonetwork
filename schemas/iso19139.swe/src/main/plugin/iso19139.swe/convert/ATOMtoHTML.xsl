@@ -103,7 +103,7 @@
   <xsl:template match="atom:link[@type='application/atom+xml' and @href]">
     <a target="_blank">
       <xsl:attribute name="href">
-        <xsl:value-of select="atom:link[@rel='self']/@href"/>
+        <xsl:value-of select="@href"/>
       </xsl:attribute>
       <xsl:value-of select="@title"/>
     </a>
