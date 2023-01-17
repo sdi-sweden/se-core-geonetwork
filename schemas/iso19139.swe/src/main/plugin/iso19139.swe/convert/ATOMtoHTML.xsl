@@ -82,7 +82,40 @@
     <xsl:value-of select="text()"/>
   </xsl:template>
 
-  <xsl:template match="atom:link[@rel='section' and @href]">
+ <xsl:template match="atom:link">
+   <xsl:choose>
+   <xsl:when test="@rel='section' and @href">
+       <a target="_blank">
+      <xsl:attribute name="href">
+        <xsl:value-of select="@href"/>
+      </xsl:attribute>
+      <xsl:value-of select="@title"/>
+    </a>
+   </xsl:when>
+   <xsl:when test="@rel='alternate' and @href">
+    <a target="_blank">
+      <xsl:attribute name="href">
+        <xsl:value-of select="@href"/>
+      </xsl:attribute>
+      <xsl:value-of select="@title"/>
+    </a>
+   </xsl:when>
+   <xsl:when test="@type='application/atom+xml' and @href">
+    <a target="_blank">
+      <xsl:attribute name="href">
+        <xsl:value-of select="@href"/>
+      </xsl:attribute>
+      <xsl:value-of select="@title"/>
+    </a>
+    <xsl:apply-templates select="document(@href)/atom:feed"/>   
+   </xsl:when>
+   <xsl:otherwise>
+   </xsl:otherwise>
+   </xsl:choose>
+ </xsl:template>
+ 
+<!--
+   <xsl:template match="atom:link[@rel='section' and @href]">
     <a target="_blank">
       <xsl:attribute name="href">
         <xsl:value-of select="@href"/>
@@ -109,6 +142,7 @@
     </a>
     <xsl:apply-templates select="document(@href)/atom:feed"/>
   </xsl:template>
+ -->
  
   <xsl:template match="atom:updated">
     <xsl:variable name="date" select="substring-before(., 'T')"/>
