@@ -102,6 +102,8 @@
             	newUrl = '../../' + gnGlobalSettings.lmProxyVerUrl + encodeURIComponent(url);
             } else if (url.includes("api.lantmateriet.se")) {
         	    newUrl = '../../' + gnGlobalSettings.odProxyUrl + encodeURIComponent(url);
+            } else if (url.includes("api-ver.lantmateriet.se")) {
+        	    newUrl = '../../' + gnGlobalSettings.odProxyUrl + encodeURIComponent(url);        	    
             } 
 //            else { if (!url.includes("https://")) {
 //             	    newUrl = gnGlobalSettings.proxyUrl + url;

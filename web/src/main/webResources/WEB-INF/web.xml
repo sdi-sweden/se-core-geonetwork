@@ -355,6 +355,35 @@
         <display-name>OdProxy</display-name>
         <servlet-name>OdProxy</servlet-name>
         <servlet-class>
+            org.lmv.geodata.common.server.servlet.proxy.Oauth2CcProxyServlet</servlet-class>
+        <init-param>
+            <param-name>request.param.url</param-name>
+            <param-value>url</param-value>
+        </init-param>
+        <init-param>
+            <param-name>request.param.other</param-name>
+            <param-value>true</param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>loginConfig</param-name>
+            <param-value>${odProxy.loginConfig}</param-value>
+        </init-param>
+         <init-param>
+            <param-name>acceptAll</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>OdProxy</servlet-name>
+        <url-pattern>/od-proxy</url-pattern>
+    </servlet-mapping>
+<!-- 
+    <servlet>
+        <display-name>OdProxy</display-name>
+        <servlet-name>OdProxy</servlet-name>
+        <servlet-class>
             org.lmv.geodata.common.server.servlet.proxy.BearerTokenProxyServlet</servlet-class>
         <init-param>
             <param-name>request.param.url</param-name>
@@ -408,7 +437,8 @@
         <servlet-name>LmProxyVer</servlet-name>
         <url-pattern>/lm-proxy-ver</url-pattern>
     </servlet-mapping>
-
+ -->
+ 
     <servlet>
 		<display-name>Proxy for topowebb wms service</display-name>
 		<servlet-name>TopoWmsProxy</servlet-name>
