@@ -81,7 +81,7 @@
     <dependency>
         <groupId>org.lmv.geodata</groupId>
         <artifactId>geodata-common-server</artifactId>
-        <version>3.8.5</version>
+        <version>3.8.2-SNAPSHOT</version>
     </dependency>
 
     <dependency>
