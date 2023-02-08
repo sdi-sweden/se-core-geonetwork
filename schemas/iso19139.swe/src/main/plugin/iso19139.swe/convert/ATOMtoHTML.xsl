@@ -61,7 +61,25 @@
   <xsl:template match="atom:content">
     <xsl:value-of select="text()"/>
   </xsl:template>
+
   <xsl:template match="atom:content[@type='html']">
+    <!-- fix content - trim extra space before ul once: "<br/><br/> <ul>" to "<ul>" -->
+    <xsl:variable name="brbrul" select="'&lt;br /&gt;&lt;br /&gt; &lt;ul&gt;'"/>
+    <xsl:variable name="ul" select="'&lt;ul&gt;'"/>
+    <xsl:variable name="text1">
+      <xsl:choose>
+        <xsl:when test="contains(., $brbrul)">
+          <xsl:value-of select="concat(substring-before(., $brbrul), $ul, substring-after(., $brbrul))"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="."/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:value-of select="$text1" disable-output-escaping="yes"/>
+  </xsl:template>
+
+  <xsl:template match="atom:summary[@type='html']">
     <!-- fix content - trim extra space before ul once: "<br/><br/> <ul>" to "<ul>" -->
     <xsl:variable name="brbrul" select="'&lt;br /&gt;&lt;br /&gt; &lt;ul&gt;'"/>
     <xsl:variable name="ul" select="'&lt;ul&gt;'"/>
