@@ -136,17 +136,11 @@
               </gmd:dateType>
             </gmd:CI_Date>
           </gmd:date>
-          <gmd:edition>
-            <gco:CharacterString/>
-          </gmd:edition>
         </gmd:CI_Citation>
       </gmd:citation>
       <gmd:abstract>
         <gco:CharacterString/>
       </gmd:abstract>
-      <gmd:purpose>
-        <gco:CharacterString/>
-      </gmd:purpose>
       <gmd:status>
         <gmd:MD_ProgressCode codeListValue="onGoing"
                              codeList="./resources/codeList.xml#MD_ProgressCode"/>
