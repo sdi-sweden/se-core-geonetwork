@@ -476,24 +476,24 @@
 			            <gmd:keyword>
 			              <gco:CharacterString>Common Agricultural Policy</gco:CharacterString>
 			            </gmd:keyword>
-			          </gmd:MD_Keywords>
-			          <gmd:thesaurusName>
-			            <gmd:CI_Citation>
-			              <gmd:title>
-			                <gmx:Anchor xlink:href="https://www.eionet.europa.eu/gemet/en/concept/13102">GEMET - Concepts, version 4.1.3</gmx:Anchor>
-			              </gmd:title>
-			              <gmd:date>
-			                <gmd:CI_Date>
-			                  <gmd:date>
-			                    <gco:Date>2019-01-28</gco:Date>
-			                  </gmd:date>
-			                  <gmd:dateType>
-			                    <gmd:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">Publication</gmd:CI_DateTypeCode>
-			                  </gmd:dateType>
-			                </gmd:CI_Date>
-			              </gmd:date>
-			            </gmd:CI_Citation>
-			          </gmd:thesaurusName>		          
+			            <gmd:thesaurusName>
+			              <gmd:CI_Citation>
+			                <gmd:title>
+			                  <gmx:Anchor xlink:href="https://www.eionet.europa.eu/gemet/en/concept/13102">GEMET - Concepts, version 4.1.3</gmx:Anchor>
+			                </gmd:title>
+			                <gmd:date>
+			                  <gmd:CI_Date>
+			                    <gmd:date>
+			                      <gco:Date>2019-01-28</gco:Date>
+			                    </gmd:date>
+			                    <gmd:dateType>
+			                      <gmd:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">Publication</gmd:CI_DateTypeCode>
+			                    </gmd:dateType>
+			                  </gmd:CI_Date>
+			                </gmd:date>
+			              </gmd:CI_Citation>
+			            </gmd:thesaurusName>	
+			          </gmd:MD_Keywords>	          
 			        </gmd:descriptiveKeywords> 
 			   </xsl:when>
 		   </xsl:choose>
