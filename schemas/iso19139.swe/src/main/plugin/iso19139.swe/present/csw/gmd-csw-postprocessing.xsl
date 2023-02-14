@@ -399,6 +399,17 @@
     </xsl:copy>
   </xsl:template>
 
+  <!-- change href URL in gmx:Anchor for IACS theme keywords  -->
+<!-- <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/lc">Landtäcke</gmx:Anchor> -->
+   <xsl:template match="gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'GEMET - INSPIRE themes, version 1.0']/gmd:MD_Keywords/gmd:keyword/gmx:Anchor/[string(@xlink:href) = 'http://rdfdata.eionet.europa.eu/inspirethemes/themes/11']" priority="50">
+        <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/lc">Landtäcke</gmx:Anchor>
+  </xsl:template>
+
+<!--  <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/lu">Markanvändning</gmx:Anchor> -->
+  <xsl:template match="gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'GEMET - INSPIRE themes, version 1.0']/gmd:MD_Keywords/gmd:keyword/gmx:Anchor[string(@xlink:href) = 'http://rdfdata.eionet.europa.eu/inspirethemes/themes/17']" priority="50">
+         <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/lu">Markanvändning</gmx:Anchor>
+  </xsl:template>
+  
   <!-- Remove gmd:descriptiveKeywords for GEMET - INSPIRE themes version 1.0 (invalid name, missing comma) with template value (not valid): INSPIRE Tema -->
   <xsl:template match="gmd:descriptiveKeywords[(count(gmd:MD_Keywords/gmd:keyword) = 1) and (normalize-space(gmd:MD_Keywords/gmd:keyword/*/text()) = '--- INSPIRE Tema')  and gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'GEMET - INSPIRE themes version 1.0']" priority="20" />
 
@@ -439,10 +450,6 @@
   <!--  remove gmd:type node from gmd:MD_Keywords -->
   <xsl:template match="gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:type"/>
 
-  <!-- change href URL in gmx:Anchor for IACS theme keywords  -->
-  <xsl:template match="gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'GEMET - INSPIRE themes, version 1.0']/gmd:MD_Keywords/gmd:keyword/gmx:Anchor/text()='Landtäcke'">
-  
-  </xsl:template>
 
   <!--  remove gmd:function from gmd:onLine if present -->
   <xsl:template match="gmd:onLine/gmd:function"/>
