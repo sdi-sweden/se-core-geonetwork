@@ -348,6 +348,9 @@
         </xsl:when>
       </xsl:choose>
 
+      <!-- Copy INSPIRE limitationsOnPublicUse -->
+      <xsl:apply-templates select="gmd:resourceConstraints[gmd:MD_LegalConstraints[gmd:useConstraints/gmd:MD_RestrictionCode/@codeListValue = 'otherRestrictions']]" />
+       
       <xsl:apply-templates select="gmd:aggregationInfo" />
       <xsl:apply-templates select="gmd:spatialRepresentationType" />
 
@@ -836,6 +839,9 @@
           </xsl:for-each>
         </xsl:when>
       </xsl:choose>
+
+      <!-- Copy INSPIRE limitationsOnPublicUse -->
+      <xsl:apply-templates select="gmd:resourceConstraints[gmd:MD_LegalConstraints[gmd:useConstraints/gmd:MD_RestrictionCode/@codeListValue = 'otherRestrictions']]" />
 
       <xsl:apply-templates select="gmd:aggregationInfo" />
       <xsl:apply-templates select="srv:serviceType" />
