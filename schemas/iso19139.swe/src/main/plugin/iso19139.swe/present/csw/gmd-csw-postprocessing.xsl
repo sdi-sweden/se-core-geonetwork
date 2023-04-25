@@ -392,7 +392,19 @@
   <!-- Fix GEMET keywords with empty xlink:href in gmx:Anchor -->
   <xsl:template match="gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'GEMET - INSPIRE themes, version 1.0']/gmd:MD_Keywords/gmd:keyword/gmx:Anchor[not(string(@xlink:href))]" priority="50">
     <xsl:variable name="keywordValue" select= "lower-case(.)" />
-    <xsl:variable name="key" select="$inspire-theme[skos:prefLabel[@xml:lang='sv' and lower-case(text()) = $keywordValue]]/@rdf:about" />
+    <xsl:variable name="key">
+      <xsl:choose>
+        <xsl:when test="contains($keywordValue,'landtäcke')">
+          <xsl:value-of select="'http://inspire.ec.europa.eu/theme/lc'"/>
+        </xsl:when>
+        <xsl:when test="contains($keywordValue,'markanvändning')">
+          <xsl:value-of select="'http://inspire.ec.europa.eu/theme/lu'" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="$inspire-theme[skos:prefLabel[@xml:lang='sv' and lower-case(text()) = $keywordValue]]/@rdf:about" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
 
     <xsl:copy copy-namespaces="no">
       <xsl:copy-of select="@*" />
@@ -402,7 +414,7 @@
     </xsl:copy>
   </xsl:template>
 
-  <!-- change href URL in gmx:Anchor for IACS theme keywords  -->
+  <!-- change href URL in gmx:Anchor for IACS theme keywords  --> 
   <xsl:template match="gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'GEMET - INSPIRE themes, version 1.0']/gmd:MD_Keywords/gmd:keyword/gmx:Anchor[string(@xlink:href)]" priority="50">
     <xsl:choose>
 		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/11')">
@@ -1304,7 +1316,7 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- Convert GEMET keywords to Anchors -->
+  <!-- Convert GEMET keywords to Anchors and use correct URL for IACS keywords-->
   <xsl:template match="gmd:keyword[../gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'GEMET - INSPIRE themes, version 1.0' or
                                    ../gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'GEMET - INSPIRE themes version 1.0']">
     <xsl:copy copy-namespaces="no">
@@ -1313,8 +1325,19 @@
       <xsl:choose>
         <xsl:when test="gco:CharacterString">
           <xsl:variable name="value" select="lower-case(gco:CharacterString)" />
-          <xsl:variable name="key" select="$inspire-theme[skos:prefLabel[@xml:lang='sv' and lower-case(text()) = $value]]/@rdf:about" />
-
+		  <xsl:variable name="key">
+		    <xsl:choose>
+		      <xsl:when test="contains($value,'landtäcke')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/lc'"/>
+		      </xsl:when>
+		      <xsl:when test="contains($value,'markanvändning')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/lu'" />
+		      </xsl:when>
+		      <xsl:otherwise>
+		        <xsl:value-of select="$inspire-theme[skos:prefLabel[@xml:lang='sv' and lower-case(text()) = $value]]/@rdf:about" />
+		      </xsl:otherwise>
+		     </xsl:choose>
+          </xsl:variable>
           <gmx:Anchor xlink:href="{$key}"><xsl:value-of select="gco:CharacterString" /></gmx:Anchor>
         </xsl:when>
         <xsl:otherwise>
