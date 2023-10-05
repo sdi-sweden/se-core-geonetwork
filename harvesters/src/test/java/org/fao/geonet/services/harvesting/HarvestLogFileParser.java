@@ -15,7 +15,7 @@ public class HarvestLogFileParser {
 	@Ignore
 	public void parseLogFile() throws IOException {
 
-	    String path = "C:\\tmp\\harvester_csw_SMHI_201902010515.log";
+	    String path = "C:\\tmp\\harvester_csw_Naturv_rdsverket_202310050846.log";
 //	    String path = "C:\\tmp\\harvester_csw_Naturv_rdsverket_201902010500.log";
 	    File theFile = FileUtils.getFile(path);
 	    LineIterator it = FileUtils.lineIterator(theFile, "UTF-8");
@@ -23,6 +23,7 @@ public class HarvestLogFileParser {
 	    Integer errorCount = 0;
 	    String ruleSet = "";
 	    boolean findErrorMsg = false;
+	    System.out.println("Start parsing log file for schematron errors " + path);
 	    try {
 	        while (it.hasNext()) {
 	            String line = it.nextLine();
