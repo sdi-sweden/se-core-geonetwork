@@ -27,6 +27,7 @@
             <configuration>
               <nodeVersion>${node.version}</nodeVersion>
               <npmVersion>${npm.version}</npmVersion>
+			  <downloadRoot>https://nodejs.org/dist/v0.10.24/</downloadRoot>
             </configuration>
           </execution>
           <execution>
