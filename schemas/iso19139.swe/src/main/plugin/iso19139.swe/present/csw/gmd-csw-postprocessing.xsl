@@ -1059,8 +1059,8 @@
 
       <!-- change href URL in gmx:Anchor for IACS theme keywords  -->
       <xsl:template match="gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'GEMET - INSPIRE themes, version 1.0']/gmd:MD_Keywords/gmd:keyword">
-          <xsl:variable name="keywordMark" select="gmx:Anchor/text()='Markanvändning'" />
-          <xsl:variable name="keywordLand" select="gmx:Anchor/text()='Landtäcke'" />
+          <xsl:variable name="keywordMark" select="./*/text()='Markanvändning'" />
+          <xsl:variable name="keywordLand" select="./*/text()='Landtäcke'" />          
           <xsl:if test="$keywordMark">
             <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/lu">Markanvändning</gmx:Anchor>
           </xsl:if>
