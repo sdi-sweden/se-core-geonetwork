@@ -301,7 +301,7 @@ public class GetMap {
         if (background != null) {
 
             if (background.equalsIgnoreCase(SETTING_BACKGROUND) &&
-                settingManager.getValue(Settings.REGION_GETMAP_BACKGROUND).startsWith("http://")) {
+                settingManager.getValue(Settings.REGION_GETMAP_BACKGROUND).startsWith("http")) {
                 background = settingManager.getValue(Settings.REGION_GETMAP_BACKGROUND);
             } else if (this.regionGetMapBackgroundLayers.containsKey(background)) {
                 background = this.regionGetMapBackgroundLayers.get(background);
