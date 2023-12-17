@@ -610,6 +610,8 @@
 		<xsl:copy>
 			<xsl:copy-of select="@*" />
 
+		  <xsl:variable name="isInspireMetadata" select="gmd:descriptiveKeywords/gmd:MD_Keywords[gmd:thesaurusName/gmd:CI_Citation/gmd:title/gmx:Anchor/@xlink:href='https://resources.geodata.se/codelist/metadata/initiativ.xml' or gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Initiativ']/gmd:keyword/*/upper-case(text()) = 'INSPIRE'"/>
+
 			<xsl:apply-templates select="gmd:citation" />
 			<xsl:apply-templates select="gmd:abstract" />
 			<xsl:apply-templates select="gmd:purpose" />
@@ -628,7 +630,15 @@
       </xsl:for-each>
 
 			<xsl:apply-templates select="gmd:resourceFormat" />
-			<xsl:apply-templates select="gmd:descriptiveKeywords" />
+		  <xsl:choose>
+		    <xsl:when test="$isInspireMetadata">
+		      <xsl:apply-templates select="gmd:descriptiveKeywords" />
+		    </xsl:when>
+		    <xsl:otherwise>
+		      <xsl:apply-templates select="gmd:descriptiveKeywords[not(gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/gmx:Anchor/@xlink:href='http://www.eionet.europa.eu/gemet/inspire_themes' or gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/gco:CharacterString='GEMET - INSPIRE themes, version 1.0')]"/>
+		    </xsl:otherwise>
+		  </xsl:choose>
+
 			<xsl:apply-templates select="gmd:resourceSpecificUsage" />
 			<xsl:apply-templates select="gmd:resourceConstraints" />
 			<xsl:apply-templates select="gmd:aggregationInfo" />
@@ -836,6 +846,22 @@
 		</xsl:choose>
 	</xsl:template>
 
+  <xsl:template match="gmd:report[*/*/*/gmd:specification/gmd:CI_Citation/gmd:title/gmx:Anchor/@xlink:href='http://data.europa.eu/eli/reg/2010/1089' or
+    */*/*/gmd:specification/gmd:CI_Citation/gmd:title/gmx:Anchor/@xlink:href='http://data.europa.eu/eli/reg/2009/976']">
+    <xsl:variable name="isInspireMetadata" select="//gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords[gmd:thesaurusName/gmd:CI_Citation/gmd:title/gmx:Anchor/@xlink:href='https://resources.geodata.se/codelist/metadata/initiativ.xml'
+      or gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'Initiativ']/gmd:keyword/*/upper-case(text()) = 'INSPIRE'"/>
+    <xsl:choose>
+      <xsl:when test="$isInspireMetadata">
+        <xsl:copy>
+          <xsl:apply-templates select="@*|node()"/>
+        </xsl:copy>
+      </xsl:when>
+      <xsl:otherwise>
+        <!-- don't copy the report -->
+      </xsl:otherwise>
+    </xsl:choose>
+
+  </xsl:template>
   <!-- Fix the date for conformance reports -->
   <xsl:template match="gmd:specification/gmd:CI_Citation[gmd:title/gmx:Anchor/@xlink:href='http://data.europa.eu/eli/reg/2010/1089' or
                                                          gmd:title/gmx:Anchor/@xlink:href='http://data.europa.eu/eli/reg/2009/976']" priority="1000">
