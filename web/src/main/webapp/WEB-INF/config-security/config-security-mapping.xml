@@ -43,6 +43,7 @@
         <sec:intercept-url pattern="/metadata/.*" access="permitAll"/>
 		<sec:intercept-url pattern="/GetMetaDataById.*" access="permitAll"/>
 		<sec:intercept-url pattern="/GetMetaDataURL.*" access="permitAll"/>
+		<sec:intercept-url pattern="/monitoring*" access="permitAll"/>
 
     <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/release-notes.html" access="permitAll"/>
 

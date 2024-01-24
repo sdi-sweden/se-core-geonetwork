@@ -46,6 +46,7 @@
         <sec:filter-chain pattern="/lm-proxy-ver**" filters=""/>
         <sec:filter-chain pattern="/od-proxy**" filters=""/>
         <sec:filter-chain pattern="/topo-wms**" filters=""/>
+		<sec:filter-chain pattern="/monitoring**" filters=""/>
         <!-- wroAPI is protected for admin only
         This is causing issue on node-change-warning page.
         <sec:filter-chain pattern="/static/wroAPI" filters=""/>-->

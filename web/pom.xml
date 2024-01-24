@@ -83,6 +83,23 @@
         <artifactId>geodata-common-server</artifactId>
         <version>3.8.6</version>
     </dependency>
+	
+<!-- LM added to monitor tomcat -->
+<dependency>
+	<groupId>net.bull.javamelody</groupId>
+	<artifactId>javamelody-core</artifactId>
+	<version>1.95.0</version>
+</dependency>
+<dependency>
+	<groupId>com.thoughtworks.xstream</groupId>
+	<artifactId>xstream</artifactId>
+	<version>1.4.17</version>
+</dependency>
+<dependency>
+	<groupId>org.jrobin</groupId>
+	<artifactId>jrobin</artifactId>
+	<version>1.5.9</version>
+</dependency>
 
     <dependency>
       <groupId>org.slf4j</groupId>
