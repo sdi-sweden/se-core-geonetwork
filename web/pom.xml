@@ -85,7 +85,7 @@
     </dependency>
 	
 <!-- LM added to monitor tomcat -->
-<!--<dependency>
+<dependency>
 	<groupId>net.bull.javamelody</groupId>
 	<artifactId>javamelody-core</artifactId>
 	<version>1.95.0</version>
@@ -99,7 +99,7 @@
 	<groupId>org.jrobin</groupId>
 	<artifactId>jrobin</artifactId>
 	<version>1.5.9</version>
-</dependency>-->
+</dependency>
 
     <dependency>
       <groupId>org.slf4j</groupId>

@@ -31,7 +31,7 @@
 
   <display-name>geonetwork</display-name>
 <!-- Tomcat resource monitoring -->
-<!-- <filter>
+<filter>
 	<filter-name>javamelody</filter-name>
 	<filter-class>net.bull.javamelody.MonitoringFilter</filter-class>
 	<async-supported>true</async-supported>
@@ -42,7 +42,7 @@
 </filter-mapping>
 <listener>
 	<listener-class>net.bull.javamelody.SessionListener</listener-class>
-</listener> -->
+</listener>
 
   <listener>
     <listener-class>jeeves.config.springutil.JeevesContextLoaderListener</listener-class>

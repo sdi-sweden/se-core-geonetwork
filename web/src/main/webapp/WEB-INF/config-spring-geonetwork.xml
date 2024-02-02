@@ -33,7 +33,7 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 ">
   <context:annotation-config/>
-<!--   <import resource="classpath:net/bull/javamelody/monitoring-spring.xml"/> -->
+  <import resource="classpath:net/bull/javamelody/monitoring-spring.xml"/>
   <import resource="config-spring-env.xml"/>
   <import resource="config-security/config-security.xml"/>
   <import resource="config-summary.xml"/>
