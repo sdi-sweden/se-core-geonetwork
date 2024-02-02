@@ -119,7 +119,6 @@ public class AtomServiceDescription implements Service {
 
         if (inspireAtomFeed == null) {
         	Log.debug(Geonet.ATOM, "About to extract serviceFeedUrl: md:" + md + "; schema:" + schema + "; atomProtocol:" + atomProtocol);
-            
         	String serviceFeedUrl;
 			try {
 				serviceFeedUrl = InspireAtomUtil.extractAtomFeedUrl(schema, md, dm, atomProtocol);
