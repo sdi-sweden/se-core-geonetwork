@@ -118,7 +118,15 @@ public class AtomServiceDescription implements Service {
         InspireAtomFeed inspireAtomFeed = service.findByMetadataId(Integer.parseInt(id));
 
         if (inspireAtomFeed == null) {
-            String serviceFeedUrl = InspireAtomUtil.extractAtomFeedUrl(schema, md, dm, atomProtocol);
+        	Log.debug(Geonet.ATOM, "About to extract serviceFeedUrl: md:" + md + "; schema:" + schema + "; atomProtocol:" + atomProtocol);
+            
+        	String serviceFeedUrl;
+			try {
+				serviceFeedUrl = InspireAtomUtil.extractAtomFeedUrl(schema, md, dm, atomProtocol);
+			} catch (Exception e) {
+				Log.debug(Geonet.ATOM, "Unable to parse service metadata for Atom service with uuid:" + fileIdentifier);
+				throw new ResourceNotFoundEx("Unable to parse service metadata for Atom service with uuid:" + fileIdentifier);
+			}
 
             if (StringUtils.isEmpty(serviceFeedUrl)) {
             	Log.debug(Geonet.ATOM, "No atom feed for service metadata found with uuid:" + fileIdentifier);
