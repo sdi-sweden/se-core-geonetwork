@@ -21,7 +21,11 @@
 		<skos:prefLabel xml:lang="sv">Geodatasamverkan</skos:prefLabel>
 		<skos:inScheme rdf:resource="https://resources.geodata.se/codelist/metadata/initiativ.xml"/>
 	</skos:Concept>
-	
+
+	<skos:Concept rdf:about="https://resources.geodata.se/codelist/metadata/initiativ.xml#hvd">
+		<skos:prefLabel xml:lang="sv">HVD</skos:prefLabel>
+		<skos:inScheme rdf:resource="https://resources.geodata.se/codelist/metadata/initiativ.xml"/>
+	</skos:Concept>	
 	
 	<skos:Concept rdf:about="https://resources.geodata.se/codelist/metadata/initiativ.xml#oppnadata">
 		<skos:prefLabel xml:lang="sv">Öppna data</skos:prefLabel>
