@@ -107,6 +107,7 @@
         <xsl:when test="$thesaurusTitle = 'Tjänsteklassificering'">Tjänsteklassificering</xsl:when>
         <xsl:when test="$thesaurusTitle = 'Geografisk utsträckning'">GeografiskUtsträckning</xsl:when>
         <xsl:when test="$thesaurusTitle = 'Uppgifter från det integrerade administrations- och kontrollsystemet'">IACSData</xsl:when>
+        <xsl:when test="$thesaurusTitle = 'theme.hvd-category.rdf'">HVD Kategori</xsl:when>
         <xsl:otherwise><xsl:value-of select="name()" /></xsl:otherwise>
       </xsl:choose>
     </xsl:variable>

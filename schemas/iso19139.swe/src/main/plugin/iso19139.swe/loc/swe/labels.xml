@@ -1071,7 +1071,11 @@ bearbetningens genomförande</description>
     <element id="33.0" name="IACSData">
       <label>Uppgifter från det integrerade administrations- och kontrollsystemet</label>
       <description>IACS Data - Uppgifter från det integrerade administrations- och kontrollsystemet</description>
-    </element>        
+    </element>
+    <element id="33.0" name="hvdcategory">
+      <label>HVD Kategorier</label>
+      <description>HVD Kategorier</description>
+    </element>              
     <!-- Custom thesaurus labels -->
 
     <element id="258.0" name="gmd:descriptor">
