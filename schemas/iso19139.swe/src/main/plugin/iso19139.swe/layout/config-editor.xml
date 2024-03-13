@@ -763,7 +763,7 @@
                     <gmd:thesaurusName>
                       <gmd:CI_Citation>
                         <gmd:title>
-                          <gmx:Anchor xlink:href="http://publications.europa.eu/resource/dataset/data-theme" >HVD Data theme</gmx:Anchor>
+                          <gmx:Anchor xlink:href="http://publications.europa.eu/resource/authority/data-theme" >HVD Data theme</gmx:Anchor>
                         </gmd:title>
                         <gmd:date>
                           <gmd:CI_Date>
