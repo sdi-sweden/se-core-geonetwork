@@ -724,7 +724,7 @@
                         <gmd:identifier>
                           <gmd:MD_Identifier>
                             <gmd:code>
-                              <gmx:Anchor xlink:href="http://localhost:8080/geonetwork/srv/eng/thesaurus.download?ref=external.theme.theme.hvd-category">geonetwork.thesaurus.external.theme.theme.hvd-category</gmx:Anchor>
+                              <gmx:Anchor xlink:href="http://localhost:8080/geonetwork/srv/eng/thesaurus.download?ref=external.theme.hvd-catagories-skos">geonetwork.thesaurus.external.theme.hvd-catagories-skos</gmx:Anchor>
                             </gmd:code>
                           </gmd:MD_Identifier>
                         </gmd:identifier>
@@ -736,7 +736,7 @@
             </template>
           </action>
 
-          <!-- Dataset INSPIRE Themes -->
+          <!-- Dataset - HVD Category -->
           <field
                   xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:descriptiveKeywords
             [contains(gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[1], 'HVD Kategori')]"/>
@@ -779,7 +779,7 @@
                           <gmd:MD_Identifier>
                             <gmd:code>
                               <gmx:Anchor xmlns:gmx="http://www.isotc211.org/2005/gmx"
-                                          xlink:href="http://localhost:8080/geonetwork/srv/swe/thesaurus.download?ref=external.theme.theme.hvd-category">geonetwork.thesaurus.external.theme.theme.hvd-category</gmx:Anchor>
+                                          xlink:href="http://localhost:8080/geonetwork/srv/swe/thesaurus.download?ref=external.theme.hvd-catagories-skos">geonetwork.thesaurus.external.theme.hvd-catagories-skos</gmx:Anchor>
                             </gmd:code>
                           </gmd:MD_Identifier>
                         </gmd:identifier>
