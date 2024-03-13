@@ -8,12 +8,12 @@
          xmlns:dc="http://purl.org/dc/elements/1.1/"
          xml:base="http://publications.europa.eu/resource/authority/data-theme">
    <skos:ConceptScheme rdf:about="http://publications.europa.eu/resource/authority/data-theme"
-                       at:table.id="data-theme"
+                       at:table.id="hvd-data-theme"
                        at:table.version.number="20220715-0">
-      <at:prefLabel xml:lang="en">Data theme</at:prefLabel>
-      <rdfs:label xml:lang="en">Data theme</rdfs:label>
+      <at:prefLabel xml:lang="en">HVD Data theme</at:prefLabel>
+      <rdfs:label xml:lang="en">HVD Data theme</rdfs:label>
       <owl:versionInfo>20220715-0</owl:versionInfo>
-      <skos:prefLabel xml:lang="en">Data theme</skos:prefLabel>
+      <skos:prefLabel xml:lang="en">HVD Data theme</skos:prefLabel>
    </skos:ConceptScheme>
    <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/AGRI"
                  at:deprecated="false">
