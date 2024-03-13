@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+  <skos:ConceptScheme xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://data.europa.eu/bna/asd487ae75">
+    <!-- <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="en">High-value dataset categories</dc:title> -->
+    <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="sv">HVD Kategorier</dc:title>
+    <dcterms:issued xmlns:dcterms="http://purl.org/dc/terms/">2023-09-27</dcterms:issued>
+    <dcterms:modified xmlns:dcterms="http://purl.org/dc/terms/">2023-09-07</dcterms:modified>
+  </skos:ConceptScheme>
+  
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://data.europa.eu/bna/c_164e0bf5">
+    <skos:prefLabel xml:lang="sv">Meteorologiska data</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Meteorological</skos:prefLabel>
+    <skos:definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 5</skos:definition>
+    <skos:inScheme rdf:resource="http://data.europa.eu/bna/c_164e0bf5" />
+    <skos:topConceptOf rdf:resource="http://data.europa.eu/bna/asd487ae75"/>
+  </skos:Concept>
+
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://data.europa.eu/bna/c_a9135398">
+    <skos:prefLabel xml:lang="sv">Företag och företagsägande</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Companies and company ownership</skos:prefLabel>    
+    <skos:definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 5</skos:definition>    
+    <skos:inScheme rdf:resource="http://data.europa.eu/bna/c_a9135398" />
+    <skos:topConceptOf rdf:resource="http://data.europa.eu/bna/asd487ae75"/>
+  </skos:Concept>
+ 
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://data.europa.eu/bna/c_ac64a52d">
+    <skos:prefLabel xml:lang="sv">Geospatiala data</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Geospatial</skos:prefLabel>    
+    <skos:definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 5</skos:definition>    
+    <skos:inScheme rdf:resource="http://data.europa.eu/bna/c_ac64a52d" />
+    <skos:topConceptOf rdf:resource="http://data.europa.eu/bna/asd487ae75"/>
+  </skos:Concept>
+  
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://data.europa.eu/bna/c_b79e35eb">
+    <skos:prefLabel xml:lang="sv">Rörlighet</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Mobility</skos:prefLabel>    
+    <skos:definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 5</skos:definition>    
+    <skos:inScheme rdf:resource="http://data.europa.eu/bna/c_b79e35eb" />
+    <skos:topConceptOf rdf:resource="http://data.europa.eu/bna/asd487ae75"/>
+  </skos:Concept>
+
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://data.europa.eu/bna/c_dd313021">
+    <skos:prefLabel xml:lang="sv">Jordobservation och miljö</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Earth observation and environment</skos:prefLabel>    
+    <skos:definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 5</skos:definition>    
+    <skos:inScheme rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <skos:topConceptOf rdf:resource="http://data.europa.eu/bna/asd487ae75"/>
+  </skos:Concept>
+
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://data.europa.eu/bna/c_e1da4e07">
+    <skos:prefLabel xml:lang="sv">Statistik</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Statistics</skos:prefLabel>    
+    <skos:definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 5</skos:definition>    
+    <skos:inScheme rdf:resource="http://data.europa.eu/bna/c_e1da4e07" />
+    <skos:topConceptOf rdf:resource="http://data.europa.eu/bna/asd487ae75"/>
+  </skos:Concept>  
+  
+</rdf:RDF>
+  
