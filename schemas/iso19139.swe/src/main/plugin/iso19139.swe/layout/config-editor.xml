@@ -740,7 +740,7 @@
           <!-- HVD DCAT Data themes -->
           <field
                   xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:descriptiveKeywords
-            [gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[1]/text() = 'HVD DCAT Data theme']"/>
+            [gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[1]/text() = 'HVD DCAT Data Temer']"/>
           <!-- FIXME: MUST be provided in template and thesaurus available in the catalog, to be displayed properly -->
           <action type="add"
                   btnLabel="addHvdTheme"
@@ -748,7 +748,7 @@
                   or="descriptiveKeywords"
                   in="/gmd:MD_Metadata/gmd:identificationInfo/*"
                   if="count(gmd:MD_Metadata/gmd:identificationInfo/*/gmd:descriptiveKeywords[
-                          gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[1]/text() ='HVD DCAT Data theme']) = 0">
+                          gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[1]/text() ='HVD DCAT Data Temer']) = 0">
             <template>
               <snippet>
                 <gmd:descriptiveKeywords>
@@ -763,7 +763,7 @@
                     <gmd:thesaurusName>
                       <gmd:CI_Citation>
                         <gmd:title>
-                          <gmx:Anchor xlink:href="http://publications.europa.eu/resource/authority/data-theme" >HVD DCAT Data theme</gmx:Anchor>
+                          <gmx:Anchor xlink:href="http://publications.europa.eu/resource/authority/data-theme">HVD DCAT Data Temer</gmx:Anchor>
                         </gmd:title>
                         <gmd:date>
                           <gmd:CI_Date>
