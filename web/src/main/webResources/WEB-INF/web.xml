@@ -31,11 +31,17 @@
 
   <display-name>geonetwork</display-name>
 <!-- Tomcat resource monitoring -->
+<!-- 
 <filter>
 	<filter-name>javamelody</filter-name>
 	<filter-class>net.bull.javamelody.MonitoringFilter</filter-class>
-	<async-supported>true</async-supported>
-</filter>
+	<async-supported>true</async-supported>  -->
+<!-- restrict access to LM internal network -->
+<!-- <init-param>
+       <param-name>allowed-addr-pattern</param-name>
+       <param-value>143\.237\..*</param-value>
+    </init-param> -->
+<!-- </filter>
 <filter-mapping>
 	<filter-name>javamelody</filter-name>
 	<url-pattern>/monitoring</url-pattern>
@@ -43,7 +49,7 @@
 <listener>
 	<listener-class>net.bull.javamelody.SessionListener</listener-class>
 </listener>
-
+  -->
   <listener>
     <listener-class>jeeves.config.springutil.JeevesContextLoaderListener</listener-class>
   </listener>
