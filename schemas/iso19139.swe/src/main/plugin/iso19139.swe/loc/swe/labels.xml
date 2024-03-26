@@ -1075,6 +1075,10 @@ bearbetningens genomförande</description>
     <element id="33.0" name="hvdcategory">
       <label>HVD Kategorier</label>
       <description>HVD Kategorier</description>
+    </element> 
+    <element id="33.0" name="hvddatatheme">
+      <label>HVD DCAT Kategorier</label>
+      <description>HVD DCAT Kategorier</description>
     </element>              
     <!-- Custom thesaurus labels -->
 
