@@ -877,7 +877,7 @@
 					</xsl:if>
 
 					<!-- SWE customisation -->
-          <xsl:if test="lower-case($protocol) = 'http:ogc:wfs' or starts-with(lower-case($protocol), 'http:nedladdning')">
+          <xsl:if test="lower-case($protocol) = 'http:ogc:wfs' or lower-case($protocol) = 'http:ogc:api-features' or starts-with(lower-case($protocol), 'http:nedladdning')">
 						<Field name="download" string="true" store="false" index="true"/>
 					</xsl:if>
 

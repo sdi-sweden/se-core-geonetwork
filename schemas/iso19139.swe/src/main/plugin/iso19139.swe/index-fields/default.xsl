@@ -546,6 +546,10 @@
 <!-- 				   	<xsl:message>iso19139 ODHarvest=false for RAÄ <xsl:value-of select="$orgNameOwner" /> </xsl:message> -->
 					<Field name="ODHarvest" string="false" store="true" index="true"/>
 				  </xsl:when>				  
+<!--				  <xsl:when test="starts-with(lower-case($orgNameOwner), 'havs- och vattenmyndigheten')"> -->
+<!-- 				   	<xsl:message>iso19139 ODHarvest=false for RAÄ <xsl:value-of select="$orgNameOwner" /> </xsl:message> -->
+<!--					<Field name="ODHarvest" string="false" store="true" index="true"/> -->
+<!--				  </xsl:when> -->
 				  <xsl:otherwise>
 <!-- 				   	<xsl:message>iso19139 ODHarvest=true<xsl:value-of select="$orgNameOwner" /> </xsl:message> -->
 					<Field name="ODHarvest" string="true" store="true" index="true"/>
@@ -865,7 +869,7 @@
 					</xsl:if>
 
 					<!-- SWE customisation -->
-					<xsl:if test="lower-case($protocol) = 'http:ogc:wfs' or starts-with(lower-case($protocol), 'http:nedladdning')">
+					<xsl:if test="lower-case($protocol) = 'http:ogc:wfs' or lower-case($protocol), 'http:ogc:api-features' or starts-with(lower-case($protocol), 'http:nedladdning')">
 						<Field name="download" string="true" store="false" index="true"/>
 					</xsl:if>
 

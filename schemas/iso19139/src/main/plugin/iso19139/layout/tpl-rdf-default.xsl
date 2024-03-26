@@ -245,7 +245,7 @@
               <xsl:when test="gmd:protocol/gco:CharacterString = 'HTTP:Nedladdning:Atom'">
                 <xsl:value-of select="'ATOM'"/>
               </xsl:when>
-              <xsl:when test="gmd:protocol/gco:CharacterString = 'HTTP:Nedladdning:Features'">
+              <xsl:when test="gmd:protocol/gco:CharacterString = 'HTTP:OGC:API-Features'">
                 <xsl:value-of select="'Nedladdning'"/>
               </xsl:when>              
               <xsl:when test="gmd:protocol/gco:CharacterString = 'HTTP:Information:Produktspecifikation'">
@@ -686,7 +686,7 @@
                 <xsl:when test="gmd:protocol/gco:CharacterString = 'HTTP:Nedladdning:Atom'">
                   <xsl:value-of select="'ATOM'"/>
                 </xsl:when>
-                <xsl:when test="gmd:protocol/gco:CharacterString = 'HTTP:Nedladdning:Features'">
+                <xsl:when test="gmd:protocol/gco:CharacterString = 'HTTP:OGC:API-Features'">
                   <xsl:value-of select="'Nedladdning'"/>
                 </xsl:when>
                 <xsl:otherwise>

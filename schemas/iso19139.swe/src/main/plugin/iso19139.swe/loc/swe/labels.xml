@@ -2166,7 +2166,7 @@ varit delaktiga i bearbetningen</description>
 			<option show="y" value="HTTP:OGC:WFS">HTTP:OGC:WFS för WFS-tjänster</option>
 			<option show="y" value="HTTP:Nedladdning">HTTP:Nedladdning för nedladdning, t ex ftp</option>
 			<option show="y" value="HTTP:Nedladdning:Atom">HTTP:Nedladdning:Atom för ATOM-tjänster</option>
-			<option show="y" value="HTTP:Nedladdning:Features">HTTP:Nedladdning:Features för OGC API Features tjänster</option>
+			<option show="y" value="HTTP:OGC:API-Features">HTTP:OGC:API-Features för OGC API Features tjänster</option>
 			<option show="y" value="HTTP:Information">HTTP:Information för webbsidor</option>
 			<option show="y" value="HTTP:Information:Produktspecifikation">HTTP:Information:Produktspecifikation för länk till produktspecifikation</option>
 		</helper>
@@ -2848,6 +2848,7 @@ Detta undvikar vi att ange.</description>
 			<option value="ogc:wms">OGC Web Map Service (OGC:WMS), används för "icke-INSPIRE" WMS:er.</option>
 			<option value="ogc:wfs">OGC Web Feature Service (OGC:WFS), används för "icke-INSPIRE" WFS:er</option>
 			<option value="ogc:wcs">OGC Web Coverage Service (OGC:WCS)</option>
+			<option value="ogc:api-features">OGC API-Features (OGC:API-FEATURES, används för "icke-INSPIRE" API-FEATURES:er)</option>
 <!-- 			<option value="W3C:HTML:LINK">Information (W3C:HTML:LINK)</option>  -->
             <!-- INSPIRE Service type defined in MD IR / 1.3.1 Spatial data service type
             <option value="discovery">Discovery Service (discovery)</option>

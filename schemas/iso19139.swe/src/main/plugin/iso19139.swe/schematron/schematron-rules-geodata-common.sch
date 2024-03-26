@@ -395,7 +395,7 @@ USA.
 				gmd:protocol/*/text() = 'HTTP:Nedladdning:Atom' or
 				gmd:protocol/*/text() = 'HTTP:Nedladdning:GUI' or
 				gmd:protocol/*/text() = 'HTTP:Nedladdning:API' or
-				gmd:protocol/*/text() = 'HTTP:Nedladdning:Features' or				
+				gmd:protocol/*/text() = 'HTTP:OGC:API-Features' or				
 				gmd:protocol/*/text() = 'HTTP:Information' or
 				gmd:protocol/*/text() = 'HTTP:Information:Produktspecifikation'" />
 

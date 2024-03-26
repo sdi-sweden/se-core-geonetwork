@@ -6234,7 +6234,7 @@
 								<xsl:when test="normalize-space($protocol) = 'HTTP:Information'">Informationssida</xsl:when>
 								<xsl:when test="normalize-space($protocol) = 'HTTP:Nedladdning'">Nedladdningslänk</xsl:when>
 								<xsl:when test="normalize-space($protocol) = 'HTTP:Nedladdning:ATOM'">Nedladdningslänk (ATOM)</xsl:when>
-								<xsl:when test="normalize-space($protocol) = 'HTTP:Nedladdning:Features'">Nedladdningslänk (OGC API Features)</xsl:when>
+								<xsl:when test="normalize-space($protocol) = 'HTTP:OGC:API-Features'">Nedladdningslänk (OGC API Features)</xsl:when>
 								<xsl:otherwise>
 									<xsl:value-of select="$protocol"/>
 								</xsl:otherwise>
