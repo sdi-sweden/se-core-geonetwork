@@ -450,6 +450,9 @@
                   <xsl:if test="$keywordLower='öppna data'">
                     <Field name="oppnadatainitiativ" string="true" store="false" index="true"/>
                   </xsl:if>
+                  <xsl:if test="$keywordLower='hvd'">
+                    <Field name="hvdinitiativ" string="true" store="false" index="true"/>
+                  </xsl:if>
                 </xsl:if>
 							</xsl:for-each>
 						</xsl:if>
@@ -547,7 +550,7 @@
 					<Field name="ODHarvest" string="false" store="true" index="true"/>
 				  </xsl:when>				  
 <!--				  <xsl:when test="starts-with(lower-case($orgNameOwner), 'havs- och vattenmyndigheten')"> -->
-<!-- 				   	<xsl:message>iso19139 ODHarvest=false for RAÄ <xsl:value-of select="$orgNameOwner" /> </xsl:message> -->
+<!-- 				   	<xsl:message>iso19139 ODHarvest=false for HoV <xsl:value-of select="$orgNameOwner" /> </xsl:message> -->
 <!--					<Field name="ODHarvest" string="false" store="true" index="true"/> -->
 <!--				  </xsl:when> -->
 				  <xsl:otherwise>

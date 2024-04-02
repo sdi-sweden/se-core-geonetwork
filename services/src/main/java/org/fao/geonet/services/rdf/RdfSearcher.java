@@ -67,7 +67,8 @@ public class RdfSearcher {
         if (StringUtils.isNotEmpty(initiativKeyword)) {
             searchRequest.addContent(new Element("initiativKeyword").setText(initiativKeyword));
         }
-
+// harcode search for intitiativ = HVD, for now
+        searchRequest.addContent(new Element("initiativKeyword").setText("HVD"));
         searchRequest.addContent(new Element("ODHarvest").setText("true"));
 
         organisation = Util.getParam(params, "orgName", "");
