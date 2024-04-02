@@ -150,6 +150,7 @@
   <http_information>Informationssida</http_information>
   <http_nedladdning>Nedladdningslänk</http_nedladdning>
   <http_nedladdning_atom>Nedladdningslänk (ATOM)</http_nedladdning_atom>
+  <http_ogc_api-features>Nedladdningslänk (OGC API Features)</http_ogc_api-features>
   <roleLabel>Ansvarsområde</roleLabel>
   <otherConstraints>Andra restriktioner</otherConstraints>
   <scales>Rumslig upplösning</scales>
