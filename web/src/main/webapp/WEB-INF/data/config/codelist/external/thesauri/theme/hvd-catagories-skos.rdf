@@ -3,7 +3,7 @@
 
   <skos:ConceptScheme xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://data.europa.eu/bna/asd487ae75">
     <!-- <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="en">High-value dataset categories</dc:title> -->
-    <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="sv">HVD Kategorier</dc:title>
+    <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="sv">Kategori för värdefulla datamängder</dc:title>
     <dcterms:issued xmlns:dcterms="http://purl.org/dc/terms/">2023-09-27</dcterms:issued>
     <dcterms:modified xmlns:dcterms="http://purl.org/dc/terms/">2023-09-07</dcterms:modified>
   </skos:ConceptScheme>

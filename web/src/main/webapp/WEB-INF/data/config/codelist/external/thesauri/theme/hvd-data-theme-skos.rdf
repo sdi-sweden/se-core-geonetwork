@@ -10,7 +10,7 @@
    
   <skos:ConceptScheme xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://publications.europa.eu/resource/authority/data-theme">
     <!-- <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="en">HVD Data theme</dc:title> -->
-    <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="sv">HVD DCAT Kategorier</dc:title>
+    <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="sv">Kategori enligt DCAT-AP</dc:title>
     <dcterms:issued xmlns:dcterms="http://purl.org/dc/terms/">2023-09-27</dcterms:issued>
     <dcterms:modified xmlns:dcterms="http://purl.org/dc/terms/">2023-09-07</dcterms:modified>
   </skos:ConceptScheme>
