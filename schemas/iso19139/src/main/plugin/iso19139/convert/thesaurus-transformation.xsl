@@ -274,8 +274,8 @@
               <xsl:when test="$thesauri/thesaurus[key = $currentThesaurus]/title = 'Uppgifter från det integrerade administrations- och kontrollsystemet'">
                 <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/IACSData">Uppgifter från det integrerade administrations- och kontrollsystemet</gmx:Anchor>
               </xsl:when>
-              <xsl:when test="$thesauri/thesaurus[key = $currentThesaurus]/title = 'HVD Kategori'">
-                <gmx:Anchor xlink:href="http://publications.europa.eu/resource/dataset/high-value-dataset-category">HVD Kategori</gmx:Anchor>
+              <xsl:when test="$thesauri/thesaurus[key = $currentThesaurus]/title = 'Kategori för värdefulla datamängder'">
+                <gmx:Anchor xlink:href="http://publications.europa.eu/resource/dataset/high-value-dataset-category">Kategori för värdefulla datamängder</gmx:Anchor>
               </xsl:when>              
               <xsl:otherwise>
                 <gco:CharacterString>

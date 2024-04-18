@@ -170,8 +170,8 @@
 
   <addInspireTheme>Lägg till Inspire Tema</addInspireTheme>
   <addIACSData>Lägg till IACS Data Tema</addIACSData>
-  <addHvdCategory>Lägg till HVD Kategorier</addHvdCategory>
-  <addHvdTheme>Lägg till HVD DCAT Kategorier</addHvdTheme>
+  <addHvdCategory>Lägg till Kategori för värdefulla datamängder</addHvdCategory>
+  <addHvdTheme>Lägg till Kategori enligt DCAT-AP</addHvdTheme>
   <accessConstraintsBtn>Åtkomstrestriktioner</accessConstraintsBtn>
   <legalConstraintsBtn>Legal constraints</legalConstraintsBtn>
   <UseRestrictionsBtn>Nyttjanderestriktioner</UseRestrictionsBtn>

@@ -1073,12 +1073,12 @@ bearbetningens genomförande</description>
       <description>IACS Data - Uppgifter från det integrerade administrations- och kontrollsystemet</description>
     </element>
     <element id="33.0" name="hvdcategory">
-      <label>HVD Kategorier</label>
-      <description>HVD Kategorier</description>
+      <label>Kategori för värdefulla datamängder</label>
+      <description>Kategori för värdefulla datamängder</description>
     </element> 
     <element id="33.0" name="hvddatatheme">
-      <label>HVD DCAT Kategorier</label>
-      <description>HVD DCAT Kategorier</description>
+      <label>Kategori enligt DCAT-AP</label>
+      <description>Kategori enligt DCAT-AP</description>
     </element>              
     <!-- Custom thesaurus labels -->
 
