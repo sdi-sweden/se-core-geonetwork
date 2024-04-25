@@ -49,44 +49,6 @@ USA.
   <sch:ns prefix="geonet" uri="http://www.fao.org/geonetwork"/>
   <sch:ns prefix="skos" uri="http://www.w3.org/2004/02/skos/core#"/>
   <sch:ns prefix="xlink" uri="http://www.w3.org/1999/xlink"/>
-  <!-- INSPIRE metadata rules / START -->
-  <!-- ############################################ -->
-
-
-  <!-- INSPIRE metadata rules / END -->
-
-  <!-- Kontroller för Geodata.se -->
-  <!-- Kontrollera att fileidentifier finns med-->
-
-  <!-- ========================================================================================== -->
-  <!-- Abstract Patterns                                                                          -->
-  <!-- ========================================================================================== -->
-
-  <!-- Test that an element has a value or has a valid nilReason value -->
-  <!-- <sch:pattern abstract="true" id="TypeNillablePattern">
-    <sch:rule context="$context">
-      <sch:assert test="(string-length(.) &gt; 0) or
-        (@gco:nilReason = 'inapplicable' or
-        @gco:nilReason = 'missing' or
-        @gco:nilReason = 'template' or
-        @gco:nilReason = 'unknown' or
-        @gco:nilReason = 'withheld' or
-        starts-with(@gco:nilReason, 'other:'))">
-        Elementet <sch:name/> måste ha ett värde eller giltigt NIL-värde.
-      </sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  -->
-  <!-- Test that an element has a value - the value is not nillable -->
-  <!--
-  <sch:pattern abstract="true" id="TypeNotNillablePattern">
-    <sch:rule context="$context">
-      <sch:assert test="string-length(.) &gt; 0 and count(./@gco:nilReason) = 0">
-        The <sch:name/> element is not nillable and shall have a value.
-      </sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  -->
 
 	<sch:pattern fpi="[Geodata.se:106f] OM resursen ingår i HVD är nyckelord obligatoriskt med ett värde ur nyckelordslexikonet Kategori för värdefulla datamängder">
 		<sch:title>[Geodata.se:106f] OM resursen ingår i HVD är nyckelord obligatoriskt med ett värde ur nyckelordslexikonet Kategori för värdefulla datamängder</sch:title>
@@ -108,9 +70,6 @@ USA.
       >[Geodata.se:106f] OM resursen ingår i HVD är nyckelord obligatoriskt med ett värde ur nyckelordslexikonet Kategori för värdefulla datamängder
       </sch:assert>
 
- 	  <sch:report test="$hvd-kategori-found > 0">
-          <sch:value-of select="$hvd-kategori-found"/> report <sch:value-of select="$keyword" /> 
-      </sch:report>
  	  <sch:report test="$hvd-kategori-found > 0">
           <sch:value-of select="$hvd-kategori-found"/> report <sch:value-of select="$keyword" /> 
       </sch:report> 
