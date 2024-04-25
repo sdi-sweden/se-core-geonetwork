@@ -24,11 +24,11 @@
 
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron"
             xmlns:xsl="http://www.w3.org/1999/XSL/Transform" queryBinding="xslt2">
-  <!--Detta skript är
+	<!--Detta skript är
   ursprungligen skrivet för CSIRO i Australien av Simon Pigot 2007 men är anpassat för den Svenska
   metadata-profilen Schematronvalidering av Nationell metadataprofil version 3.1.1 Geodataportalen
   Michael Östling 2013-->
-  <!--
+	<!--
 This work is licensed under the Creative Commons Attribution 2.5 License.
 To view a copy of this license, visit
     http://creativecommons.org/licenses/by/2.5/au/
@@ -41,7 +41,7 @@ San Francisco, California, 94105,
 USA.
 
 -->
-    <sch:title xmlns="http://www.w3.org/2001/XMLSchema"> Minimumkrav för värdefulla datamängder (HVD)</sch:title>>
+	<sch:title xmlns="http://www.w3.org/2001/XMLSchema">Minimumkrav för Kategori för värdefulla datamängder (iso19139.swe)</sch:title>
 	<sch:ns prefix="gml" uri="http://www.opengis.net/gml"/>
 	<sch:ns prefix="gmd" uri="http://www.isotc211.org/2005/gmd"/>
 	<sch:ns prefix="srv" uri="http://www.isotc211.org/2005/srv"/>
@@ -51,38 +51,38 @@ USA.
 	<sch:ns prefix="skos" uri="http://www.w3.org/2004/02/skos/core#"/>
 	<sch:ns prefix="rdf" uri="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
 	<sch:ns prefix="xlink" uri="http://www.w3.org/1999/xlink"/>
-	<!-- HVD metadata rules / START -->
+	<!-- High Value Datasets metadata rules / START -->
 	<!-- ############################################ -->
 
-
-	<sch:pattern fpi="[Geodata.se:106f] OM resursen ingår i HVD är nyckelord obligatoriskt med ett värde ur nyckelordslexikonet Kategori för värdefulla datamängder">
-		<sch:title>[Geodata.se:106f] OM resursen ingår i HVD är nyckelord obligatoriskt med ett värde ur nyckelordslexikonet Kategori för värdefulla datamängder</sch:title>
+	<sch:pattern fpi="[Geodata.se:106g]  OM resursen ingår i HVD är nyckelord obligatoriskt med ett värde ur nyckelordslexikonet Kategori för värdefulla datamängder">
+		<sch:title>[Geodata.se:106g] OM resursen ingår i HVD initiativ är nyckelord obligatoriskt med ett värde ur nyckelordslexikonet Kategori för värdefulla datamängder</sch:title>
 		<sch:rule context="//gmd:MD_DataIdentification|
 			//*[@gco:isoType='gmd:MD_DataIdentification']|
 			//srv:SV_ServiceIdentification|
 			//*[@gco:isoType='srv:SV_ServiceIdentification']">
-			<sch:let name="keywordValue_HVD"       value="//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='HVD'"/>
-			<sch:let name="hvd-kategori-thesaurus" value="document('../../../../config/codelist/external/thesauri/theme/hvd-catagories-skos.rdf')"/>
-			<sch:let name="hvd-kategorier"         value="$hvd-thesaurus//skos:Concept"/>
-			<!-- Visa fel om inte HVD Kategori Thesaurs visas. -->
-			<sch:assert test="count($hvd-kategorier) > 0"> Kategori för värdefulla datamängder saknas. Installationen är ej korrekt filen </sch:assert>
+			<sch:let name="keywordValue_HVD"
+               value="//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='HVD'"/>
+			<sch:let name="hvd-thesaurus" value="document('../../../../config/codelist/external/thesauri/theme/hvd-catagories-skos.rdf')"/>
+			<sch:let name="hvd-theme" value="$hvd-thesaurus//skos:Concept"/>
+			<!-- Visa fel om inte Inspire Thesaurs visas. -->
+			<sch:assert test="count($hvd-theme) > 0"> Kategori för värdefulla datamängder thesaurus saknas. Installationen är ej korrekt filen </sch:assert>
 			<sch:let name="keyword"
-                     value="//gmd:MD_Keywords[contains(gmd:thesaurusName/*/gmd:title/*/text(), 'Kategori för värdefulla datamängder')]/gmd:keyword/*/text()"/>
-			<sch:let name="hvd-kategori-found"
-                     value="count($hvd-kategori-thesaurus//skos:Concept[skos:prefLabel = $keyword])"/>
-			<sch:assert test="not($keywordValue_HVD) or $hvd-kategori-found > 0"
-      >[Geodata.se:106f] OM resursen ingår i HVD är nyckelord obligatoriskt med ett värde ur nyckelordslexikonet Kategori för värdefulla datamängder
-      </sch:assert>
+               value="//gmd:MD_Keywords[gmd:thesaurusName/*/gmd:title/*/text() = 'Kategori för värdefulla datamängder']/gmd:keyword/*/text()"/>
+			<sch:let name="hvd-theme-found"
+               value="count($hvd-thesaurus//skos:Concept[skos:prefLabel = $keyword])"/>
+			<sch:assert test="not($keywordValue_HVD) or $hvd-theme-found > 0"
+      >[Geodata.se:106g] Om resursen ingår i Värdefulla Datamängder är nyckelord obligatoriskt med ett värde ur nyckelordslexikonet Kategori för värdefulla datamängder</sch:assert>
 
- 	  <sch:report test="$hvd-kategori-found > 0">
-          <sch:value-of select="$hvd-kategori-found"/> report <sch:value-of select="$keyword" /> 
+ 	  <sch:report test="$hvd-theme-found > 0">
+          <sch:value-of select="$hvd-theme-found"/> report <sch:value-of select="$keyword" /> 
       </sch:report> 
 
 
 		</sch:rule>
 	</sch:pattern>
-	
-	<!-- HVD metadata rules / END -->
+
+
+	<!-- High Value Datasets metadata rules / END -->
 	<!-- Kontroller för Geodata.se -->
 	<!-- Kontrollera att fileidentifier finns med-->
 
@@ -115,4 +115,5 @@ USA.
     </sch:rule>
   </sch:pattern>
   -->
+
 </sch:schema>
