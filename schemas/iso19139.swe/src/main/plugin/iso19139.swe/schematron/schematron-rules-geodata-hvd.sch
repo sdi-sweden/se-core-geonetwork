@@ -97,20 +97,24 @@ USA.
 			<sch:let name="keywordValue_HVD"
                value="//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='HVD'"/>
 			<sch:let name="hvd-kategori-thesaurus" value="document('../../../../config/codelist/external/thesauri/theme/hvd-catagories-skos.rdf')"/>
-			<sch:let name="hvd-kategori" value="$hvd-thesaurus//skos:Concept"/>
+			<sch:let name="hvd-kategorier" value="$hvd-thesaurus//skos:Concept"/>
 			<!-- Visa fel om inte HVD Kategori Thesaurs visas. -->
-			<sch:assert test="count($hvd-kategori) > 0"> Kategori för värdefulla datamängder saknas. Installationen är ej korrekt filen </sch:assert>
+			<sch:assert test="count($hvd-kategorier) > 0"> Kategori för värdefulla datamängder saknas. Installationen är ej korrekt filen </sch:assert>
 			<sch:let name="keyword"
                value="//gmd:MD_Keywords[contains(gmd:thesaurusName/*/gmd:title/*/text(), 'Kategori för värdefulla datamängder')]/gmd:keyword/*/text()"/>
 			<sch:let name="hvd-kategori-found"
                value="count($hvd-kategori-thesaurus//skos:Concept[skos:prefLabel = $keyword])"/>
-			<sch:assert test="not($keywordValue_HVD) or $hvd-kategori-found > 0"
-      >[Geodata.se:106f] OM resursen ingår i HVD är nyckelord obligatoriskt med ett värde ur nyckelordslexikonet Kategori för värdefulla datamängder</sch:assert>
-<!--
- 	  <sch:report test="$inspire-theme-found > 0">
-          <sch:value-of select="$inspire-theme-found"/> report <sch:value-of select="$keyword" /> 
+			<sch:assert test="$hvd-kategori-found > 0"
+      >[Geodata.se:106f] OM resursen ingår i HVD är nyckelord obligatoriskt med ett värde ur nyckelordslexikonet Kategori för värdefulla datamängder
+      </sch:assert>
+
+ 	  <sch:report test="$hvd-kategori-found > 0">
+          <sch:value-of select="$hvd-kategori-found"/> report <sch:value-of select="$keyword" /> 
+      </sch:report>
+ 	  <sch:report test="$hvd-kategori-found > 0">
+          <sch:value-of select="$hvd-kategori-found"/> report <sch:value-of select="$keyword" /> 
       </sch:report> 
-      -->
+
 
 		</sch:rule>
 	</sch:pattern>
