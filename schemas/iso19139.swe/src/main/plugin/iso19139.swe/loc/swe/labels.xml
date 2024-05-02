@@ -1075,10 +1075,12 @@ bearbetningens genomförande</description>
     <element id="33.0" name="hvdcategory">
       <label>Kategori för värdefulla datamängder</label>
       <description>Kategori för värdefulla datamängder</description>
+      <condition>mandatory</condition>
     </element>
     <element id="33.0" name="Kategori för värdefulla datamängder">
       <label>Kategori för värdefulla datamängder</label>
       <description>Kategori för värdefulla datamängder - Observera att detta fält bara är obligatoriskt om Initiativ är satt till värdet ”HVD”</description>
+      <condition>mandatory</condition>
     </element>
     <element id="33.0" name="hvddatatheme">
       <label>Kategori enligt DCAT-AP</label>

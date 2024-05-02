@@ -691,7 +691,8 @@
                   name="hvdcategory"
                   or="descriptiveKeywords"
                   in="/gmd:MD_Metadata/gmd:identificationInfo/*"
-                  if="count(gmd:MD_Metadata/gmd:identificationInfo/*/gmd:descriptiveKeywords[
+                  if="//gmd:descriptiveKeywords/gmd:MD_Keywords[gmd:thesaurusName/*/gmd:title/*/text()='Initiativ']/gmd:keyword/*/text()='HVD' and 
+                     count(gmd:MD_Metadata/gmd:identificationInfo/*/gmd:descriptiveKeywords[
                           gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[1]/text() ='Kategori för värdefulla datamängder']) = 0">
             <template>
               <snippet>
@@ -747,7 +748,8 @@
                   name="hvddatatheme"
                   or="descriptiveKeywords"
                   in="/gmd:MD_Metadata/gmd:identificationInfo/*"
-                  if="count(gmd:MD_Metadata/gmd:identificationInfo/*/gmd:descriptiveKeywords[
+                  if="//gmd:descriptiveKeywords/gmd:MD_Keywords[gmd:thesaurusName/*/gmd:title/*/text()='Initiativ']/gmd:keyword/*/text()='HVD' and 
+                      count(gmd:MD_Metadata/gmd:identificationInfo/*/gmd:descriptiveKeywords[
                           gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[1]/text() ='Kategori enligt DCAT-AP']) = 0">
             <template>
               <snippet>
