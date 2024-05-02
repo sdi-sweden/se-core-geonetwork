@@ -276,6 +276,9 @@
               </xsl:when>
               <xsl:when test="$thesauri/thesaurus[key = $currentThesaurus]/title = 'Kategori för värdefulla datamängder'">
                 <gmx:Anchor xlink:href="http://publications.europa.eu/resource/dataset/high-value-dataset-category">Kategori för värdefulla datamängder</gmx:Anchor>
+              </xsl:when>
+              <xsl:when test="$thesauri/thesaurus[key = $currentThesaurus]/title = 'Kategori för värdefulla datamängder'">
+                <gmx:Anchor xlink:href="http://publications.europa.eu/resource/authority/data-theme">Kategori enligt DCAT-AP</gmx:Anchor>
               </xsl:when>              
               <xsl:otherwise>
                 <gco:CharacterString>
