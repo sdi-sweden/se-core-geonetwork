@@ -1053,7 +1053,8 @@ bearbetningens genomförande</description>
     <element id="33.0" name="InspireThemes">
       <label>GEMET - INSPIRE themes, version 1.0</label>
       <description>Nyckelord som beskriver ämnesområde eller liknande.
-        Dessa nyckelord används för att kategorisera och söka data.</description>
+        Dessa nyckelord används för att kategorisera och söka data.
+        Observera att detta fält bara är obligatoriskt om Initiativ är satt till värdet ”INSPIRE”</description>
     </element>
     <element id="33.0" name="Tjänsteklassificering">
       <label>Tjänsteklassificering</label>
@@ -2508,7 +2509,8 @@ i resursen</description>
     <element name="gmd:MD_TopicCategoryCode">
         <label>Ämnesområde</label>
         <description>Ämnesområden som beskriver huvudsakligt innehåll i resursen.
-		Ange minst ett (Miljö).</description>
+		Ange minst ett (t.ex. Miljö).</description>
+		<condition>mandatory</condition>
     </element>
     <element id="177.0" name="gmd:topologyLevel">
         <label>Topologi</label>

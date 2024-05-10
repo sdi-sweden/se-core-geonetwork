@@ -113,13 +113,21 @@
       </xsl:choose>
     </xsl:variable>
 
+    <xsl:variable name="condition" select="gn-fn-metadata:getLabel($schema, $tooltipName, $labels)/condition"/>
+    <xsl:variable name="customClass">
+      <xsl:choose>
+        <xsl:when test="$condition = 'mandatory'"><xsl:value-of select="local-name()"/> gn-required-a</xsl:when>
+        <xsl:otherwise><xsl:value-of select="local-name()"/></xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
     <xsl:call-template name="render-boxed-element">
       <xsl:with-param name="label"
                       select="if ($thesaurusTitle)
                 then $thesaurusTitle
                 else gn-fn-metadata:getLabel($schema, name(), $labels, name(..), $isoType, $xpath)/label"/>
       <xsl:with-param name="editInfo" select="gn:element"/>
-      <xsl:with-param name="cls" select="local-name()"/>
+      <xsl:with-param name="cls" select="$customClass"/>
       <xsl:with-param name="xpath" select="$xpath"/>
       <xsl:with-param name="attributesSnippet" select="$attributes"/>
       <xsl:with-param name="subTreeSnippet">
