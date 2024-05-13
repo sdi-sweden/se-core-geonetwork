@@ -2177,7 +2177,14 @@ varit delaktiga i bearbetningen</description>
 			<option show="y" value="HTTP:OGC:WFS">HTTP:OGC:WFS för WFS-tjänster</option>
 			<option show="y" value="HTTP:Nedladdning">HTTP:Nedladdning för nedladdning, t ex ftp</option>
 			<option show="y" value="HTTP:Nedladdning:Atom">HTTP:Nedladdning:Atom för ATOM-tjänster</option>
+			<option show="y" value="HTTP:Nedladdning:GUI">HTTP:Nedladdning:GUI för nedladdning tjänst GUI</option>
+			<option show="y" value="HTTP:Nedladdning:GUI">HTTP:Nedladdning:API för nedladdningsbara data via API</option>
 			<option show="y" value="HTTP:OGC:API-Features">HTTP:OGC:API-Features för OGC API Features tjänster</option>
+			<option show="y" value="HTTP:OGC:API-Map">HTTP:OGC:API-Map för OGC API Map tjänster</option>
+			<option show="y" value="HTTP:OGC:API-Coverages">HTTP:OGC:API-Coverage för OGC API Coverages tjänster</option>
+			<option show="y" value="HTTP:OGC:API-Records">HTTP:OGC:API-Records för OGC API Records tjänster</option>
+			<option show="y" value="HTTP:OGC:CSW">HTTP:OGC:API-CSW för CSW-tjänster</option>
+			<option show="y" value="HTTP:OGC:WCS">HTTP:OGC:WCS"s för WCS-tjänster</option>
 			<option show="y" value="HTTP:Information">HTTP:Information för webbsidor</option>
 			<option show="y" value="HTTP:Information:Produktspecifikation">HTTP:Information:Produktspecifikation för länk till produktspecifikation</option>
 		</helper>
