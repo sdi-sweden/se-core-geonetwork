@@ -877,7 +877,7 @@
 					</xsl:if>
 
 					<!-- SWE customisation -->
-					<xsl:if test="lower-case($protocol) = 'http:ogc:wms'">
+					<xsl:if test="lower-case($protocol) = 'http:ogc:wms' or lower-case($protocol) = 'http:ogc:api-maps'">
 						<Field name="dynamic" string="true" store="false" index="true"/>
 					</xsl:if>
 

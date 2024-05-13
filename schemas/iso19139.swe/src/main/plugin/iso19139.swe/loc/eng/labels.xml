@@ -1997,9 +1997,16 @@
 		<helper sort="true">
 			<option show="y" value="HTTP:OGC:WMS">HTTP:OGC:WMS</option>
 			<option show="y" value="HTTP:OGC:WFS">HTTP:OGC:WFS</option>
+			<option show="y" value="HTTP:OGC:WCS">HTTP:OGC:WCS</option>
 			<option show="y" value="HTTP:Nedladdning">HTTP:Nedladdning</option>
 			<option show="y" value="HTTP:Nedladdning:Atom">HTTP:Nedladdning:Atom</option>
+			<option show="y" value="HTTP:Nedladdning:API">HTTP:Nedladdning:API</option>
+			<option show="y" value="HTTP:Nedladdning:GUI">HTTP:Nedladdning:GUI</option>
+			<option show="y" value="HTTP:OGC:API-Maps">HTTP:OGC:API-Maps</option>
 			<option show="y" value="HTTP:OGC:API-Features">HTTP:OGC:API-Features</option>
+			<option show="y" value="HTTP:OGC:API-Coverages">HTTP:OGC:API-Coverages</option>
+			<option show="y" value="HTTP:OGC:API-Records">HTTP:OGC:API-Records</option>
+			<option show="y" value="HTTP:OGC:CSW">HTTP:OGC:CWS</option>
 			<option show="y" value="HTTP:Information">HTTP:Information</option>
 			<option show="y" value="HTTP:Information:Produktspecifikation">HTTP:Information:Produktspecifikation</option>
 		</helper>

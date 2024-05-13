@@ -390,12 +390,16 @@ USA.
       <sch:let name="protocolLen" value="string-length(gmd:protocol/*/text())"/>
       <sch:let name="protocolCorrect" value="gmd:protocol/*/text() = 'HTTP:OGC:WMS' or
 				gmd:protocol/*/text() = 'HTTP:OGC:WFS' or
-				gmd:protocol/*/text() = 'HTTP:OGC:WSC' or
+				gmd:protocol/*/text() = 'HTTP:OGC:WCS' or
 				gmd:protocol/*/text() = 'HTTP:Nedladdning' or
 				gmd:protocol/*/text() = 'HTTP:Nedladdning:Atom' or
 				gmd:protocol/*/text() = 'HTTP:Nedladdning:GUI' or
 				gmd:protocol/*/text() = 'HTTP:Nedladdning:API' or
-				gmd:protocol/*/text() = 'HTTP:OGC:API-Features' or				
+				gmd:protocol/*/text() = 'HTTP:OGC:API-Features' or
+				gmd:protocol/*/text() = 'HTTP:OGC:API-Maps' or
+				gmd:protocol/*/text() = 'HTTP:OGC:API-Coverages' or
+				gmd:protocol/*/text() = 'HTTP:OGC:API-Records' or
+				gmd:protocol/*/text() = 'HTTP:OGC:CSW' or				
 				gmd:protocol/*/text() = 'HTTP:Information' or
 				gmd:protocol/*/text() = 'HTTP:Information:Produktspecifikation'" />
 

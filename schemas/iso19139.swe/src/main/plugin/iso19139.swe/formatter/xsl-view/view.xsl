@@ -733,6 +733,9 @@
                 <xsl:when test="normalize-space($protocol) = 'HTTP:OGC:API-Features'">
                   <xsl:value-of select="gn-fn-render:get-schema-strings($schemaStrings, 'http_ogc_api-features')"/>
                 </xsl:when>
+                <xsl:when test="normalize-space($protocol) = 'HTTP:OGC:API-Maps'">
+                  <xsl:value-of select="gn-fn-render:get-schema-strings($schemaStrings, 'http_ogc_api-maps')"/>
+                </xsl:when>
                 <xsl:otherwise>
                   <xsl:value-of select="$protocol"/>
                 </xsl:otherwise>
