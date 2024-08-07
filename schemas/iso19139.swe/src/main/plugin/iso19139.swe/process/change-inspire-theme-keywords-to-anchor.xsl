@@ -62,7 +62,8 @@
     </xsl:copy>
   </xsl:template>
  -->
-  <xsl:template match="gmd:keyword[../gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'GEMET - INSPIRE themes, version 1.0']">
+  <xsl:template match="gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword[../gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'GEMET - INSPIRE themes, version 1.0']">
+    <xsl:message>found Inspire Theme descriptive Keyword</xsl:message>
     <xsl:copy copy-namespaces="no">
       <xsl:copy-of select="@*" />
 
