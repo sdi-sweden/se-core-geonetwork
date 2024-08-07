@@ -10,6 +10,12 @@
   ]
   },
   {
+  "key": "change-inspire-theme-keywords-to-anchor",
+  "type": "fixed-params",
+  "params": [
+  ]
+  },
+  {
   "key": "remove-transferoptions",
   "type": "fixed-params",
   "params": [
