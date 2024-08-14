@@ -82,7 +82,7 @@
       </init-param>
        <init-param>
           <param-name>allowed.hosts</param-name>
-          <param-value>www.geodata.se,ver.geodata.se,utv.geodata.se,api.geonames.org,www.sgugeolagret.se,apps.sgu.se,localhost,maps.lantmateriet.se,maps-ver.lantmateriet.se,api.lantmateriet.se,api-ver.lantmateriet.se,ext-geodatakatalog.lansstyrelsen.se,metadatakatalogen.naturvardsverket.se</param-value>
+          <param-value>www.geodata.se,ver.geodata.se,utv.geodata.se,api.geonames.org,www.sgugeolagret.se,apps.sgu.se,localhost,maps.lantmateriet.se,maps-ver.lantmateriet.se,api.lantmateriet.se,api-ver.lantmateriet.se,ext-geodatakatalog.lansstyrelsen.se,geodatakatalogen.naturvardsverket.se,opendata-catalog.smhi.se,metadata.havochvatten.se,</param-value>
       </init-param>
 
   </filter>
