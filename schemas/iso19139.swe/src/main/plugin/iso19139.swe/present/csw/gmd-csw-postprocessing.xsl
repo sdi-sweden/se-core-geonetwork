@@ -426,7 +426,7 @@
      		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/lu">Markanvändning</gmx:Anchor>
 		</xsl:when>
 		<xsl:otherwise>
-		    <gmx:Anchor xlink:href="{$keywordhref}">{$keywordValue}</gmx:Anchor>
+		    <gmx:Anchor xlink:href="{$keywordhref}"><xsl:value-of select="$keywordValue"/></gmx:Anchor>
 <!--           <xsl:copy copy-namespaces="no">
             <xsl:value-of select="." />
           </xsl:copy>		
