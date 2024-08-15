@@ -416,6 +416,8 @@
 
   <!-- change href URL in gmx:Anchor for IACS theme keywords  --> 
   <xsl:template match="gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'GEMET - INSPIRE themes, version 1.0']/gmd:MD_Keywords/gmd:keyword/gmx:Anchor[string(@xlink:href)]" priority="50">
+    <xsl:variable name="keywordValue" select= "./text()" />
+    <xsl:variable name="keywordhref" select= "./@xlink:href" />
     <xsl:choose>
 		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/11')">
      		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/lc">Landtäcke</gmx:Anchor>
@@ -424,10 +426,12 @@
      		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/lu">Markanvändning</gmx:Anchor>
 		</xsl:when>
 		<xsl:otherwise>
-          <xsl:copy copy-namespaces="no">
+		    <gmx:Anchor xlink:href="{$keywordhref}">{$keywordValue}</gmx:Anchor>
+<!--           <xsl:copy copy-namespaces="no">
             <xsl:value-of select="." />
           </xsl:copy>		
-		</xsl:otherwise>
+ -->
+ 		</xsl:otherwise>
 	</xsl:choose>
   </xsl:template>
    
