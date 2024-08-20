@@ -390,7 +390,7 @@
   </xsl:template>
 
   <!-- Fix GEMET keywords with empty xlink:href in gmx:Anchor -->
-<!--   <xsl:template match="gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'GEMET - INSPIRE themes, version 1.0']/gmd:MD_Keywords/gmd:keyword/gmx:Anchor[not(string(@xlink:href))]" priority="50">
+  <xsl:template match="gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'GEMET - INSPIRE themes, version 1.0']/gmd:MD_Keywords/gmd:keyword/gmx:Anchor[not(string(@xlink:href))]" priority="50">
     <xsl:variable name="keywordValue" select= "lower-case(.)" />
     <xsl:variable name="key">
       <xsl:choose>
@@ -412,7 +412,7 @@
 
       <xsl:value-of select="." />
     </xsl:copy>
-  </xsl:template> -->
+  </xsl:template>
 
   <!-- change href URL in gmx:Anchor for IACS theme keywords  --> 
   <xsl:template match="gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'GEMET - INSPIRE themes, version 1.0']/gmd:MD_Keywords/gmd:keyword/gmx:Anchor[string(@xlink:href)]" priority="50">
@@ -427,10 +427,6 @@
 		</xsl:when>
 		<xsl:otherwise>
 		    <gmx:Anchor xlink:href="{$keywordhref}"><xsl:value-of select="$keywordValue"/></gmx:Anchor>
-<!--           <xsl:copy copy-namespaces="no">
-            <xsl:value-of select="." />
-          </xsl:copy>		
- -->
  		</xsl:otherwise>
 	</xsl:choose>
   </xsl:template>
