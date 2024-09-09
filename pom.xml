@@ -1119,6 +1119,17 @@
       </releases>
     </repository>     
     <repository>
+      <id>geotools</id>
+      <name>GeoTools Release Repository</name>
+      <url>https://repo.osgeo.org/repository/geotools-releases/</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>     
+    <repository>
       <snapshots>
         <enabled>false</enabled>
       </snapshots>
@@ -1252,7 +1263,7 @@
   <properties>
     <jetty.version>9.3.9.v20160517</jetty.version>
 <!--     <geotools.version>15.0</geotools.version> -->
-    <geotools.version>27.1</geotools.version>
+    <geotools.version>29.3</geotools.version>
     <pg.version>42.3.7</pg.version>
 
     <lucene.version>4.9.0</lucene.version>
