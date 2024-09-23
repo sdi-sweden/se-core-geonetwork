@@ -425,6 +425,102 @@
 		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/17')">
      		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/lu">Markanvändning</gmx:Anchor>
 		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/1')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/rs">Referenskoordinatsystem</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/10')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/el">Höjd</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/12')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/oi">Ortofoto</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/13')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/ge">Geologi</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/14')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/su">Statistiska enheter</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/15')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/bu">Byggnader</gmx:Anchor>
+		</xsl:when>												
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/16')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/so">Mark</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/18')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/hh">Människors hälsa och säkerhet</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/19')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/us">Allmännyttiga och offentliga tjänster</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/2')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/gg">Geografiska rutnätssystem</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/20')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/ef">Anläggningar för miljöövervakning</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/21')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/pf">Produktions- och industrianläggningar</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/22')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/af">Jordbruks- och vattenbruksanläggningar</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/23')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/pd">Befolkningsfördelning – demografi</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/24')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/am">Områden med särskild förvaltning/begränsningar/reglering samt enheter för rapportering</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/25')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/nz">Naturliga riskområden</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/26')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/ac">Atmosfäriska förhållanden</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/27')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/mf">Geografiska meteorologiska förhållanden</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/28')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/of">Geografiska oceanografiska förhållanden</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/29')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/sr">Havsområden</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/3')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/gn">Geografiska namn</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/30')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/br">Biogeografiska regioner</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/31')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/hb">Naturtyper och biotoper</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/32')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/sd">Arters utbredning</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/33')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/er">Energiresurser</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/34')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/mr">Mineralfyndigheter</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/4')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/au">Administrativa enheter</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/5')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/ad">Adresser</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/6')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/cp">Fastighetsområden</gmx:Anchor>
+		</xsl:when>		
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/7')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/tn">Transportnät</gmx:Anchor>
+		</xsl:when>	
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/8')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/hy">Hydrografi</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/9')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/ps">Skyddade områden</gmx:Anchor>
+		</xsl:when>
 		<xsl:otherwise>
 		    <gmx:Anchor xlink:href="{$keywordhref}"><xsl:value-of select="$keywordValue"/></gmx:Anchor>
  		</xsl:otherwise>
