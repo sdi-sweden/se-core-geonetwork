@@ -414,7 +414,8 @@
     </xsl:copy>
   </xsl:template>
 
-  <!-- change href URL in gmx:Anchor for IACS theme keywords  --> 
+  <!-- change href URL in gmx:Anchor for IACS theme keywords  
+       now for all themes --> 
   <xsl:template match="gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'GEMET - INSPIRE themes, version 1.0']/gmd:MD_Keywords/gmd:keyword/gmx:Anchor[string(@xlink:href)]" priority="50">
     <xsl:variable name="keywordValue" select= "./text()" />
     <xsl:variable name="keywordhref" select= "./@xlink:href" />
