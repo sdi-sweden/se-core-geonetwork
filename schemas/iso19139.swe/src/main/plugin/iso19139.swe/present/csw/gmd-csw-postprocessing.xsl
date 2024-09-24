@@ -453,9 +453,6 @@
 		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/19')">
      		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/us">Allmännyttiga och offentliga tjänster</gmx:Anchor>
 		</xsl:when>
-		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/2')">
-     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/gg">Geografiska rutnätssystem</gmx:Anchor>
-		</xsl:when>
 		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/20')">
      		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/ef">Anläggningar för miljöövervakning</gmx:Anchor>
 		</xsl:when>
@@ -486,9 +483,6 @@
 		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/29')">
      		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/sr">Havsområden</gmx:Anchor>
 		</xsl:when>
-		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/3')">
-     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/gn">Geografiska namn</gmx:Anchor>
-		</xsl:when>
 		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/30')">
      		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/br">Biogeografiska regioner</gmx:Anchor>
 		</xsl:when>
@@ -503,6 +497,12 @@
 		</xsl:when>
 		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/34')">
      		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/mr">Mineralfyndigheter</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/2')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/gg">Geografiska rutnätssystem</gmx:Anchor>
+		</xsl:when>		
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/3')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/gn">Geografiska namn</gmx:Anchor>
 		</xsl:when>
 		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/4')">
      		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/au">Administrativa enheter</gmx:Anchor>
@@ -1657,6 +1657,7 @@
 		      </xsl:when>
 		      <xsl:otherwise>
 		        <xsl:value-of select="$inspire-theme[skos:prefLabel[@xml:lang='sv' and lower-case(text()) = $value]]/@rdf:about" />
+		        <xsl:message>characterString - otherwise result</xsl:message>
 		      </xsl:otherwise>
 		     </xsl:choose>
           </xsl:variable>
