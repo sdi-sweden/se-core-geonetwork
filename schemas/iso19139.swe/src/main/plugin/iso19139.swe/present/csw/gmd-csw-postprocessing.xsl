@@ -426,9 +426,6 @@
 		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/17')">
      		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/lu">Markanvändning</gmx:Anchor>
 		</xsl:when>
-		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/1')">
-     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/rs">Referenskoordinatsystem</gmx:Anchor>
-		</xsl:when>
 		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/10')">
      		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/el">Höjd</gmx:Anchor>
 		</xsl:when>
@@ -497,6 +494,9 @@
 		</xsl:when>
 		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/34')">
      		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/mr">Mineralfyndigheter</gmx:Anchor>
+		</xsl:when>
+		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/1')">
+     		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/rs">Referenskoordinatsystem</gmx:Anchor>
 		</xsl:when>
 		<xsl:when test="contains(./@xlink:href,'http://rdfdata.eionet.europa.eu/inspirethemes/themes/2')">
      		<gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/gg">Geografiska rutnätssystem</gmx:Anchor>
