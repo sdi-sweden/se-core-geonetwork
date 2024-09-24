@@ -1157,13 +1157,142 @@
       <!-- change href URL in gmx:Anchor for IACS theme keywords  -->
       <xsl:template match="gmd:descriptiveKeywords[gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*/text() = 'GEMET - INSPIRE themes, version 1.0']/gmd:MD_Keywords/gmd:keyword">
           <xsl:variable name="keywordMark" select="./*/text()='Markanvändning'" />
-          <xsl:variable name="keywordLand" select="./*/text()='Landtäcke'" />          
+          <xsl:variable name="keywordLand" select="./*/text()='Landtäcke'" />
+          <xsl:variable name="keywordRS" select="./*/text()='Referenskoordinatsystem'" />           
+          <xsl:variable name="keywordEL" select="./*/text()='Höjd'" />
+          <xsl:variable name="keywordOI" select="./*/text()='Ortofoto'" />
+          <xsl:variable name="keywordGE" select="./*/text()='Geologi'" />
+          <xsl:variable name="keywordSU" select="./*/text()='Statistiska enheter'" />
+          <xsl:variable name="keywordBU" select="./*/text()='Byggnader'" />
+          <xsl:variable name="keywordSO" select="./*/text()='Mark'" /> 
+          <xsl:variable name="keywordHH" select="./*/text()='Människors hälsa och säkerhet'" /> 
+          <xsl:variable name="keywordUS" select="./*/text()='Allmännyttiga och offentliga tjänster'" />
+          <xsl:variable name="keywordGG" select="./*/text()='Geografiska rutnätssystem'" />
+          <xsl:variable name="keywordEF" select="./*/text()='Anläggningar för miljöövervakning'" /> 
+          <xsl:variable name="keywordPF" select="./*/text()='Produktions- och industrianläggningar'" />
+          <xsl:variable name="keywordAF" select="./*/text()='Jordbruks- och vattenbruksanläggningar'" />
+          <xsl:variable name="keywordPD" select="./*/text()='Befolkningsfördelning – demografi'" />
+          <xsl:variable name="keywordAM" select="./*/text()='Områden med särskild förvaltning/begränsningar/reglering samt enheter för rapportering'" />
+          <xsl:variable name="keywordNZ" select="./*/text()='Naturliga riskområden'" />
+          <xsl:variable name="keywordAC" select="./*/text()='Atmosfäriska förhållanden'" />
+          <xsl:variable name="keywordMF" select="./*/text()='Geografiska meteorologiska förhållanden'" />
+          <xsl:variable name="keywordOF" select="./*/text()='Geografiska oceanografiska förhållanden'" />
+          <xsl:variable name="keywordSR" select="./*/text()='Havsområden'" />
+          <xsl:variable name="keywordGN" select="./*/text()='Geografiska namn'" />
+          <xsl:variable name="keywordBR" select="./*/text()='Biogeografiska regioner'" />
+          <xsl:variable name="keywordHB" select="./*/text()='Naturtyper och biotoper'" />
+          <xsl:variable name="keywordSD" select="./*/text()='Arters utbredning'" />
+          <xsl:variable name="keywordER" select="./*/text()='Energiresurser'" />
+          <xsl:variable name="keywordMR" select="./*/text()='Mineralfyndigheter'" />
+          <xsl:variable name="keywordAU" select="./*/text()='Administrativa enheter'" />
+          <xsl:variable name="keywordAD" select="./*/text()='Adresser'" />
+          <xsl:variable name="keywordCP" select="./*/text()='Fastighetsområden'" />
+          <xsl:variable name="keywordTN" select="./*/text()='Transportnät'" />
+          <xsl:variable name="keywordHY" select="./*/text()='Hydrografi'" />
+          <xsl:variable name="keywordPS" select="./*/text()='Skyddade områden'" />
           <xsl:if test="$keywordMark">
             <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/lu">Markanvändning</gmx:Anchor>
           </xsl:if>
           <xsl:if test="$keywordLand">
             <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/lc">Landtäcke</gmx:Anchor>
           </xsl:if>
+          <xsl:if test="$keywordRS">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/rs">Referenskoordinatsystem</gmx:Anchor>
+          </xsl:if>          
+          <xsl:if test="$keywordEL">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/el">Höjd</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordOI">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/oi">Ortofoto</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordGE">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/ge">Geologi</gmx:Anchor>
+          </xsl:if>          
+          <xsl:if test="$keywordSU">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/su">Statistiska enheter</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordBU">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/bu">Byggnader</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordSO">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/so">Mark</gmx:Anchor>
+          </xsl:if>                     
+          <xsl:if test="$keywordHH">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/hh">Människors hälsa och säkerhet</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordUS">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/us">Allmännyttiga och offentliga tjänster</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordGG">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/gg">Geografiska rutnätssystem</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordEF">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/ef">Anläggningar för miljöövervakning</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordPF">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/pf">Produktions- och industrianläggningar</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordAF">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/af">Jordbruks- och vattenbruksanläggningar</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordPD">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/pd">Befolkningsfördelning – demografi</gmx:Anchor>
+          </xsl:if>                                       
+          <xsl:if test="$keywordAM">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/am">Områden med särskild förvaltning/begränsningar/reglering samt enheter för rapportering</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordNZ">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/nz">Naturliga riskområden</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordAC">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/ac">Atmosfäriska förhållanden</gmx:Anchor>
+          </xsl:if> 
+          <xsl:if test="$keywordMF">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/mf">Geografiska meteorologiska förhållanden</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordOF">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/of">Geografiska oceanografiska förhållanden</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordSR">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/sr">Havsområden</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordGN">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/gn">Geografiska namn</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordBR">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/br">Biogeografiska regioner</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordHB">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/hb">Naturtyper och biotoper</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordSD">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/sd">Arters utbredning</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordER">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/er">Energiresurser</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordMR">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/mr">Mineralfyndigheter</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordAU">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/au">Administrativa enheter</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordAD">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/ad">Adresser</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordCP">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/cp">Fastighetsområden</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordTN">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/tn">Transportnät</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordHY">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/hy">Hydrografi</gmx:Anchor>
+          </xsl:if>
+          <xsl:if test="$keywordPS">
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme/ps">Skyddade områden</gmx:Anchor>
+          </xsl:if>
+                            
       </xsl:template> 
       
   <!-- Remove gmd:verticalElement in no valid values -->
@@ -1429,6 +1558,102 @@
 		      </xsl:when>
 		      <xsl:when test="contains($value,'markanvändning')">
 		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/lu'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'referenskoordinatsystem')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/rs'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'höjd')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/el'" />
+		      </xsl:when>		      		      
+		      <xsl:when test="contains($value,'ortofoto')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/oi'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'geologi')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/ge'" />
+		      </xsl:when>		      
+		      <xsl:when test="contains($value,'statistiska enheter')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/su'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'byggnader')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/bu'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'mark')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/so'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'människors hälsa och säkerhet')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/hh'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'allmännyttiga och offentliga tjänster')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/us'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'geografiska rutnätssystem')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/gg'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'anläggningar för miljöövervakning')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/ef'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'produktions- och industrianläggningar')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/pf'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'jordbruks- och vattenbruksanläggningar')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/af'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'befolkningsfördelning – demografi')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/pd'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'områden med särskild förvaltning/begränsningar/reglering samt enheter för rapportering')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/am'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'naturliga riskområden')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/nz'" />
+		      </xsl:when>		      
+		      <xsl:when test="contains($value,'atmosfäriska förhållanden')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/ac'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'geografiska meteorologiska förhållanden')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/mf'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'geografiska oceanografiska förhållanden')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/of'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'havsområden')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/sr'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'geografiska namn')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/gn'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'biogeografiska regioner')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/br'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'naturtyper och biotoper')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/hb'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'arters utbredning')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/sd'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'energiresurser')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/er'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'mineralfyndigheter')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/mr'" />
+		      </xsl:when>		      		      
+		      <xsl:when test="contains($value,'administrativa enheter')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/au'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'adresser')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/ad'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'fastighetsområden')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/cp'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'transportnät')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/tn'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'hydrografi')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/ny'" />
+		      </xsl:when>
+		      <xsl:when test="contains($value,'skyddade områden')">
+		        <xsl:value-of select="'http://inspire.ec.europa.eu/theme/ps'" />
 		      </xsl:when>
 		      <xsl:otherwise>
 		        <xsl:value-of select="$inspire-theme[skos:prefLabel[@xml:lang='sv' and lower-case(text()) = $value]]/@rdf:about" />
