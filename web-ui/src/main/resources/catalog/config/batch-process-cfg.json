@@ -16,6 +16,12 @@
   ]
   },
   {
+  "key": "change-inspire-theme-to-eu-url-values",
+  "type": "fixed-params",
+  "params": [
+  ]
+  },
+  {
   "key": "remove-transferoptions",
   "type": "fixed-params",
   "params": [

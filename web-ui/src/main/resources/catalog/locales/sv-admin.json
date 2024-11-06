@@ -1094,5 +1094,6 @@
     "remove-transferoptions": "Process to remove gmd:transferOptions from metadata.",
     "change-spatialdataservicedategory-keywords-to-anchor": "Metadata Swedish profile 4.0.0 - Update metadata spatial data service category keywords to anchor and fix thesaurus info",
     "change-inspire-theme-keywords-to-anchor": "Metadata Swedish profile 4.0.0 - Update metadata INSPIRE theme keywords to anchor",
+    "change-inspire-theme-keywords-to-eu-url-values":"Metadata Swedish profile 4.0.0 - Update metadata to use EU INSPIRE theme URLs",    
     "add-gmd-identifier-rs-identifier": "Fix Metadata identifiers - removes empty elements, placeholders and convert RS Identifier to MD Identifier (when no valid identifier is available)"
 }
