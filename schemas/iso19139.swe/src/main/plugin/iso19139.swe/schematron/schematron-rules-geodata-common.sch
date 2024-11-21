@@ -163,7 +163,7 @@ USA.
 <!-- 	<sch:let name="keywordValue_Initiativ"
              value="//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='HVD'"/> 
 -->
-	<sch:let name="initiativ-thesaurus" value="document('../../../../config/codelist/external/thesauri/theme/initiativ.rdf')"/>
+	<sch:let name="initiativ-thesaurus" value="document('../../../../config/codelist/external/thesauri/theme/Initiativ.rdf')"/>
 	<sch:let name="initiativ-theme" value="$initiativ-thesaurus//skos:Concept"/>
 	<!-- Visa fel om inte Initiativ Thesaurs visas. -->
 	<sch:assert test="count($initiativ-theme) > 0"> Initiativ thesaurus saknas. Installationen är ej korrekt filen </sch:assert>
