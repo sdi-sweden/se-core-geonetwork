@@ -170,7 +170,7 @@ USA.
 	<sch:let name="keyword"
              value="//gmd:MD_Keywords[gmd:thesaurusName/*/gmd:title/*/text() = 'Initiaitv']/gmd:keyword/*/text()"/>
 	<sch:let name="initiativ-theme-found"
-             value="count($hvd-thesaurus//skos:Concept[skos:prefLabel = $keyword])"/>
+             value="count($initiativ-thesaurus//skos:Concept[skos:prefLabel = $keyword])"/>
 <!-- 	<sch:assert test="not($keywordValue_HVDInitiativ) or $initiativ-theme-found > 0" -->
 	<sch:assert test="$initiativ-theme-found > 0"
       >[Geodata.se:106h] Om du har Initiativ nyckelord, varder mäste finns i Initiativ thesaurus</sch:assert>
