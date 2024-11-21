@@ -160,18 +160,15 @@ USA.
     <sch:title>[Geodata.se:106h] Om du har Initiativ nyckelord, varder mäste finns i Initiativ thesaurus</sch:title>
     <sch:rule context="//gmd:MD_Keywords[gmd:thesaurusName/*/gmd:title/*/text() = 'Initiativ']">
 
-<!-- 	<sch:let name="keywordValue_Initiativ"
-             value="//gmd:descriptiveKeywords/*/gmd:keyword/*/text()='HVD'"/> 
--->
 	<sch:let name="initiativ-thesaurus" value="document('../../../../config/codelist/external/thesauri/theme/Initiativ.rdf')"/>
 	<sch:let name="initiativ-theme" value="$initiativ-thesaurus//skos:Concept"/>
 	<!-- Visa fel om inte Initiativ Thesaurs visas. -->
 	<sch:assert test="count($initiativ-theme) > 0"> Initiativ thesaurus saknas. Installationen är ej korrekt filen </sch:assert>
 	<sch:let name="keyword"
-             value="//gmd:MD_Keywords[gmd:thesaurusName/*/gmd:title/*/text() = 'Initiaitv']/gmd:keyword/*/text()"/>
+             value="//gmd:MD_Keywords[gmd:thesaurusName/*/gmd:title/*/text() = 'Initiativ']/gmd:keyword/*/text()"/>
 	<sch:let name="initiativ-theme-found"
              value="count($initiativ-thesaurus//skos:Concept[skos:prefLabel = $keyword])"/>
-<!-- 	<sch:assert test="not($keywordValue_HVDInitiativ) or $initiativ-theme-found > 0" -->
+
 	<sch:assert test="$initiativ-theme-found > 0"
       >[Geodata.se:106h] Om du har Initiativ nyckelord, varder mäste finns i Initiativ thesaurus</sch:assert>
 
