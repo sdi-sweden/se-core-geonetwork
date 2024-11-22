@@ -159,20 +159,9 @@ USA.
   <sch:pattern fpi="[Geodata.se:106h] Om du har Initiativ nyckelord, vardet mäste finns i Initiativ thesaurus">
     <sch:title>[Geodata.se:106h] Om du har Initiativ nyckelord, vardet mäste finns i Initiativ thesaurus</sch:title>
     <sch:rule context="//gmd:MD_Keywords[gmd:thesaurusName/*/gmd:title/*/text() = 'Initiativ']">
-<!--
-	<sch:let name="initiativ-thesaurus" value="document('../../../../config/codelist/external/thesauri/theme/Initiativ.rdf')"/>
-	<sch:let name="initiativ-theme" value="$initiativ-thesaurus//skos:Concept"/>
--->	
-	<!-- Visa fel om inte Initiativ Thesaurs visas. -->
-<!--
-	<sch:assert test="count($initiativ-theme) > 0"> Initiativ thesaurus saknas. Installationen är ej korrekt filen </sch:assert>
--->
+
 	<sch:let name="initiativ-keyword"
              value="//gmd:MD_Keywords[gmd:thesaurusName/*/gmd:title/*/text() = 'Initiativ']/gmd:keyword/*/text()"/>
-<!-- 
-	<sch:let name="initiativ-theme-found"
-             value="count($initiativ-thesaurus//skos:Concept[skos:prefLabel = $keyword])"/>
- -->
     <sch:let name="initiativ-present" 
              value="//gmd:MD_Keywords[gmd:thesaurusName/*/gmd:title/*/text() = 'Initiativ']/gmd:keyword/*/text() = 'Inspire' or 
                     //gmd:MD_Keywords[gmd:thesaurusName/*/gmd:title/*/text() = 'Initiativ']/gmd:keyword/*/text() = 'Geodatasamverkan' or 
@@ -181,13 +170,11 @@ USA.
                     //gmd:MD_Keywords[gmd:thesaurusName/*/gmd:title/*/text() = 'Initiativ']/gmd:keyword/*/text() = 'Grön infrastruktur' "/>
 	<sch:assert test="$initiativ-present"
       >[Geodata.se:106h] Om du har Initiativ nyckelord, varder mäste finns i Initiativ thesaurus</sch:assert>
-
       <sch:report test="$initativ-present">[Geodata.se:106h] Om du har Initiativ nyckelord, vardet mäste finns i thesaurus: <sch:value-of select="$initiativKeyword"/>
       </sch:report>
-<!--
     </sch:rule>
   </sch:pattern>
- --> 
+
 
   <sch:pattern fpi="[Geodata.se:106e] Typ av tjänst måste anges (discovery, view, download etc)">
     <sch:title>[Geodata.se:106e] Kontrollerar: Tjänstetyp måste anges (discovery, view, download etc)</sch:title>
