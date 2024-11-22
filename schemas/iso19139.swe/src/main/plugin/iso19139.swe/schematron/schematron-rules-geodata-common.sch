@@ -158,7 +158,7 @@ USA.
 <!-- If a keyword from Initiativ code list is present then the keyword value must be in the codelist -->
   <sch:pattern fpi="[Geodata.se:106h] Om du har Initiativ nyckelord, vardet mäste finns i Initiativ thesaurus">
     <sch:title>[Geodata.se:106h] Om du har Initiativ nyckelord, vardet mäste finns i Initiativ thesaurus</sch:title>
-    <sch:rule context="//gmd:MD_Keywords[gmd:thesaurusName/*/gmd:title/*/text() = 'Initiativ']">
+    <sch:rule context="//gmd:MD_Keywords[gmd:thesaurusName/*/gmd:title/*/text() = 'Initiativ']/gmd:keyword/*/text()">
 
 	<sch:let name="initiativ-keyword"
              value="//gmd:MD_Keywords[gmd:thesaurusName/*/gmd:title/*/text() = 'Initiativ']/gmd:keyword/*/text()"/>
@@ -170,7 +170,7 @@ USA.
                     //gmd:MD_Keywords[gmd:thesaurusName/*/gmd:title/*/text() = 'Initiativ']/gmd:keyword/*/text() = 'Grön infrastruktur' "/>
 	<sch:assert test="$initiativ-present"
       >[Geodata.se:106h] Om du har Initiativ nyckelord, varder mäste finns i Initiativ thesaurus</sch:assert>
-      <sch:report test="$initativ-present">[Geodata.se:106h] Om du har Initiativ nyckelord, vardet mäste finns i thesaurus: <sch:value-of select="$initiativKeyword"/>
+      <sch:report test="$initiativ-present">[Geodata.se:106h] Om du har Initiativ nyckelord, vardet mäste finns i thesaurus: <sch:value-of select="$initiativ-keyword"/>
       </sch:report>
     </sch:rule>
   </sch:pattern>
