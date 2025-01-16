@@ -524,8 +524,9 @@ USA.
       <sch:let name="MDFormatVers" value="normalize-space(gmd:MD_Format/gmd:version/gco:CharacterString)" />
       <sch:let name="MDFormatLen" value="string-length(normalize-space(gmd:MD_Format/gmd:name/gco:CharacterString))" />
       <sch:let name="MDFormatVersLen" value="string-length(normalize-space(gmd:MD_Format/gmd:version/gco:CharacterString))" />
+      <sch:let name="MDFormatVersNilReason" value="gmd:MD_Format/gmd:version/@gco:nilReason='missing'" />
 
-      <sch:assert	test="$MDFormat and $MDFormatVers and ($MDFormatLen &gt; 1) and  ($MDFormatVersLen &gt; 0)" >
+      <sch:assert	test="$MDFormat and ($MDFormatVers or $MDFormatVersNilReason) and ($MDFormatLen &gt; 1) and ($MDFormatVersLen &gt; 0 or $MDFormatVersNilReason)" >
         [Geodata.se:126]Om format anges skall även version för formatet anges: <sch:value-of select="$MDFormat" />
       </sch:assert>
 <!--
