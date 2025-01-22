@@ -2178,7 +2178,7 @@ varit delaktiga i bearbetningen</description>
 			<option show="y" value="HTTP:Nedladdning">HTTP:Nedladdning för nedladdning, t ex ftp</option>
 			<option show="y" value="HTTP:Nedladdning:Atom">HTTP:Nedladdning:Atom för ATOM-tjänster</option>
 			<option show="y" value="HTTP:Nedladdning:GUI">HTTP:Nedladdning:GUI för nedladdning tjänst GUI</option>
-			<option show="y" value="HTTP:Nedladdning:GUI">HTTP:Nedladdning:API för nedladdningsbara data via API</option>
+			<option show="y" value="HTTP:Nedladdning:API">HTTP:Nedladdning:API för nedladdningsbara data via API</option>
 			<option show="y" value="HTTP:OGC:API-Features">HTTP:OGC:API-Features för OGC API Features tjänster</option>
 			<option show="y" value="HTTP:OGC:API-Map">HTTP:OGC:API-Map för OGC API Map tjänster</option>
 			<option show="y" value="HTTP:OGC:API-Coverages">HTTP:OGC:API-Coverage för OGC API Coverages tjänster</option>
