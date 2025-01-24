@@ -1299,17 +1299,10 @@
             gmd:resourceConstraints[gmd:MD_LegalConstraints[gmd:accessConstraints]/gmd:otherConstraints[contains(gmx:Anchor/@xlink:href, 'LimitationsOnPublicAcces')]]"
                  />
 
-<!-- 
           <action type="add" name="accessConstraints" or="resourceConstraints" btnLabel="limitationsPublicAccess"
                   in="/gmd:MD_Metadata/gmd:identificationInfo/*"
                   if="count(gmd:MD_Metadata/gmd:identificationInfo/*/
             gmd:resourceConstraints/gmd:MD_LegalConstraints[gmd:accessConstraints]/gmd:otherConstraints[contains(gmx:Anchor/@xlink:href, 'LimitationsOnPublicAcces')]) = 0">
-
- -->
-          <action type="add" name="accessConstraints" or="resourceConstraints" btnLabel="limitationsPublicAccess"
-                  forceLabel="true"
-                  in="/gmd:MD_Metadata/gmd:identificationInfo/*"
-                  >
             <template>
               <snippet>
                 <gmd:resourceConstraints>
@@ -1334,17 +1327,10 @@
                  xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/
             gmd:resourceConstraints[gmd:MD_LegalConstraints[gmd:accessConstraints]/gmd:otherConstraints[not(contains(gmx:Anchor/@xlink:href, 'LimitationsOnPublicAcces'))]]"
                  />
-<!--  
-          <action type="add" name="accessConstraints" or="resourceConstraints" btnLabel="conditionsForAccess"
-                  in="/gmd:MD_Metadata/gmd:identificationInfo/*"
-                  if="count(gmd:MD_Metadata/gmd:identificationInfo/*/
-            gmd:resourceConstraints/gmd:MD_LegalConstraints[gmd:accessConstraints]/gmd:otherConstraints[not(contains(gmx:Anchor/@xlink:href, 'LimitationsOnPublicAcces'))]) = 0">
 
--->
           <action type="add" name="accessConstraints" or="resourceConstraints" btnLabel="conditionsForAccess"
                   forceLabel="true"
-                  in="/gmd:MD_Metadata/gmd:identificationInfo/*"
-                  >
+                  in="/gmd:MD_Metadata/gmd:identificationInfo/*">
             <template>
               <snippet>
                 <gmd:resourceConstraints>
@@ -2818,17 +2804,10 @@
             gmd:resourceConstraints[gmd:MD_LegalConstraints[gmd:accessConstraints]/gmd:otherConstraints[contains(gmx:Anchor/@xlink:href, 'LimitationsOnPublicAcces')]]"
               />
 
-<!-- 
               <action type="add" name="accessConstraints" or="resourceConstraints" btnLabel="limitationsPublicAccess"
                       in="/gmd:MD_Metadata/gmd:identificationInfo/*"
                       if="count(gmd:MD_Metadata/gmd:identificationInfo/*/
             gmd:resourceConstraints/gmd:MD_LegalConstraints[gmd:accessConstraints]/gmd:otherConstraints[contains(gmx:Anchor/@xlink:href, 'LimitationsOnPublicAcces')]) = 0">
-
- -->
-              <action type="add" name="accessConstraints" or="resourceConstraints" btnLabel="limitationsPublicAccess"
-                      forceLabel="true"
-                      in="/gmd:MD_Metadata/gmd:identificationInfo/*"
-                      >
                 <template>
                   <snippet>
                     <gmd:resourceConstraints>
@@ -2856,9 +2835,8 @@
 
 
               <action type="add" name="accessConstraints" or="resourceConstraints" btnLabel="conditionsForAccess"
-                      in="/gmd:MD_Metadata/gmd:identificationInfo/*"
-                      if="count(gmd:MD_Metadata/gmd:identificationInfo/*/
-            gmd:resourceConstraints/gmd:MD_LegalConstraints[gmd:accessConstraints]/gmd:otherConstraints[not(contains(gmx:Anchor/@xlink:href, 'LimitationsOnPublicAcces'))]) = 0">
+                      forceLabel="true"
+                      in="/gmd:MD_Metadata/gmd:identificationInfo/*" >
                 <template>
                   <snippet>
                     <gmd:resourceConstraints>
