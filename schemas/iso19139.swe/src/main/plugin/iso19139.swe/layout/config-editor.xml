@@ -1329,7 +1329,6 @@
                  />
 
           <action type="add" name="accessConstraints" or="resourceConstraints" btnLabel="conditionsForAccess"
-                  forceLabel="true"
                   in="/gmd:MD_Metadata/gmd:identificationInfo/*">
             <template>
               <snippet>
@@ -2835,7 +2834,6 @@
 
 
               <action type="add" name="accessConstraints" or="resourceConstraints" btnLabel="conditionsForAccess"
-                      forceLabel="true"
                       in="/gmd:MD_Metadata/gmd:identificationInfo/*" >
                 <template>
                   <snippet>
