@@ -1293,20 +1293,23 @@
           </action>
 
           <!--Limitations on public access. -->
-          <!--<field name="limitationsPublicAccess"
-                 xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/
-            gmd:resourceConstraints/gmd:MD_LegalConstraints[gmd:accessConstraints]/gmd:otherConstraints[contains(gmx:Anchor/@xlink:href, 'LimitationsOnPublicAcces')]"
-                 if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification) > 0"/>-->
 
           <field name="limitationsPublicAccess"
                  xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/
             gmd:resourceConstraints[gmd:MD_LegalConstraints[gmd:accessConstraints]/gmd:otherConstraints[contains(gmx:Anchor/@xlink:href, 'LimitationsOnPublicAcces')]]"
                  />
 
+<!-- 
           <action type="add" name="accessConstraints" or="resourceConstraints" btnLabel="limitationsPublicAccess"
                   in="/gmd:MD_Metadata/gmd:identificationInfo/*"
                   if="count(gmd:MD_Metadata/gmd:identificationInfo/*/
             gmd:resourceConstraints/gmd:MD_LegalConstraints[gmd:accessConstraints]/gmd:otherConstraints[contains(gmx:Anchor/@xlink:href, 'LimitationsOnPublicAcces')]) = 0">
+
+ -->
+          <action type="add" name="accessConstraints" or="resourceConstraints" btnLabel="limitationsPublicAccess"
+                  forceLabel="true"
+                  in="/gmd:MD_Metadata/gmd:identificationInfo/*"
+                  >
             <template>
               <snippet>
                 <gmd:resourceConstraints>
@@ -1326,21 +1329,22 @@
           </action>
 
           <!-- Conditions for access -->
-          <!--<field name="conditionsForAccess"
-                 xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/
-            gmd:resourceConstraints/gmd:MD_LegalConstraints[gmd:accessConstraints]/gmd:otherConstraints[not(contains(gmx:Anchor/@xlink:href, 'LimitationsOnPublicAcces'))]"
-                 if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification) > 0"/>-->
 
           <field name="conditionsForAccess"
                  xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/
             gmd:resourceConstraints[gmd:MD_LegalConstraints[gmd:accessConstraints]/gmd:otherConstraints[not(contains(gmx:Anchor/@xlink:href, 'LimitationsOnPublicAcces'))]]"
                  />
-
-
+<!--  
           <action type="add" name="accessConstraints" or="resourceConstraints" btnLabel="conditionsForAccess"
                   in="/gmd:MD_Metadata/gmd:identificationInfo/*"
                   if="count(gmd:MD_Metadata/gmd:identificationInfo/*/
             gmd:resourceConstraints/gmd:MD_LegalConstraints[gmd:accessConstraints]/gmd:otherConstraints[not(contains(gmx:Anchor/@xlink:href, 'LimitationsOnPublicAcces'))]) = 0">
+
+-->
+          <action type="add" name="accessConstraints" or="resourceConstraints" btnLabel="conditionsForAccess"
+                  forceLabel="true"
+                  in="/gmd:MD_Metadata/gmd:identificationInfo/*"
+                  >
             <template>
               <snippet>
                 <gmd:resourceConstraints>
@@ -1360,10 +1364,6 @@
           </action>
 
           <!-- Conditions for use -->
-          <!--<field name="conditionsForUse"
-                 xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/
-            gmd:resourceConstraints/gmd:MD_LegalConstraints[gmd:useConstraints]/gmd:otherConstraints"
-                 if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification) > 0"/>-->
 
           <field name="conditionsForUse"
                  xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/
@@ -2812,20 +2812,23 @@
               </action>
 
               <!--Limitations on public access. -->
-              <!--<field name="limitationsPublicAccess"
-                     xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/
-                gmd:resourceConstraints/gmd:MD_LegalConstraints[gmd:accessConstraints]/gmd:otherConstraints[contains(gmx:Anchor/@xlink:href, 'LimitationsOnPublicAcces')]"
-                     if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification) > 0"/>-->
 
               <field name="limitationsPublicAccess"
                      xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/
             gmd:resourceConstraints[gmd:MD_LegalConstraints[gmd:accessConstraints]/gmd:otherConstraints[contains(gmx:Anchor/@xlink:href, 'LimitationsOnPublicAcces')]]"
               />
 
+<!-- 
               <action type="add" name="accessConstraints" or="resourceConstraints" btnLabel="limitationsPublicAccess"
                       in="/gmd:MD_Metadata/gmd:identificationInfo/*"
                       if="count(gmd:MD_Metadata/gmd:identificationInfo/*/
             gmd:resourceConstraints/gmd:MD_LegalConstraints[gmd:accessConstraints]/gmd:otherConstraints[contains(gmx:Anchor/@xlink:href, 'LimitationsOnPublicAcces')]) = 0">
+
+ -->
+              <action type="add" name="accessConstraints" or="resourceConstraints" btnLabel="limitationsPublicAccess"
+                      forceLabel="true"
+                      in="/gmd:MD_Metadata/gmd:identificationInfo/*"
+                      >
                 <template>
                   <snippet>
                     <gmd:resourceConstraints>
@@ -2845,10 +2848,6 @@
               </action>
 
               <!-- Conditions for access -->
-              <!--<field name="conditionsForAccess"
-                     xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/
-                gmd:resourceConstraints/gmd:MD_LegalConstraints[gmd:accessConstraints]/gmd:otherConstraints[not(contains(gmx:Anchor/@xlink:href, 'LimitationsOnPublicAcces'))]"
-                     if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification) > 0"/>-->
 
               <field name="conditionsForAccess"
                      xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/
@@ -2879,10 +2878,6 @@
               </action>
 
               <!-- Conditions for use -->
-              <!--<field name="conditionsForUse"
-                     xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/
-                gmd:resourceConstraints/gmd:MD_LegalConstraints[gmd:useConstraints]/gmd:otherConstraints"
-                     if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification) > 0"/>-->
 
               <field name="conditionsForUse"
                      xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:resourceConstraints[gmd:MD_LegalConstraints[gmd:useConstraints]/gmd:otherConstraints]"
