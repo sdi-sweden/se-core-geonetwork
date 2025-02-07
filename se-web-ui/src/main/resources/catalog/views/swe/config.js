@@ -198,9 +198,9 @@
       gnSearchSettings.linkTypes = {
         //links: ['LINK', 'kml'],
         links: ['HTTP:Information'],
-        downloads: ['HTTP:Nedladdning', 'HTTP:OGC:WFS'],
+        downloads: ['HTTP:Nedladdning', 'HTTP:OGC:WFS', 'HTTP:OGC:API-Features','HTTP:REST:API'],
         //layers:['OGC', 'kml'],
-        layers: ['HTTP:OGC:WMS'],
+        layers: ['HTTP:OGC:WMS', 'HTTP:OGC:API-Maps'],
         maps: ['ows']
       };
 

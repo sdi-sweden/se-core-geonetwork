@@ -420,7 +420,8 @@ USA.
 				gmd:protocol/*/text() = 'HTTP:OGC:API-Maps' or
 				gmd:protocol/*/text() = 'HTTP:OGC:API-Coverages' or
 				gmd:protocol/*/text() = 'HTTP:OGC:API-Records' or
-				gmd:protocol/*/text() = 'HTTP:OGC:CSW' or				
+				gmd:protocol/*/text() = 'HTTP:OGC:CSW' or	
+				gmd:protocol/*/text() = 'HTTP:REST:API' or			
 				gmd:protocol/*/text() = 'HTTP:Information' or
 				gmd:protocol/*/text() = 'HTTP:Information:Produktspecifikation'" />
 
