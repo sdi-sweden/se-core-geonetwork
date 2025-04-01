@@ -215,7 +215,7 @@ public class InspireAtomFeed extends GeonetEntity implements Serializable {
 
     @Column(length = 3)
     public String getLang() {
-        return _lang;
+        return _lang.isEmpty() ? "swe" : _lang;
     }
 
     public void setLang(String lang) {
