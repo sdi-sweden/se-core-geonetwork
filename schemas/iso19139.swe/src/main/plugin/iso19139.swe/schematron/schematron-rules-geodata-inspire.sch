@@ -55,7 +55,7 @@ USA.
 	<!-- ############################################ -->
 
 	<sch:pattern fpi="[Geodata.se:106c] OM resursen ingår i Inspire är nyckelord obligatoriskt med ett värde ur nyckelordslexikonet GEMET">
-		<sch:title>[Geodata.se:106c]OM resursen ingår i Inspire är nyckelord obligatoriskt med ett värde ur nyckelordslexikonet GEMET</sch:title>
+		<sch:title>[Geodata.se:106c]OM resursen ingår i Inspire är nyckelord obligatoriskt med ett värde ur nyckelordslexikonet GEMET - INSPIRE themes, version 1.0</sch:title>
 		<sch:rule context="//gmd:MD_DataIdentification|
 			//*[@gco:isoType='gmd:MD_DataIdentification']|
 			//srv:SV_ServiceIdentification|
@@ -71,7 +71,7 @@ USA.
 			<sch:let name="inspire-theme-found"
                value="count($inspire-thesaurus//skos:Concept[skos:prefLabel = $keyword])"/>
 			<sch:assert test="not($keywordValue_INSPIRE) or $inspire-theme-found > 0"
-      >[Geodata.se:106c] Om resursen ingår i Inspire är nyckelord obligatoriskt med ett värde ur nyckelordslexikonet GEMET</sch:assert>
+      >[Geodata.se:106c] Om resursen ingår i Inspire är nyckelord obligatoriskt med ett värde ur nyckelordslexikonet GEMET - INSPIRE themes, version 1.0</sch:assert>
 <!--
  	  <sch:report test="$inspire-theme-found > 0">
           <sch:value-of select="$inspire-theme-found"/> report <sch:value-of select="$keyword" /> 
