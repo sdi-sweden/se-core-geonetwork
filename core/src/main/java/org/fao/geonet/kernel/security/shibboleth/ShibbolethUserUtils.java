@@ -102,18 +102,19 @@ public class ShibbolethUserUtils {
         surname = new String(surname.getBytes("iso-8859-1"), "utf-8");
         group = new String(group.getBytes("iso-8859-1"), "utf-8");
 
-        if (username != null && username.trim().length() > 0) { // ....add other
+        if (username != null && username.trim().length() > 0 && profile != null) { 
+        	                                                    // ....add other
                                                                 // cnstraints to
                                                                 // be sure it's
                                                                 // a real
-                                                                // shibbolet
+                                                                // shibboleth
                                                                 // login and not
                                                                 // fake
 
             // Make sure the profile name is an exact match
-            if (profile == null) {
-                profile = Profile.Guest;
-            }
+//            if (profile == null) {
+//                profile = Profile.Guest;
+//            }
 
             // FIXME: needed? only accept the first 256 chars
             if (username.length() > 256) {
