@@ -45,6 +45,7 @@ public final class Log {
     public static final String APPHAND = JEEVES + ".apphand";
     public static final String WEBAPP = JEEVES + ".webapp";
     public static final String REQUEST = JEEVES + ".request";
+    public static final String SECURITY = JEEVES + ".security";    
     public static final String SERVICE = JEEVES + ".service";
     public static final String SCHEDULER = JEEVES + ".scheduler";
     public static final String RESOURCES = JEEVES + ".resources";

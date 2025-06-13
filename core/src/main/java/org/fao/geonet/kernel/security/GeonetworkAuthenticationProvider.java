@@ -63,13 +63,13 @@ public class GeonetworkAuthenticationProvider extends AbstractUserDetailsAuthent
         User gnDetails = (User) userDetails;
 
         if (authentication.getCredentials() == null) {
-            Log.warning(Log.JEEVES, "Authentication failed: no credentials provided");
+            Log.warning(Log.SECURITY, "Authentication failed: no credentials provided");
             throw new BadCredentialsException("Authentication failed: no credentials provided");
         }
 
         if (authentication.getCredentials().toString().isEmpty() ||
             !encoder.matches(authentication.getCredentials().toString(), gnDetails.getPassword())) {
-            Log.warning(Log.JEEVES, "Authentication failed: wrong password provided");
+            Log.warning(Log.SECURITY, "Authentication failed: wrong password provided");
             throw new BadCredentialsException("Authentication failed: wrong password provided");
         }
     }
@@ -104,7 +104,7 @@ public class GeonetworkAuthenticationProvider extends AbstractUserDetailsAuthent
                 return user;
             }
         } catch (Exception e) {
-            Log.error(Log.JEEVES, "Unexpected error while loading user", e);
+            Log.error(Log.SECURITY, "Unexpected error while loading user", e);
             throw new AuthenticationServiceException("Unexpected error while loading user", e);
         }
         throw new UsernameNotFoundException(username + " is not a valid username");

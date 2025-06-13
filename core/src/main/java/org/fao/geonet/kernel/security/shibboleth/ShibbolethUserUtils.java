@@ -34,14 +34,13 @@ import org.fao.geonet.repository.GroupRepository;
 import org.fao.geonet.repository.UserGroupRepository;
 import org.fao.geonet.repository.UserRepository;
 import org.fao.geonet.repository.specification.UserGroupSpecs;
+import org.fao.geonet.utils.Log;
 import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
-
-import java.util.List;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
@@ -72,7 +71,10 @@ public class ShibbolethUserUtils {
 
         if (value.length() == 0)
             return defValue;
-
+        
+        if (Log.isDebugEnabled(Log.SECURITY)) {
+            Log.debug(Log.SECURITY, "Retreive value from Shibboleth Header ");
+        }
         return value;
     }
 
@@ -88,6 +90,9 @@ public class ShibbolethUserUtils {
         GeonetworkAuthenticationProvider authProvider = ApplicationContextHolder.get()
                 .getBean(GeonetworkAuthenticationProvider.class);
 
+        if (Log.isDebugEnabled(Log.SECURITY)) {
+            Log.debug(Log.SECURITY, "SetupUser using Shibboleth Header values ");
+        }
         // Read in the data from the headers
         HttpServletRequest req = (HttpServletRequest) request;
 
@@ -102,6 +107,16 @@ public class ShibbolethUserUtils {
         surname = new String(surname.getBytes("iso-8859-1"), "utf-8");
         group = new String(group.getBytes("iso-8859-1"), "utf-8");
 
+        if (Log.isDebugEnabled(Log.SECURITY)) {
+            Log.debug(Log.SECURITY, "Find user info from Shibboleth Header values");
+            Log.debug(Log.SECURITY, "username provided = " + username);
+            Log.debug(Log.SECURITY, "profil provided = " + getHeader(req, config.getProfileKey(), ""));
+            if (profile != null) {
+            	Log.debug(Log.SECURITY, "profile found = " + profile.toString());
+            } else {
+            	Log.debug(Log.SECURITY, "profile found not found ");
+            }
+        }
         if (username != null && username.trim().length() > 0 && profile != null) { 
         	                                                    // ....add other
                                                                 // cnstraints to
@@ -110,7 +125,6 @@ public class ShibbolethUserUtils {
                                                                 // shibboleth
                                                                 // login and not
                                                                 // fake
-
             // Make sure the profile name is an exact match
 //            if (profile == null) {
 //                profile = Profile.Guest;
@@ -131,25 +145,40 @@ public class ShibbolethUserUtils {
                 if (config.isUpdateProfile()) {
                     user.setProfile(profile);
                 }
-
-            } catch (UsernameNotFoundException e) {
-
-                isNewUser = true;
-
-                user.setUsername(username);
-                user.setSurname(surname);
-                user.setName(firstname);
-                user.setProfile(profile);
-
-                if (email != null) {
-                    user.getEmailAddresses().add(email);
+                if (Log.isDebugEnabled(Log.SECURITY)) {
+                    Log.debug(Log.SECURITY, "Found user already created");
                 }
-
+            } catch (UsernameNotFoundException e) {
+                if (Log.isDebugEnabled(Log.SECURITY)) {
+                    Log.debug(Log.SECURITY, "User not found - setup new user");
+                    Log.debug(Log.SECURITY, "User profile = " + user.getProfile().toString());
+                }
+            	if (user.getProfile() != null 
+            			&& user.getProfile() != Profile.RegisteredUser
+                		&& user.getProfile() != Profile.Guest) {
+            		
+	                isNewUser = true;
+	
+	                user.setUsername(username);
+	                user.setSurname(surname);
+	                user.setName(firstname);
+	                user.setProfile(profile);
+	
+	                if (email != null) {
+	                    user.getEmailAddresses().add(email);
+	                }
+	                if (Log.isDebugEnabled(Log.SECURITY)) {
+	                    Log.debug(Log.SECURITY, "Setup user");
+	                }
+                }
             }
 
             if (udetailsmapper != null) {
                 // If is not null, we may want to write to ldap if user does not
                 // exist
+                if (Log.isDebugEnabled(Log.SECURITY)) {
+                    Log.debug(Log.SECURITY, "Write user details to LDAP");
+                }
                 LDAPUser ldapUserDetails = null;
                 try {
                     ldapUserDetails = (LDAPUser) userDetailsManager.loadUserByUsername(username);
@@ -174,7 +203,10 @@ public class ShibbolethUserUtils {
 
                 user = ldapUserDetails.getUser();
             } else {
-                userRepository.saveAndFlush(user);
+                if (Log.isDebugEnabled(Log.SECURITY)) {
+                    Log.debug(Log.SECURITY, "Create or update user in DB");
+                }
+            	userRepository.saveAndFlush(user);
             }
 
             if (group.equals("")) {
@@ -182,6 +214,9 @@ public class ShibbolethUserUtils {
             }
 
             if (isNewUser || config.isUpdateGroup()) {
+                if (Log.isDebugEnabled(Log.SECURITY)) {
+                    Log.debug(Log.SECURITY, "New user and updateGroup is True");
+                }
 
                 if (!isNewUser) {
                     Specifications<UserGroup> spec = Specifications.where(UserGroupSpecs.hasUserId(user.getId()));
@@ -192,10 +227,14 @@ public class ShibbolethUserUtils {
                 Group g = findOrCreateGroup(group, groupRepository);
                 addUserToGroup(user, g, userGroupRepository);
             }
-
+            if (Log.isDebugEnabled(Log.SECURITY)) {
+                Log.debug(Log.SECURITY, "User created - " + user.getUsername() + " with profile " + user.getProfile());
+            }
             return user;
         }
-
+        if (Log.isDebugEnabled(Log.SECURITY)) {
+            Log.debug(Log.SECURITY, "user was not setup");
+        }
         return null;
     }
 

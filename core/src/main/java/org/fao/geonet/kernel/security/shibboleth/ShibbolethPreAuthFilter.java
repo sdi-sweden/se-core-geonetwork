@@ -53,8 +53,8 @@ public class ShibbolethPreAuthFilter extends GenericFilterBean {
     private RequestCache requestCache;
 
     public ShibbolethPreAuthFilter() {
-        if (Log.isDebugEnabled(Log.JEEVES)) {
-            Log.debug(Log.JEEVES, "Setting up Shibboleth pre-auth filter");
+        if (Log.isDebugEnabled(Log.SECURITY)) {
+            Log.debug(Log.SECURITY, "Setting up Shibboleth pre-auth filter");
         }
     }
 
@@ -69,9 +69,9 @@ public class ShibbolethPreAuthFilter extends GenericFilterBean {
     public void doFilter(ServletRequest request, ServletResponse response,
                          FilterChain chain) throws IOException, ServletException {
 
-        if (Log.isDebugEnabled(Log.JEEVES)) {
+        if (Log.isDebugEnabled(Log.SECURITY)) {
             try {
-                Log.debug(Log.JEEVES,
+                Log.debug(Log.SECURITY,
                     "Performing Shibboleth pre-auth check. Existing auth is "
                         + SecurityContextHolder.getContext()
                         .getAuthentication());
@@ -90,17 +90,24 @@ public class ShibbolethPreAuthFilter extends GenericFilterBean {
             Authentication currentUser = SecurityContextHolder.getContext()
                 .getAuthentication();
             MinimalUser minimal = MinimalUser.create(request, configuration);
-
+            if (Log.isDebugEnabled(Log.SECURITY)) {
+                if (minimal != null) {
+            	Log.debug(Log.SECURITY,
+                    "Minimal user setup " + minimal.getUsername() + " with profile " + minimal.getProfile().toString());
+	            } else {
+	            	Log.debug(Log.SECURITY,"Minimal user NOT setup ");	            	
+	            }
+            }
             if (minimal != null) { // for logging only
                 username = minimal.getUsername();
 
-                if (Log.isDebugEnabled(Log.JEEVES)) {
-                    Log.debug(Log.JEEVES,
+                if (Log.isDebugEnabled(Log.SECURITY)) {
+                    Log.debug(Log.SECURITY,
                         "Found Shibboleth credentials for user " + username);
                 }
             } else {
-                if (Log.isDebugEnabled(Log.JEEVES)) {
-                    Log.debug(Log.JEEVES, "No Shibboleth credentials found");
+                if (Log.isDebugEnabled(Log.SECURITY)) {
+                    Log.debug(Log.SECURITY, "No Shibboleth credentials found for " + username);
                 }
             }
             String _uid = ShibbolethUserUtils.getHeader(hreq,
@@ -112,8 +119,8 @@ public class ShibbolethPreAuthFilter extends GenericFilterBean {
                 // Shibboleth logged another user
                 && minimal != null) { // valid headers found
 
-                if (Log.isDebugEnabled(Log.JEEVES)) {
-                    Log.debug(Log.JEEVES,
+                if (Log.isDebugEnabled(Log.SECURITY)) {
+                    Log.debug(Log.SECURITY,
                         "Trying to authenticate via Shibboleth...");
                 }
 
@@ -122,10 +129,10 @@ public class ShibbolethPreAuthFilter extends GenericFilterBean {
                 if (user != null) {
                     //mark user as logged in with shibboleth key
                     req.getSession().setAttribute(SHIB_KEY, true);
-                    if (Log.isDebugEnabled(Log.JEEVES)) {
+                    if (Log.isDebugEnabled(Log.SECURITY)) {
                         Log.debug(
-                            Log.JEEVES,
-                            "Shibboleth user found " + user.getUsername()
+                            Log.SECURITY,
+                            "Shibboleth user logged in " + user.getUsername()
                                 + " with authorities: "
                                 + user.getAuthorities());
                     }
@@ -135,7 +142,7 @@ public class ShibbolethPreAuthFilter extends GenericFilterBean {
                     auth.setDetails(user);
                     SecurityContextHolder.getContext().setAuthentication(auth);
 
-                    Log.info(Log.JEEVES, "User '" + user.getUsername()
+                    Log.info(Log.SECURITY, "User '" + user.getUsername()
                         + "' properly authenticated via Shibboleth");
 
                     HttpServletResponse hresp = (HttpServletResponse) response;
@@ -147,14 +154,14 @@ public class ShibbolethPreAuthFilter extends GenericFilterBean {
                             hresp);
                         if (savedReq != null) {
                             redirect = savedReq.getRedirectUrl();
-                            Log.debug(Log.JEEVES,
+                            Log.debug(Log.SECURITY,
                                 "Found saved request location: " + redirect);
                         } else {
-                            Log.debug(Log.JEEVES, "No saved request found");
+                            Log.debug(Log.SECURITY, "No saved request found");
                         }
 
                         if (redirect != null) {
-                            Log.info(Log.JEEVES, "Redirecting to " + redirect);
+                            Log.info(Log.SECURITY, "Redirecting to " + redirect);
 
                             // Removing original request, since we want to
                             // retain current headers.
@@ -169,7 +176,7 @@ public class ShibbolethPreAuthFilter extends GenericFilterBean {
                     }
 
                 } else {
-                    Log.warning(Log.JEEVES,
+                    Log.warning(Log.SECURITY,
                         "Error in GN shibboleth precedures handling user '"
                             + username);
                 }
@@ -184,7 +191,7 @@ public class ShibbolethPreAuthFilter extends GenericFilterBean {
             }
 
         } catch (Exception ex) {
-            Log.warning(Log.JEEVES, "Error during Shibboleth login for user "
+            Log.warning(Log.SECURITY, "Error during Shibboleth login for user "
                 + username + ": " + ex.getMessage(), ex);
         }
 
