@@ -117,18 +117,32 @@ public class ShibbolethUserUtils {
             	Log.debug(Log.SECURITY, "profile found not found ");
             }
         }
-        if (username != null && username.trim().length() > 0 && profile != null) { 
-        	                                                    // ....add other
-                                                                // cnstraints to
+        if (username != null && username.trim().length() > 0) { // ....add other
+                                                                // constraints to
                                                                 // be sure it's
                                                                 // a real
                                                                 // shibboleth
                                                                 // login and not
                                                                 // fake
             // Make sure the profile name is an exact match
-//            if (profile == null) {
-//                profile = Profile.Guest;
-//            }
+        	if (profile == null) {
+            	String shibprofile = getHeader(req, config.getProfileKey(), "");
+            	if (shibprofile.equalsIgnoreCase("geodatase_user")) {
+                  profile = Profile.Guest;
+            	}
+            	if (shibprofile.equalsIgnoreCase("geodatase_editor")) {
+                    profile = Profile.Editor;
+              	}
+            	if (shibprofile.equalsIgnoreCase("geodatase_publisher")) {
+                    profile = Profile.Reviewer;
+              	}
+            	if (shibprofile.equalsIgnoreCase("geodatase_admin")) {
+                    profile = Profile.UserAdmin;
+              	}
+            	if (shibprofile.equalsIgnoreCase("geodatase_sysadmin")) {
+                    profile = Profile.Administrator;
+              	}
+            }
 
             // FIXME: needed? only accept the first 256 chars
             if (username.length() > 256) {
@@ -203,10 +217,16 @@ public class ShibbolethUserUtils {
 
                 user = ldapUserDetails.getUser();
             } else {
-                if (Log.isDebugEnabled(Log.SECURITY)) {
-                    Log.debug(Log.SECURITY, "Create or update user in DB");
+                if (user.getProfile() != null && user.getUsername() != null) {
+                    if (Log.isDebugEnabled(Log.SECURITY)) {
+                        Log.debug(Log.SECURITY, "Create or update user in DB");
+                    }
+                	userRepository.saveAndFlush(user);
+                } else {
+                    if (Log.isDebugEnabled(Log.SECURITY)) {
+                        Log.debug(Log.SECURITY, "Unable to create or update user in DB - no username or profile available");
+                    }                	
                 }
-            	userRepository.saveAndFlush(user);
             }
 
             if (group.equals("")) {
