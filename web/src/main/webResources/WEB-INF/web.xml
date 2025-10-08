@@ -466,7 +466,7 @@
 			org.lmv.geodata.common.server.servlet.proxy.BasicAuthProxy</servlet-class>
 		<init-param>
 			<param-name>proxyEndpoint</param-name>
-			<param-value>http://maps.lantmateriet.se/topowebb/wms/v1</param-value>
+			<param-value>https://maps.lantmateriet.se/topowebb/wms/v1</param-value>
 		</init-param>
 
 		<init-param>
